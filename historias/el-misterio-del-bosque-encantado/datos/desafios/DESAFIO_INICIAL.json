@@ -225,11 +225,11 @@
                     },
                     {
                         "texto": "Mayo",
-                        "correcta": true
+                        "correcta": false
                     },
                     {
                         "texto": "Julio",
-                        "correcta": false
+                        "correcta": true
                     }
                 ]
             }
