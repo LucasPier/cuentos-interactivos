@@ -1,0 +1,138 @@
+{
+    "id": "CASA_BRUJA_EXTERIOR",
+    "tipo": "escena",
+    "fondo": "casa_bruja.webp",
+    "texto": "Allí, entre árboles retorcidos, encuentran la casa de la bruja Romi. Es una casita vieja de madera con una puerta pequeña. Parece tranquila, aunque un poco triste.",
+    "audio": "suspenso.mp3",
+    "efectos": [
+        {
+            "tipo": "luciérnagas",
+            "estilo": {
+                "x": 50,
+                "y": 100,
+                "ancho": 100,
+                "z_index": 5
+            },
+            "cantidad": 5,
+            "color": "rosa"
+        },
+        {
+            "tipo": "luciérnagas",
+            "estilo": {
+                "x": 50,
+                "y": 100,
+                "ancho": 100,
+                "z_index": 5
+            },
+            "cantidad": 5,
+            "color": "violeta"
+        },
+        {
+            "tipo": "polvo_hadas",
+            "estilo": {
+                "x": 50,
+                "y": 27,
+                "ancho": 100,
+                "z_index": 5
+            },
+            "cantidad": 10,
+            "color": "esmeralda",
+            "tamano": "5px"
+        },
+        {
+            "tipo": "polvo_hadas",
+            "estilo": {
+                "x": 60,
+                "y": 105,
+                "ancho": 19,
+                "z_index": 5
+            },
+            "cantidad": 5,
+            "color": "cyan-bio",
+            "tamano": "3px"
+        },
+        {
+            "tipo": "destellos",
+            "estilo": {
+                "x": 33.4,
+                "y": 27,
+                "ancho": 6.8,
+                "alto": 13,
+                "z_index": 10
+            },
+            "cantidad": 15,
+            "color": "dorado",
+            "tamano": "8px"
+        },
+        {
+            "tipo": "destellos",
+            "estilo": {
+                "x": 20.4,
+                "y": 42,
+                "ancho": 2.8,
+                "alto": 7,
+                "z_index": 10
+            },
+            "cantidad": 15,
+            "color": "dorado",
+            "tamano": "5px"
+        },
+        {
+            "tipo": "destellos",
+            "estilo": {
+                "x": 92.4,
+                "y": 30,
+                "ancho": 5.8,
+                "alto": 9,
+                "z_index": 10
+            },
+            "cantidad": 15,
+            "color": "dorado",
+            "tamano": "5px"
+        }
+    ],
+    "elementos": [
+        {
+            "tipo": "personaje",
+            "id": "irupe",
+            "imagen": "irupe_caminando.webp",
+            "estilo": {
+                "x": 16,
+                "y": 153,
+                "ancho": 26,
+                "z_index": 8
+            },
+            "animacion": "movimiento-sutil-2"
+        },
+        {
+            "tipo": "personaje",
+            "id": "indira",
+            "imagen": "indira_caminando.webp",
+            "estilo": {
+                "x": 8,
+                "y": 162,
+                "ancho": 28,
+                "z_index": 10
+            }
+        },
+        {
+            "tipo": "personaje",
+            "id": "nuria",
+            "imagen": "nuria_caminando.webp",
+            "estilo": {
+                "x": 24,
+                "y": 145,
+                "ancho": 21,
+                "z_index": 10
+            }
+        }
+    ],
+    "opciones": [
+        {
+            "texto": "Tocar la puerta",
+            "accion": "navegar",
+            "target": "INTERIOR_CASA_BRUJA",
+            "tipo_target": "escena"
+        }
+    ]
+}

@@ -1,0 +1,40 @@
+{
+    "id": "FINAL_CORTO_1",
+    "tipo": "escena",
+    "fondo": "cuarto_iru_normal.webp",
+    "texto": "¡Qué divertido! Pasás la tarde jugando en tu cuarto. La aventura en el bosque puede esperar a otro día. ¡Fin!",
+    "audio": "triste.mp3",
+    "elementos": [
+        {
+            "tipo": "personaje",
+            "id": "irupe",
+            "imagen": "irupe_normal.webp",
+            "estilo": {
+                "x": 51,
+                "y": 96,
+                "ancho": 17,
+                "z_index": 10
+            }
+        },
+        {
+            "tipo": "objeto",
+            "id": "fin",
+            "imagen": "fin.webp",
+            "estilo": {
+                "x": 21,
+                "y": 51,
+                "ancho": 29,
+                "z_index": 10
+            },
+            "animacion": "flotacion-3d"
+        }
+    ],
+    "opciones": [
+        {
+            "texto": "Volver a empezar",
+            "accion": "reiniciar",
+            "target": "INICIO",
+            "tipo_target": "escena"
+        }
+    ]
+}

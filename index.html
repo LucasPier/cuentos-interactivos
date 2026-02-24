@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="La Biblioteca del Tío Pier — Cuentos interactivos para Irupé">
+    <meta name="theme-color" content="#d2baff">
+    <title>La Biblioteca del Tío Pier</title>
+
+    <!-- Iconos y PWA -->
+    <link rel="icon" type="image/png" href="biblioteca/imagenes/iconos/favicon.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="biblioteca/imagenes/iconos/icono_192.png" sizes="192x192">
+    <link rel="apple-touch-icon" href="biblioteca/imagenes/iconos/icono_180.png">
+    <link rel="manifest" href="manifest.json">
+
+    <!-- Google Font: Nunito -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/biblioteca.css">
+    <link rel="stylesheet" href="css/escena.css">
+    <link rel="stylesheet" href="css/desafios.css">
+    <link rel="stylesheet" href="css/animaciones.css">
+    <link rel="stylesheet" href="css/inicio.css">
+    <link rel="stylesheet" href="css/ui.css">
+</head>
+
+<body>
+    <div id="juego">
+
+        <!-- ======= PANTALLA DE BIBLIOTECA ======= -->
+        <div id="pantalla-biblioteca">
+            <div class="biblioteca-fondo">
+                <img src="biblioteca/imagenes/fondo.webp" alt="La Biblioteca del Tío Pier">
+            </div>
+            <div class="biblioteca-overlay"></div>
+            <div class="biblioteca-contenido">
+                <div id="biblioteca-historias" class="biblioteca-historias"></div>
+            </div>
+
+            <!-- Versión App -->
+            <div id="version-app" class="version-app"></div>
+
+            <!-- Botón PWA -->
+            <button id="btn-instalar-pwa" class="btn-instalar-pwa oculto" type="button"
+                aria-label="Instalar aplicación">
+                ✨ Instalar App
+            </button>
+        </div>
+
+        <!-- ======= PANTALLA DE INICIO (dinámica por historia) ======= -->
+        <div id="pantalla-inicio" class="oculto"></div>
+
+        <!-- ======= ESCENA (COMPOSICIÓN VISUAL) ======= -->
+        <div id="escena"></div>
+
+        <!-- ======= PANEL DE TEXTO NARRATIVO ======= -->
+        <div id="panel-texto">
+            <p class="texto-narrativo"></p>
+        </div>
+
+        <!-- ======= PANEL DE OPCIONES ======= -->
+        <div id="panel-opciones"></div>
+
+        <!-- ======= PANEL DE DESAFÍO ======= -->
+        <div id="panel-desafio"></div>
+
+        <!-- ======= INDICADOR DE CARGA ======= -->
+        <div id="indicador-carga" class="oculto">
+            <img id="logo-carga" class="logo-carga" alt="Cargando..." src="">
+        </div>
+
+        <!-- ======= CONTROLES UI PERMANENTES ======= -->
+        <div class="ui-controles ui-controles--derecha">
+            <button id="btn-toggle-texto" class="btn-ui btn-toggle-texto" type="button" aria-pressed="true"
+                aria-label="Mostrar/ocultar texto">
+                📖
+            </button>
+        </div>
+        <div class="ui-controles ui-controles--izquierda">
+            <button id="btn-mute" class="btn-ui btn-mute" type="button" aria-pressed="false"
+                aria-label="Silenciar audio">
+                🔊
+            </button>
+            <button id="btn-fullscreen" class="btn-ui btn-fullscreen" type="button" aria-pressed="false"
+                aria-label="Pantalla completa">
+                ⛶
+            </button>
+        </div>
+    </div>
+
+    <!-- JS Modules -->
+    <script type="module" src="js/main.js"></script>
+</body>
+
+</html>

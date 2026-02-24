@@ -1,0 +1,66 @@
+{
+    "id": "FLORES_CHARCO",
+    "tipo": "escena",
+    "fondo": "bosque_charco.webp",
+    "texto": "El rastro de pétalos termina frente a un charco de agua extrañamente cristalina. La luna lo ilumina, pero en lugar de reflejar los árboles, el agua parece brillar con luz propia, como si fuera una pantalla mágica empezando a encenderse.",
+    "audio": "exploracion.mp3",
+    "efectos": [
+        {
+            "tipo": "luciérnagas",
+            "estilo": {
+                "x": 50,
+                "y": 100,
+                "ancho": 100,
+                "z_index": 5
+            },
+            "cantidad": 20,
+            "color": "blanco"
+        }
+    ],
+    "elementos": [
+        {
+            "tipo": "personaje",
+            "id": "nuria",
+            "imagen": "nuria_espaldas_1.webp",
+            "estilo": {
+                "x": 53,
+                "y": 80,
+                "ancho": 12,
+                "z_index": 10
+            },
+            "animacion": "movimiento-sutil-2"
+        },
+        {
+            "tipo": "personaje",
+            "id": "irupe",
+            "imagen": "irupe_espaldas_1.webp",
+            "estilo": {
+                "x": 36,
+                "y": 96,
+                "ancho": 17,
+                "z_index": 8
+            },
+            "animacion": "movimiento-sutil"
+        },
+        {
+            "tipo": "personaje",
+            "id": "indira",
+            "imagen": "indira_espaldas_1.webp",
+            "estilo": {
+                "x": 28,
+                "y": 99,
+                "ancho": 18,
+                "z_index": 10
+            },
+            "animacion": "movimiento-sutil"
+        }
+    ],
+    "opciones": [
+        {
+            "texto": "Asomarse a ver el reflejo",
+            "accion": "navegar",
+            "target": "FLORES_CHARCO_VISION",
+            "tipo_target": "escena"
+        }
+    ]
+}

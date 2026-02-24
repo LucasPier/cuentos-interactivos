@@ -1,0 +1,112 @@
+{
+    "id": "ENCUENTRO_TIO_PIER",
+    "tipo": "escena",
+    "fondo": "bosque_hongos_magicos.webp",
+    "texto": "\"¡Hola, tío Pier!\", exclama Irupé. El tío Pier se da la vuelta y sonríe. \"¡Oh, Irupé! ¡Indi! ¡Nuria! ¡Qué sorpresa! ¿Qué andan haciendo por acá?\", dice con voz alegre. \"¡Tío Pier! La bruja Romi se robó los colores de los animalitos y las flores. ¡Estamos buscando su casa para recuperarlos!\", le responde Indira, muy decidida.",
+    "audio": "magico.mp3",
+    "efectos": [
+        {
+            "tipo": "luciérnagas",
+            "estilo": {
+                "x": 50,
+                "y": 100,
+                "ancho": 100,
+                "z_index": 5
+            },
+            "cantidad": 20,
+            "color": "esmeralda"
+        },
+        {
+            "tipo": "luciérnagas",
+            "estilo": {
+                "x": 50,
+                "y": 100,
+                "ancho": 100,
+                "z_index": 5
+            },
+            "cantidad": 20,
+            "color": "violeta"
+        },
+        {
+            "tipo": "luciérnagas",
+            "estilo": {
+                "x": 50,
+                "y": 100,
+                "ancho": 100,
+                "z_index": 5
+            },
+            "cantidad": 20,
+            "color": "cyan-bio"
+        },
+        {
+            "tipo": "polvo_hadas",
+            "estilo": {
+                "x": 50,
+                "y": 27,
+                "ancho": 100,
+                "z_index": 5
+            },
+            "cantidad": 15,
+            "color": "cyan-bio",
+            "tamano": "3px"
+        }
+    ],
+    "elementos": [
+        {
+            "tipo": "personaje",
+            "id": "tio_pier",
+            "imagen": "tio_pier.webp",
+            "estilo": {
+                "x": 48,
+                "y": 94,
+                "ancho": 27,
+                "z_index": 5
+            },
+            "animacion": "movimiento-sutil-2"
+        },
+        {
+            "tipo": "personaje",
+            "id": "irupe",
+            "imagen": "irupe_espaldas_1.webp",
+            "estilo": {
+                "x": 36,
+                "y": 100,
+                "ancho": 21,
+                "z_index": 8
+            },
+            "animacion": "movimiento-sutil"
+        },
+        {
+            "tipo": "personaje",
+            "id": "indira",
+            "imagen": "indira_espaldas_1.webp",
+            "estilo": {
+                "x": 9,
+                "y": 108,
+                "ancho": 21,
+                "z_index": 10
+            },
+            "animacion": "movimiento-sutil"
+        },
+        {
+            "tipo": "personaje",
+            "id": "nuria",
+            "imagen": "nuria_espaldas_1.webp",
+            "estilo": {
+                "x": 25,
+                "y": 106,
+                "ancho": 18,
+                "z_index": 10
+            },
+            "animacion": "movimiento-sutil-2"
+        }
+    ],
+    "opciones": [
+        {
+            "texto": "Continuar charlando",
+            "accion": "navegar",
+            "target": "ENCUENTRO_TIO_PIER_2",
+            "tipo_target": "escena"
+        }
+    ]
+}

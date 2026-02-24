@@ -1,0 +1,90 @@
+{
+    "id": "RIO_HABLAR_DUENDE",
+    "tipo": "escena",
+    "fondo": "rio_duende_hada.webp",
+    "texto": "\"¡Hola!\", saludas con amabilidad. \"La bruja Romi se robó los colores del bosque y necesitamos encontrar su casa para recuperarlos\". Milo las mira de pies a cabeza con desconfianza.",
+    "audio": "bosque.mp3",
+    "efectos": [
+        {
+            "tipo": "luciérnagas",
+            "estilo": {
+                "x": 50,
+                "y": 100,
+                "ancho": 100,
+                "z_index": 5
+            },
+            "cantidad": 20,
+            "color": "rosa"
+        },
+        {
+            "tipo": "luciérnagas",
+            "estilo": {
+                "x": 50,
+                "y": 100,
+                "ancho": 100,
+                "z_index": 5
+            },
+            "cantidad": 20,
+            "color": "cyan-bio"
+        },
+        {
+            "tipo": "polvo_hadas",
+            "estilo": {
+                "x": 50,
+                "y": 27,
+                "ancho": 100,
+                "z_index": 5
+            },
+            "cantidad": 15,
+            "color": "cyan-bio",
+            "tamano": "5px"
+        },
+        {
+            "tipo": "polvo_hadas",
+            "estilo": {
+                "x": 59,
+                "y": 142,
+                "ancho": 12,
+                "z_index": 5
+            },
+            "cantidad": 20,
+            "color": "rosa",
+            "tamano": "3px"
+        }
+    ],
+    "elementos": [
+        {
+            "tipo": "personaje",
+            "id": "duende_milo",
+            "imagen": "duende_milo_sospecha.webp",
+            "estilo": {
+                "x": 45,
+                "y": 93,
+                "ancho": 24,
+                "z_index": 10
+            },
+            "animacion": "movimiento-sutil"
+        },
+        {
+            "tipo": "personaje",
+            "id": "hada_jazmin",
+            "imagen": "hada_jazmin.webp",
+            "estilo": {
+                "x": 58,
+                "y": 64,
+                "ancho": 10,
+                "z_index": 11
+            },
+            "efecto": "rebote",
+            "animacion": "flotacion-aura"
+        }
+    ],
+    "opciones": [
+        {
+            "texto": "Esperar la respuesta de Milo",
+            "accion": "navegar",
+            "target": "RIO_HABLAR_DUENDE_2",
+            "tipo_target": "escena"
+        }
+    ]
+}

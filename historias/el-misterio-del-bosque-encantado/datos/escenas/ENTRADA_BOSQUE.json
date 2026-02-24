@@ -1,0 +1,129 @@
+{
+    "id": "ENTRADA_BOSQUE",
+    "tipo": "escena",
+    "fondo": "entrada_bosque.webp",
+    "texto": "¡Lo lograste! Llegás a la entrada del bosque. La abuela Tere te espera allí. \"Irupé, algo extraño sucede\", dice con voz misteriosa. \"Los animalitos del bosque están perdiendo sus colores y su alegría. Necesitamos tu ayuda para resolver este misterio\". En ese momento llegan tus amigas Indi y Nuria. \"¡Vamos con vos!\", dicen. Ahora las tres juntas deben decidir por dónde empezar.",
+    "audio": "aventuras.mp3",
+    "efectos": [
+        {
+            "tipo": "luciérnagas",
+            "estilo": {
+                "x": 50,
+                "y": 100,
+                "ancho": 100,
+                "z_index": 5
+            },
+            "cantidad": 20,
+            "color": "dorado"
+        },
+        {
+            "tipo": "luciérnagas",
+            "estilo": {
+                "x": 50,
+                "y": 100,
+                "ancho": 100,
+                "z_index": 5
+            },
+            "cantidad": 20,
+            "color": "esmeralda"
+        },
+        {
+            "tipo": "luciérnagas",
+            "estilo": {
+                "x": 50,
+                "y": 100,
+                "ancho": 100,
+                "z_index": 5
+            },
+            "cantidad": 20,
+            "color": "rosa"
+        },
+        {
+            "tipo": "luciérnagas",
+            "estilo": {
+                "x": 50,
+                "y": 100,
+                "ancho": 100,
+                "z_index": 5
+            },
+            "cantidad": 20,
+            "color": "cyan-bio"
+        },
+        {
+            "tipo": "polvo_hadas",
+            "estilo": {
+                "x": 50,
+                "y": 27,
+                "ancho": 100,
+                "z_index": 5
+            },
+            "cantidad": 15,
+            "color": "esmeralda",
+            "tamano": "5px"
+        },
+        {
+            "tipo": "polvo_hadas",
+            "estilo": {
+                "x": 50,
+                "y": 27,
+                "ancho": 100,
+                "z_index": 5
+            },
+            "cantidad": 30,
+            "color": "cyan-bio",
+            "tamano": "5px"
+        }
+    ],
+    "elementos": [
+        {
+            "tipo": "personaje",
+            "id": "abuela_tere",
+            "imagen": "abuela_tere.webp",
+            "estilo": {
+                "x": 50,
+                "y": 100,
+                "ancho": 22,
+                "z_index": 10
+            },
+            "animacion": "movimiento-sutil"
+        },
+        {
+            "tipo": "personaje",
+            "id": "indira",
+            "imagen": "indira.webp",
+            "estilo": {
+                "x": 20,
+                "y": 100,
+                "ancho": 15,
+                "z_index": 11
+            },
+            "animacion": "movimiento-sutil-2"
+        },
+        {
+            "tipo": "personaje",
+            "id": "nuria",
+            "imagen": "nuria.webp",
+            "estilo": {
+                "x": 28,
+                "y": 95,
+                "ancho": 12,
+                "z_index": 11
+            },
+            "animacion": "movimiento-sutil-2"
+        }
+    ],
+    "opciones": [
+        {
+            "texto": "Seguir el camino de flores brillantes",
+            "accion": "navegar",
+            "target": "ZONA_FLORES",
+            "tipo_target": "escena"
+        },
+        {
+            "texto": "Tomar el sendero junto al río",
+            "accion": "navegar",
+            "target": "ZONA_RIO",
+            "tipo_target": "escena"
+        }
+    ]
+}

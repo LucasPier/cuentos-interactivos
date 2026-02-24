@@ -1,0 +1,122 @@
+{
+    "id": "FINAL_BUENO",
+    "tipo": "escena",
+    "fondo": "final_bosque_con_color.webp",
+    "texto": "Irupé se acerca a Romi carinosamente. \"No tenés que estar sola\", dice. \"¿Querés jugar con nosotras?\". Romi sonríe y una lágrima de felicidad libera los colores del frasco. El bosque recupera su brillo. La abuela Tere aparece y dice: \"Lo hicieron muy bien, niñas. La amistad es la magia más poderosa\". ¡Has completado la aventura con el mejor final!",
+    "audio": "celebracion.mp3",
+    "efectos": [
+        {
+            "tipo": "luciérnagas",
+            "estilo": {
+                "x": 50,
+                "y": 100,
+                "ancho": 100,
+                "z_index": 5
+            },
+            "cantidad": 40,
+            "color": "dorado"
+        },
+        {
+            "tipo": "luciérnagas",
+            "estilo": {
+                "x": 50,
+                "y": 100,
+                "ancho": 100,
+                "z_index": 5
+            },
+            "cantidad": 20,
+            "color": "violeta"
+        },
+        {
+            "tipo": "luciérnagas",
+            "estilo": {
+                "x": 50,
+                "y": 100,
+                "ancho": 100,
+                "z_index": 5
+            },
+            "cantidad": 20,
+            "color": "esmeralda"
+        },
+        {
+            "tipo": "luciérnagas",
+            "estilo": {
+                "x": 50,
+                "y": 100,
+                "ancho": 100,
+                "z_index": 5
+            },
+            "cantidad": 20,
+            "color": "cyan-bio"
+        },
+        {
+            "tipo": "luciérnagas",
+            "estilo": {
+                "x": 50,
+                "y": 100,
+                "ancho": 100,
+                "z_index": 5
+            },
+            "cantidad": 20,
+            "color": "rosa"
+        },
+        {
+            "tipo": "polvo_hadas",
+            "estilo": {
+                "x": 50,
+                "y": 27,
+                "ancho": 100,
+                "z_index": 5
+            },
+            "cantidad": 25,
+            "color": "dorado",
+            "tamano": "5px"
+        }
+    ],
+    "elementos": [
+        {
+            "tipo": "personaje",
+            "id": "bruja_romi",
+            "imagen": "bruja_romi_feliz.webp",
+            "estilo": {
+                "x": 22,
+                "y": 92,
+                "ancho": 18,
+                "z_index": 10
+            },
+            "animacion": "movimiento-sutil"
+        },
+        {
+            "tipo": "personaje",
+            "id": "abuela_tere",
+            "imagen": "abuela_tere.webp",
+            "estilo": {
+                "x": 11,
+                "y": 100,
+                "ancho": 22,
+                "z_index": 11
+            },
+            "animacion": "movimiento-sutil"
+        },
+        {
+            "tipo": "objeto",
+            "id": "fin",
+            "imagen": "fin.webp",
+            "estilo": {
+                "x": 50,
+                "y": 38,
+                "ancho": 29,
+                "z_index": 10
+            },
+            "animacion": "flotacion-3d"
+        }
+    ],
+    "opciones": [
+        {
+            "texto": "Volver a empezar",
+            "accion": "reiniciar",
+            "target": "INICIO",
+            "tipo_target": "escena"
+        }
+    ]
+}

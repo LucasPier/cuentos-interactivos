@@ -1,0 +1,373 @@
+/* ==============================================
+   BIBLIOTECA — Pantalla de selección de historias
+   ============================================== */
+
+/* ---- Contenedor principal ---- */
+#pantalla-biblioteca {
+    position: absolute;
+    inset: 0;
+    z-index: var(--z-pantalla-biblioteca);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+#pantalla-biblioteca.oculto {
+    display: none;
+}
+
+/* ---- Fondo ---- */
+.biblioteca-fondo {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+}
+
+.biblioteca-fondo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* ---- Overlay con gradiente cálido ---- */
+.biblioteca-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background:
+        radial-gradient(ellipse at 50% 30%, rgba(212, 160, 23, 0.05) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 80%, rgba(124, 58, 237, 0.05) 0%, transparent 50%),
+        linear-gradient(180deg, rgba(10, 15, 25, 0.2) 0%, rgba(10, 15, 25, 0.6) 100%);
+}
+
+/* ---- Contenido centrado ---- */
+.biblioteca-contenido {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--espaciado-lg);
+    padding: var(--espaciado-xl);
+    text-align: center;
+    width: 100%;
+    max-width: 900px;
+    margin: 9% 6% 0 0;
+}
+
+
+
+/* ---- Grid de tarjetas ---- */
+.biblioteca-historias {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--espaciado-lg);
+    width: 100%;
+    padding: var(--espaciado-md) 0;
+}
+
+/* ---- Tarjeta de historia ---- */
+.biblioteca-tarjeta {
+    position: relative;
+    width: 280px;
+    height: 180px;
+    border-radius: 16px;
+    overflow: hidden;
+    cursor: pointer;
+    border: 2px solid rgba(212, 160, 23, 0.3);
+    transition: transform 300ms ease, box-shadow 300ms ease, border-color 300ms ease;
+    background: var(--color-fondo-oscuro);
+    padding: 0;
+    transform: perspective(1034px) rotateX(-4deg) rotateY(-11deg);
+    transform-style: preserve-3d;
+    animation: aura-tarjeta 5s ease-in-out infinite;
+}
+
+.biblioteca-tarjeta:hover {
+    border-color: var(--color-esmeralda-claro);
+}
+
+
+.biblioteca-tarjeta-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+
+
+/* ---- Botón salir de historia ---- */
+.btn-salir-historia {
+    background: transparent;
+    border: 1px solid rgba(167, 243, 208, 0.2);
+    color: var(--color-texto-secundario);
+    font-family: var(--fuente-narrativa);
+    font-size: clamp(0.8rem, 2vw, 0.95rem);
+    font-weight: 600;
+    padding: 10px 24px;
+    border-radius: 999px;
+    cursor: pointer;
+    margin-top: var(--espaciado-sm);
+    transition: background var(--transicion-base), color var(--transicion-base), border-color var(--transicion-base);
+}
+
+.btn-salir-historia:hover {
+    background: rgba(167, 243, 208, 0.08);
+    color: var(--color-texto-principal);
+    border-color: rgba(167, 243, 208, 0.4);
+}
+
+/* ---- Modal de Partida Guardada ---- */
+.biblioteca-modal-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+    background: rgba(10, 5, 0, 0.85);
+    /* Tono madera oscuro/sepia transparente */
+    backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.biblioteca-modal {
+    /* Fondo realista simulando madera antigua (radial con viñeta natural) */
+    background: radial-gradient(circle at 50% 30%, #4a2e1b 0%, #29180d 80%, #150b05 100%);
+    border: 3px solid #8b5a2b;
+    /* Borde madera tallada/barnizada */
+    border-radius: 16px;
+    padding: 2.5rem 2rem;
+    max-width: 440px;
+    width: 90%;
+    text-align: center;
+    /* Sombra pesada para volumen grueso */
+    box-shadow:
+        inset 0 0 40px rgba(0, 0, 0, 0.6),
+        0 25px 50px -12px rgba(0, 0, 0, 0.8),
+        0 0 20px rgba(212, 160, 23, 0.1);
+    /* Ligero destello mágico/oro sucio */
+    font-family: var(--fuente-narrativa);
+    color: #fef0d9;
+    /* Blanco antiguo/pergamino en vez de puro #fff */
+    animation: scaleInBounce 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Decoración interior simulando relieve/tallado de madera */
+.biblioteca-modal::before {
+    content: '';
+    position: absolute;
+    inset: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    /* Luz dura */
+    border-bottom-color: rgba(0, 0, 0, 0.5);
+    /* Sombra en la base */
+    border-radius: 10px;
+    pointer-events: none;
+}
+
+.biblioteca-modal-titulo {
+    font-size: 1.8rem;
+    font-weight: 800;
+    margin-bottom: 0.75rem;
+    color: #ffd700;
+    /* Dorado desgastado, como el lomo de un libro */
+    text-shadow: 0 4px 6px rgba(0, 0, 0, 0.8), 0 1px 2px rgba(0, 0, 0, 1);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+.biblioteca-modal-mensaje {
+    font-size: 1.1rem;
+    color: #dcbfa3;
+    /* Texto pergamino apagado */
+    margin-bottom: 2.5rem;
+    line-height: 1.6;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+.biblioteca-modal-botones {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.biblioteca-modal-botones button {
+    padding: 1rem 1.75rem;
+    border-radius: 12px;
+    font-weight: 700;
+    font-family: inherit;
+    font-size: 1.05rem;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    border: 2px solid transparent;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+    position: relative;
+    overflow: hidden;
+}
+
+.biblioteca-modal-botones button:active {
+    transform: scale(0.97);
+}
+
+.btn-modal-primario {
+    /* Igual al botón secundario (madera base) */
+    background: linear-gradient(180deg, #6e462c 0%, #4a2e1b 100%);
+    color: #fef0d9;
+    border-color: #8b5a2b !important;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.1);
+}
+
+.btn-modal-primario:hover {
+    /* Verde bosque amigable al hacer hover */
+    background: linear-gradient(180deg, #6ee7b7 0%, var(--color-esmeralda-claro) 100%);
+    color: #fff;
+    border-color: rgba(255, 255, 255, 0.3) !important;
+    box-shadow: 0 12px 20px rgba(6, 78, 59, 0.6), inset 0 2px 4px rgba(255, 255, 255, 0.4);
+    transform: translateY(-2px);
+}
+
+.btn-modal-secundario {
+    /* Estilo "botón secundario de madera" */
+    background: linear-gradient(180deg, #6e462c 0%, #4a2e1b 100%);
+    color: #fef0d9;
+    border-color: #8b5a2b !important;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.1);
+}
+
+.btn-modal-secundario:hover {
+    background: linear-gradient(180deg, #8b5a2b 0%, #6e462c 100%);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.15);
+    transform: translateY(-1px);
+    color: #fff;
+}
+
+.btn-modal-terciario {
+    background: transparent;
+    color: #a88a70;
+    /* Texto oscuro/apagado */
+    border: 2px dashed rgba(168, 138, 112, 0.3) !important;
+    padding-top: 0.75rem;
+    /* un poco menos alto por ser terciario */
+    padding-bottom: 0.75rem;
+}
+
+.btn-modal-terciario:hover {
+    color: #dcbfa3;
+    border-color: rgba(168, 138, 112, 0.6) !important;
+    background: rgba(255, 255, 255, 0.03);
+}
+
+@keyframes scaleInBounce {
+    0% {
+        transform: scale(0.85);
+        opacity: 0;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* ---- Versión de la Aplicación (PWA) ---- */
+.version-app {
+    position: absolute;
+    bottom: 12px;
+    left: 14px;
+    z-index: 10;
+    color: #b9b9b9;
+    font-family: var(--fuente-narrativa);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    pointer-events: none;
+    opacity: 0;
+    /* Por defecto oculto hasta recibir la versión */
+    transition: opacity 0.5s ease;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.version-app.visible {
+    opacity: 0.6;
+}
+
+/* ---- Botón Instalar App (PWA) ---- */
+.btn-instalar-pwa {
+    position: absolute;
+    bottom: 24px;
+    z-index: 20;
+    /* Por encima de fondos y pseudo items */
+    background: rgba(10, 15, 25, 0.6);
+    border: 1px solid rgba(212, 160, 23, 0.4);
+    color: #dcbfa3;
+    font-family: var(--fuente-narrativa);
+    font-size: 0.9rem;
+    font-weight: 600;
+    padding: 8px 20px;
+    border-radius: 999px;
+    cursor: pointer;
+    backdrop-filter: blur(4px);
+    transition: all 0.3s ease;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.btn-instalar-pwa:hover {
+    background: rgba(10, 15, 25, 0.8);
+    border-color: rgba(212, 160, 23, 0.8);
+    color: #fef0d9;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.1);
+}
+
+.btn-instalar-pwa:active {
+    transform: translateY(0);
+}
+
+.btn-instalar-pwa.oculto {
+    display: none;
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 900px),
+(max-height: 600px) {
+    .biblioteca-contenido {
+        padding: var(--espaciado-md);
+        margin: 5% 0 0 0;
+        gap: var(--espaciado-md);
+    }
+
+    .biblioteca-tarjeta {
+        width: 220px;
+        height: 140px;
+    }
+
+    .biblioteca-modal {
+        padding: 1.5rem 1rem;
+    }
+
+    .biblioteca-modal-titulo {
+        font-size: 1.4rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .biblioteca-modal-mensaje {
+        font-size: 0.95rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .biblioteca-modal-botones button {
+        padding: 0.75rem 1.25rem;
+        font-size: 0.95rem;
+    }
+}

@@ -1,0 +1,492 @@
+/* ==============================================
+   ANIMACIONES — Keyframes y transiciones
+   ============================================== */
+/* ---- Aura tarjeta ---- */
+@keyframes aura-tarjeta {
+    0% {
+        box-shadow: 0 4px 20px #00000066,
+            0 4px 40px rgba(0, 217, 255, 0.3),
+            0 0 60px rgba(156, 255, 209, 0.5);
+        transform: perspective(1034px) rotateX(-4deg) rotateY(-11deg);
+    }
+
+    50% {
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4),
+            0 4px 60px rgba(94, 5, 167, 0.7),
+            0 0 100px rgba(0, 173, 253, 0.705);
+        transform: perspective(1000px) rotateX(4deg) rotateY(22deg);
+    }
+
+    100% {
+        box-shadow: 0 4px 20px #00000066,
+            0 4px 40px rgba(0, 217, 255, 0.3),
+            0 0 60px rgba(156, 255, 209, 0.5);
+        transform: perspective(1034px) rotateX(-4deg) rotateY(-11deg);
+    }
+}
+
+/* ---- Transiciones entre escenas ---- */
+.escena-saliendo {
+    animation: fadeOut var(--transicion-escena) ease-in-out forwards;
+}
+
+.escena-entrando {
+    animation: fadeIn var(--transicion-escena) ease-in-out forwards;
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* ---- Efectos de elementos ---- */
+.efecto-aparecer_suave {
+    animation: fadeIn 600ms ease-out both;
+}
+
+.efecto-rebote {
+    animation: rebote 700ms cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+.efecto-flotar {
+    animation: flotar 3s ease-in-out infinite;
+}
+
+@keyframes rebote {
+    0% {
+        opacity: 0;
+        transform: translateX(-50%) translateY(40px);
+    }
+
+    60% {
+        opacity: 1;
+        transform: translateX(-50%) translateY(-8px);
+    }
+
+    80% {
+        transform: translateX(-50%) translateY(4px);
+    }
+
+    100% {
+        transform: translateX(-50%) translateY(0);
+    }
+}
+
+@keyframes flotar {
+
+    0%,
+    100% {
+        transform: translateX(-50%) translateY(0);
+    }
+
+    50% {
+        transform: translateX(-50%) translateY(-10px);
+    }
+}
+
+/* ---- Feedback de desafíos ---- */
+.efecto-shake {
+    animation: shake 400ms ease-in-out;
+}
+
+@keyframes shake {
+
+    0%,
+    100% {
+        transform: translateX(-50%);
+    }
+
+    20% {
+        transform: translateX(calc(-50% + 8px));
+    }
+
+    40% {
+        transform: translateX(calc(-50% - 8px));
+    }
+
+    60% {
+        transform: translateX(calc(-50% + 4px));
+    }
+
+    80% {
+        transform: translateX(calc(-50% - 4px));
+    }
+}
+
+.efecto-pulse {
+    animation: pulse 300ms ease-out;
+}
+
+@keyframes pulse {
+    0% {
+        transform: translateX(-50%) scale(1);
+    }
+
+    50% {
+        transform: translateX(-50%) scale(1.15);
+    }
+
+    100% {
+        transform: translateX(-50%) scale(1);
+    }
+}
+
+/* ---- Efectos Visuales (Emisores Genéricos) ---- */
+.particula-luciernaga {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    z-index: 1;
+    animation: p-luciernagas var(--duracion, 6s) ease-in-out infinite;
+    opacity: 0.7;
+}
+
+/* Modificadores de color universales para partículas */
+.color-dorado {
+    background: var(--color-dorado-claro);
+    box-shadow: 0 0 10px var(--color-dorado-claro), 0 0 20px rgba(250, 204, 21, 0.3);
+}
+
+.color-esmeralda {
+    background: var(--color-esmeralda-claro);
+    box-shadow: 0 0 10px var(--color-esmeralda-claro), 0 0 20px rgba(16, 185, 129, 0.3);
+}
+
+.color-cyan-bio {
+    background: var(--color-cyan-bio);
+    box-shadow: 0 0 10px var(--color-cyan-bio), 0 0 20px rgba(34, 211, 238, 0.3);
+}
+
+.color-violeta {
+    background: var(--color-violeta-claro);
+    box-shadow: 0 0 10px var(--color-violeta-claro), 0 0 20px rgba(167, 139, 250, 0.3);
+}
+
+.color-rosa {
+    background: var(--color-rosa-magico);
+    box-shadow: 0 0 10px var(--color-rosa-magico), 0 0 20px rgba(244, 114, 182, 0.3);
+}
+
+.color-blanco {
+    background: var(--color-blanco);
+    box-shadow: 0 0 10px var(--color-blanco), 0 0 20px rgba(255, 255, 255, 0.3);
+}
+
+@keyframes p-luciernagas {
+
+    0%,
+    100% {
+        transform: translate(0, 0);
+        opacity: 0.3;
+    }
+
+    25% {
+        transform: translate(var(--dx, 30px), var(--dy, -20px));
+        opacity: 0.9;
+    }
+
+    50% {
+        transform: translate(calc(var(--dx, 30px) * -0.5), calc(var(--dy, -20px) * 1.5));
+        opacity: 0.5;
+    }
+
+    75% {
+        transform: translate(calc(var(--dx, 30px) * 0.8), calc(var(--dy, -20px) * -0.5));
+        opacity: 0.8;
+    }
+}
+
+/* ---- Polvo de Hadas / Nieve ---- */
+.particula-nieve {
+    position: absolute;
+    width: var(--tamano, 4px);
+    height: var(--tamano, 4px);
+    border-radius: 50%;
+    z-index: 1;
+    animation: p-nieve var(--duracion, 8s) linear infinite;
+    opacity: 0;
+}
+
+@keyframes p-nieve {
+    0% {
+        transform: translate(0, 0);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 0.8;
+    }
+
+    50% {
+        transform: translate(var(--swayX, 20px), 50vh);
+        opacity: 1;
+    }
+
+    90% {
+        opacity: 0.6;
+    }
+
+    100% {
+        transform: translate(calc(var(--swayX, 20px) * -1), 100vh);
+        opacity: 0;
+    }
+}
+
+/* ---- Destellos (Sparkles Estáticos) ---- */
+.particula-destello {
+    position: absolute;
+    width: var(--tamano, 6px);
+    height: var(--tamano, 6px);
+    z-index: 1;
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    animation: p-destello var(--duracion, 3s) ease-in-out infinite;
+    opacity: 0;
+}
+
+@keyframes p-destello {
+
+    0%,
+    100% {
+        transform: scale(0.2) rotate(0deg);
+        opacity: 0;
+    }
+
+    50% {
+        transform: scale(1) rotate(180deg);
+        opacity: var(--opacidad-max, 0.9);
+    }
+}
+
+/* ---- Partículas del Final Secreto ---- */
+.final-secreto .escena-fondo::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(2px 2px at 20% 30%, var(--color-dorado-brillante), transparent),
+        radial-gradient(2px 2px at 40% 70%, var(--color-dorado-claro), transparent),
+        radial-gradient(2px 2px at 60% 20%, var(--color-cyan-bio), transparent),
+        radial-gradient(2px 2px at 80% 50%, var(--color-rosa-magico), transparent),
+        radial-gradient(2px 2px at 10% 80%, var(--color-violeta-claro), transparent),
+        radial-gradient(2px 2px at 70% 90%, var(--color-dorado-brillante), transparent),
+        radial-gradient(2px 2px at 50% 10%, var(--color-esmeralda-claro), transparent);
+    animation: particulas 4s linear infinite;
+    pointer-events: none;
+    z-index: 50;
+}
+
+@keyframes particulas {
+    0% {
+        opacity: 0.4;
+        transform: translateY(0);
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0.4;
+        transform: translateY(-30px);
+    }
+}
+
+/* ==============================================
+   ANIMACIONES CONTINUAS (ELEMENTOS Y DESAFÍOS)
+   ============================================== */
+
+/* ---- Flotación ---- */
+.anim-flotacion {
+    animation: anim-flotar 4s ease-in-out infinite;
+}
+
+@keyframes anim-flotar {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+/* ---- Flotación 3D ---- */
+.anim-flotacion-3d {
+    animation: anim-flotacion-3d 6s ease-in-out infinite;
+}
+
+@keyframes anim-flotacion-3d {
+
+    0%,
+    100% {
+        opacity: 0.9;
+        transform: perspective(1034px) rotateX(-4deg) rotateY(-11deg) translateY(0) scale(1);
+    }
+
+    50% {
+        opacity: 1;
+        transform: perspective(1000px) rotateX(4deg) rotateY(22deg) translateY(-8px) scale(1.07);
+    }
+}
+
+/* ---- Respiración ---- */
+.anim-respiracion {
+    animation: anim-respirar 3.5s ease-in-out infinite;
+}
+
+@keyframes anim-respirar {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+        /* Escala sutil para no deformar pixel art/imágenes */
+    }
+}
+
+/* ---- Movimiento Sutil ---- */
+.anim-movimiento-sutil {
+    animation: anim-movimiento-sutil 6s ease-in-out infinite;
+}
+
+/* ---- Movimiento Sutil 2 (Desfasado) ---- */
+.anim-movimiento-sutil-2 {
+    animation: anim-movimiento-sutil 6s ease-in-out -3s infinite;
+}
+
+@keyframes anim-movimiento-sutil {
+
+    0%,
+    100% {
+        transform: translateY(0) scale(1);
+    }
+
+    50% {
+        transform: translateY(-2px) scale(1.01);
+    }
+}
+
+/* ---- Aura (Brillo sutil) ---- */
+.anim-aura {
+    animation: anim-brillar-aura 3s ease-in-out infinite alternate;
+}
+
+@keyframes anim-brillar-aura {
+    0% {
+        filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.4));
+    }
+
+    100% {
+        filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.8));
+    }
+}
+
+/* ---- Resplandor (Brillo intenso dorado mágico) ---- */
+.anim-resplandor {
+    animation: anim-resplandecer 2.5s ease-in-out infinite alternate;
+}
+
+@keyframes anim-resplandecer {
+    0% {
+        filter: drop-shadow(0 0 10px var(--color-dorado-claro, #ffda47));
+    }
+
+    100% {
+        filter: drop-shadow(0 0 40px var(--color-dorado-brillante, #fff6b8));
+    }
+}
+
+/* ==============================================
+   COMBINACIONES DE ANIMACIONES
+   ============================================== */
+
+/* ---- Flotación + Aura ---- */
+.anim-flotacion-aura {
+    animation:
+        anim-flotar 4s ease-in-out infinite,
+        anim-brillar-aura 3s ease-in-out infinite alternate;
+}
+
+/* ---- Respiración + Aura ---- */
+.anim-respiracion-aura {
+    animation:
+        anim-respirar 3.5s ease-in-out infinite,
+        anim-brillar-aura 3s ease-in-out infinite alternate;
+}
+
+/* ---- Flotación + Resplandor ---- */
+.anim-flotacion-resplandor {
+    animation:
+        anim-flotar 4s ease-in-out infinite,
+        anim-resplandecer 2.5s ease-in-out infinite alternate;
+}
+
+/* ---- Respiración + Resplandor ---- */
+.anim-respiracion-resplandor {
+    animation:
+        anim-respirar 3.5s ease-in-out infinite,
+        anim-resplandecer 1.75s ease-in-out infinite alternate;
+}
+
+/* ---- Flotación 3D + Aura ---- */
+.anim-flotacion-3d-aura {
+    animation:
+        anim-flotacion-3d 6s ease-in-out infinite,
+        anim-brillar-aura 3s ease-in-out infinite alternate;
+}
+
+/* ---- Flotación 3D + Resplandor ---- */
+.anim-flotacion-3d-resplandor {
+    animation:
+        anim-flotacion-3d 6s ease-in-out infinite,
+        anim-resplandecer 1.75s ease-in-out infinite alternate;
+}
+
+/* ---- Movimiento Sutil + Aura ---- */
+.anim-movimiento-sutil-aura {
+    animation:
+        anim-movimiento-sutil 6s ease-in-out infinite,
+        anim-brillar-aura 3s ease-in-out infinite alternate;
+}
+
+/* ---- Movimiento Sutil + Resplandor ---- */
+.anim-movimiento-sutil-resplandor {
+    animation:
+        anim-movimiento-sutil 6s ease-in-out infinite,
+        anim-resplandecer 1.75s ease-in-out infinite alternate;
+}
+
+/* ---- Movimiento Sutil 2 + Aura ---- */
+.anim-movimiento-sutil-2-aura {
+    animation:
+        anim-movimiento-sutil 6s ease-in-out -3s infinite,
+        anim-brillar-aura 3s ease-in-out -1.5s infinite alternate;
+}
+
+/* ---- Movimiento Sutil 2 + Resplandor ---- */
+.anim-movimiento-sutil-2-resplandor {
+    animation:
+        anim-movimiento-sutil 6s ease-in-out -3s infinite,
+        anim-resplandecer 1.75s ease-in-out -0.875s infinite alternate;
+}

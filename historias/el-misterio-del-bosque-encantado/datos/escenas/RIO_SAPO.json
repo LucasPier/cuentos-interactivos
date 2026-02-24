@@ -1,0 +1,42 @@
+{
+    "id": "RIO_SAPO",
+    "tipo": "escena",
+    "fondo": "rio_sapo.webp",
+    "texto": "En la orilla del río descubren a un sapo grande y regordete, ¡pero es completamente blanco! El sapo las mira suspirando: \"¡Ay de mí! Estaba lo más pancho descansando y pasó la Bruja Romi. Me sacó todo mi color verde y se fue volando. ¡Se robó mis colores!\"",
+    "audio": "bosque.mp3",
+    "efectos": [
+        {
+            "tipo": "luciérnagas",
+            "estilo": {
+                "x": 50,
+                "y": 100,
+                "ancho": 100,
+                "z_index": 5
+            },
+            "cantidad": 15,
+            "color": "esmeralda"
+        }
+    ],
+    "elementos": [
+        {
+            "tipo": "personaje",
+            "id": "sapo_blanco",
+            "imagen": "sapo_blanco.webp",
+            "estilo": {
+                "x": 60,
+                "y": 105,
+                "ancho": 29,
+                "z_index": 10
+            },
+            "animacion": "movimiento-sutil-2"
+        }
+    ],
+    "opciones": [
+        {
+            "texto": "Consolarlo y seguir por el camino del río",
+            "accion": "navegar",
+            "target": "RIO_DUENDE",
+            "tipo_target": "escena"
+        }
+    ]
+}

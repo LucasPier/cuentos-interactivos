@@ -1,0 +1,112 @@
+{
+    "id": "ENCUENTRO_TIO_PIER_2",
+    "tipo": "escena",
+    "fondo": "bosque_hongos_magicos.webp",
+    "texto": "El tío Pier se rasca la barbilla, pensativo. \"Mmm, es un problema grave. Yo sé dónde vive la bruja, pero antes necesito un favor... Estoy haciendo mi famosa sopa de hongos de colores y me falta un ingrediente especial: un hongo que ríe. Si me ayudan a encontrarlo, las guiaré por un camino secreto\", añade con un guiño.",
+    "audio": "magico.mp3",
+    "efectos": [
+        {
+            "tipo": "luciérnagas",
+            "estilo": {
+                "x": 50,
+                "y": 100,
+                "ancho": 100,
+                "z_index": 5
+            },
+            "cantidad": 20,
+            "color": "esmeralda"
+        },
+        {
+            "tipo": "luciérnagas",
+            "estilo": {
+                "x": 50,
+                "y": 100,
+                "ancho": 100,
+                "z_index": 5
+            },
+            "cantidad": 20,
+            "color": "violeta"
+        },
+        {
+            "tipo": "luciérnagas",
+            "estilo": {
+                "x": 50,
+                "y": 100,
+                "ancho": 100,
+                "z_index": 5
+            },
+            "cantidad": 20,
+            "color": "cyan-bio"
+        },
+        {
+            "tipo": "polvo_hadas",
+            "estilo": {
+                "x": 50,
+                "y": 27,
+                "ancho": 100,
+                "z_index": 5
+            },
+            "cantidad": 15,
+            "color": "cyan-bio",
+            "tamano": "3px"
+        }
+    ],
+    "elementos": [
+        {
+            "tipo": "personaje",
+            "id": "tio_pier",
+            "imagen": "tio_pier.webp",
+            "estilo": {
+                "x": 48,
+                "y": 94,
+                "ancho": 27,
+                "z_index": 5
+            },
+            "animacion": "movimiento-sutil-2"
+        },
+        {
+            "tipo": "personaje",
+            "id": "irupe",
+            "imagen": "irupe_espaldas_1.webp",
+            "estilo": {
+                "x": 36,
+                "y": 100,
+                "ancho": 21,
+                "z_index": 8
+            },
+            "animacion": "movimiento-sutil"
+        },
+        {
+            "tipo": "personaje",
+            "id": "indira",
+            "imagen": "indira_espaldas_1.webp",
+            "estilo": {
+                "x": 9,
+                "y": 108,
+                "ancho": 21,
+                "z_index": 10
+            },
+            "animacion": "movimiento-sutil"
+        },
+        {
+            "tipo": "personaje",
+            "id": "nuria",
+            "imagen": "nuria_espaldas_1.webp",
+            "estilo": {
+                "x": 25,
+                "y": 106,
+                "ancho": 18,
+                "z_index": 10
+            },
+            "animacion": "movimiento-sutil-2"
+        }
+    ],
+    "opciones": [
+        {
+            "texto": "Buscar el hongo que ríe",
+            "accion": "navegar",
+            "target": "DESAFIO_BUSCAR_HONGO",
+            "tipo_target": "desafio"
+        }
+    ]
+}

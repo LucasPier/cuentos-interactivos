@@ -1,0 +1,225 @@
+{
+    "id": "HABLAR_CON_ROMI",
+    "tipo": "escena",
+    "fondo": "interior_casa_bruja.webp",
+    "texto": "Irupé se acerca con cuidado. \"¿Romi?\", pregunta con voz suave. La bruja se da la vuelta. Tiene los ojos rojos de tanto llorar. \"¿Qué quieren?\", dice con voz triste. Irupé le pregunta: \"¿Por qué estás tan triste? ¿Y por qué te llevaste los colores del bosque?\". Romi suspira. \"Me sentía muy sola\", confiesa. \"El bosque estaba tan lleno de alegría y color que me hacía sentir aún más triste. Pensé que si me llevaba los colores, yo me sentiría mejor... pero no funcionó. Ahora me siento peor\".",
+    "audio": "suspenso.mp3",
+    "efectos": [
+        {
+            "tipo": "luciérnagas",
+            "estilo": {
+                "x": 50,
+                "y": 100,
+                "ancho": 100,
+                "z_index": 5
+            },
+            "cantidad": 8,
+            "color": "rosa"
+        },
+        {
+            "tipo": "luciérnagas",
+            "estilo": {
+                "x": 50,
+                "y": 100,
+                "ancho": 100,
+                "z_index": 5
+            },
+            "cantidad": 8,
+            "color": "violeta"
+        },
+        {
+            "tipo": "luciérnagas",
+            "estilo": {
+                "x": 50,
+                "y": 100,
+                "ancho": 100,
+                "z_index": 5
+            },
+            "cantidad": 8,
+            "color": "cyan-bio"
+        },
+        {
+            "tipo": "luciérnagas",
+            "estilo": {
+                "x": 50,
+                "y": 100,
+                "ancho": 100,
+                "z_index": 5
+            },
+            "cantidad": 8,
+            "color": "esmeralda"
+        },
+        {
+            "tipo": "destellos",
+            "estilo": {
+                "x": 61,
+                "y": 45,
+                "ancho": 18,
+                "alto": 32,
+                "z_index": 10
+            },
+            "cantidad": 15,
+            "color": "dorado",
+            "tamano": "8px"
+        },
+        {
+            "tipo": "destellos",
+            "estilo": {
+                "x": 63,
+                "y": 45,
+                "ancho": 18,
+                "alto": 32,
+                "z_index": 10
+            },
+            "cantidad": 15,
+            "color": "rosa",
+            "tamano": "8px"
+        },
+        {
+            "tipo": "destellos",
+            "estilo": {
+                "x": 61,
+                "y": 45,
+                "ancho": 18,
+                "alto": 32,
+                "z_index": 10
+            },
+            "cantidad": 15,
+            "color": "cyan-bio",
+            "tamano": "8px"
+        },
+        {
+            "tipo": "destellos",
+            "estilo": {
+                "x": 63,
+                "y": 45,
+                "ancho": 18,
+                "alto": 32,
+                "z_index": 10
+            },
+            "cantidad": 15,
+            "color": "esmeralda",
+            "tamano": "8px"
+        },
+        {
+            "tipo": "destellos",
+            "estilo": {
+                "x": 58.4,
+                "y": 63,
+                "ancho": 4.8,
+                "alto": 13,
+                "z_index": 10
+            },
+            "cantidad": 15,
+            "color": "esmeralda",
+            "tamano": "8px"
+        },
+        {
+            "tipo": "destellos",
+            "estilo": {
+                "x": 58.4,
+                "y": 63,
+                "ancho": 4.8,
+                "alto": 13,
+                "z_index": 10
+            },
+            "cantidad": 15,
+            "color": "rosa",
+            "tamano": "8px"
+        },
+        {
+            "tipo": "destellos",
+            "estilo": {
+                "x": 58.4,
+                "y": 63,
+                "ancho": 4.8,
+                "alto": 13,
+                "z_index": 10
+            },
+            "cantidad": 15,
+            "color": "blanco",
+            "tamano": "8px"
+        },
+        {
+            "tipo": "destellos",
+            "estilo": {
+                "x": 58.4,
+                "y": 63,
+                "ancho": 4.8,
+                "alto": 13,
+                "z_index": 10
+            },
+            "cantidad": 15,
+            "color": "violeta",
+            "tamano": "8px"
+        },
+        {
+            "tipo": "destellos",
+            "estilo": {
+                "x": 58.4,
+                "y": 63,
+                "ancho": 4.8,
+                "alto": 13,
+                "z_index": 10
+            },
+            "cantidad": 15,
+            "color": "dorado",
+            "tamano": "8px"
+        }
+    ],
+    "elementos": [
+        {
+            "tipo": "personaje",
+            "id": "bruja_romi",
+            "imagen": "bruja_romi_triste.webp",
+            "estilo": {
+                "x": 50,
+                "y": 94,
+                "ancho": 21,
+                "z_index": 5
+            }
+        },
+        {
+            "tipo": "personaje",
+            "id": "irupe",
+            "imagen": "irupe_espaldas_1.webp",
+            "estilo": {
+                "x": 51,
+                "y": 99,
+                "ancho": 17,
+                "z_index": 8
+            },
+            "animacion": "movimiento-sutil-2"
+        },
+        {
+            "tipo": "personaje",
+            "id": "indira",
+            "imagen": "indira_espaldas_1.webp",
+            "estilo": {
+                "x": 39,
+                "y": 102,
+                "ancho": 18,
+                "z_index": 10
+            }
+        },
+        {
+            "tipo": "personaje",
+            "id": "nuria",
+            "imagen": "nuria_espaldas_3.webp",
+            "estilo": {
+                "x": 62,
+                "y": 97,
+                "ancho": 15,
+                "z_index": 10
+            }
+        }
+    ],
+    "opciones": [
+        {
+            "texto": "Siguiente",
+            "accion": "navegar",
+            "target": "DECISION_FINAL",
+            "tipo_target": "escena"
+        }
+    ]
+}

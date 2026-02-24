@@ -1,0 +1,88 @@
+{
+    "id": "FLORES_PISTAS",
+    "tipo": "escena",
+    "fondo": "bosque_general.webp",
+    "texto": "Las tres amigas deciden buscar pistas. Nuria encuentra un rastro de pétalos que han perdido su color y ahora son grises. \"¡Sigamos el rastro!\", dice. El camino las lleva más adentro en el bosque.",
+    "audio": "exploracion.mp3",
+    "efectos": [
+        {
+            "tipo": "luciérnagas",
+            "estilo": {
+                "x": 50,
+                "y": 100,
+                "ancho": 100,
+                "z_index": 5
+            },
+            "cantidad": 30,
+            "color": "blanco"
+        },
+        {
+            "tipo": "luciérnagas",
+            "estilo": {
+                "x": 50,
+                "y": 100,
+                "ancho": 100,
+                "z_index": 5
+            },
+            "cantidad": 10,
+            "color": "rosa"
+        },
+        {
+            "tipo": "luciérnagas",
+            "estilo": {
+                "x": 50,
+                "y": 100,
+                "ancho": 100,
+                "z_index": 5
+            },
+            "cantidad": 10,
+            "color": "esmeralda"
+        }
+    ],
+    "elementos": [
+        {
+            "tipo": "personaje",
+            "id": "nuria",
+            "imagen": "nuria.webp",
+            "estilo": {
+                "x": 41,
+                "y": 80,
+                "ancho": 12,
+                "z_index": 10
+            },
+            "animacion": "movimiento-sutil-2"
+        },
+        {
+            "tipo": "personaje",
+            "id": "irupe",
+            "imagen": "irupe_espaldas_1.webp",
+            "estilo": {
+                "x": 33,
+                "y": 96,
+                "ancho": 17,
+                "z_index": 8
+            },
+            "animacion": "movimiento-sutil"
+        },
+        {
+            "tipo": "personaje",
+            "id": "indira",
+            "imagen": "indira_espaldas_1.webp",
+            "estilo": {
+                "x": 24,
+                "y": 99,
+                "ancho": 18,
+                "z_index": 10
+            },
+            "animacion": "movimiento-sutil"
+        }
+    ],
+    "opciones": [
+        {
+            "texto": "Seguir el rastro de pétalos grises",
+            "accion": "navegar",
+            "target": "FLORES_CHARCO",
+            "tipo_target": "escena"
+        }
+    ]
+}

@@ -1,0 +1,248 @@
+{
+    "id": "DESAFIO_INICIAL",
+    "tipo": "desafio",
+    "subtipo": "pregunta_real",
+    "instruccion": "Si no lo sabés, vas a tener que averiguar...",
+    "fondo": "cuarto_iru.webp",
+    "audio": "aventuras.mp3",
+    "efectos": [
+        {
+            "tipo": "luciérnagas",
+            "estilo": {
+                "x": 50,
+                "y": 100,
+                "ancho": 100,
+                "z_index": 5
+            },
+            "cantidad": 4,
+            "color": "dorado"
+        },
+        {
+            "tipo": "luciérnagas",
+            "estilo": {
+                "x": 50,
+                "y": 100,
+                "ancho": 100,
+                "z_index": 5
+            },
+            "cantidad": 4,
+            "color": "esmeralda"
+        },
+        {
+            "tipo": "luciérnagas",
+            "estilo": {
+                "x": 50,
+                "y": 100,
+                "ancho": 100,
+                "z_index": 5
+            },
+            "cantidad": 4,
+            "color": "rosa"
+        }
+    ],
+    "configuracion": {
+        "preguntas": [
+            {
+                "pregunta": "¿Cuántas puertas hay en tu casa?",
+                "opciones": [
+                    {
+                        "texto": "5",
+                        "correcta": false
+                    },
+                    {
+                        "texto": "7",
+                        "correcta": true
+                    },
+                    {
+                        "texto": "8",
+                        "correcta": false
+                    }
+                ]
+            },
+            {
+                "pregunta": "¿Cuántas sillas hay en tu casa?",
+                "opciones": [
+                    {
+                        "texto": "8",
+                        "correcta": false
+                    },
+                    {
+                        "texto": "14",
+                        "correcta": true
+                    },
+                    {
+                        "texto": "10",
+                        "correcta": false
+                    }
+                ]
+            },
+            {
+                "pregunta": "¿De qué equipo de fútbol es hincha el papá de Nuria?",
+                "opciones": [
+                    {
+                        "texto": "Boca Juniors",
+                        "correcta": false
+                    },
+                    {
+                        "texto": "Newell's Old Boys",
+                        "correcta": true
+                    },
+                    {
+                        "texto": "Colón de Santa Fe",
+                        "correcta": false
+                    }
+                ]
+            },
+            {
+                "pregunta": "¿Cuál es la comida favorita de papá?",
+                "opciones": [
+                    {
+                        "texto": "Asado",
+                        "correcta": true
+                    },
+                    {
+                        "texto": "Milanesas con papas fritas",
+                        "correcta": false
+                    },
+                    {
+                        "texto": "Pizza",
+                        "correcta": false
+                    }
+                ]
+            },
+            {
+                "pregunta": "¿En qué mes nació mamá?",
+                "opciones": [
+                    {
+                        "texto": "Enero",
+                        "correcta": false
+                    },
+                    {
+                        "texto": "Septiembre",
+                        "correcta": true
+                    },
+                    {
+                        "texto": "Diciembre",
+                        "correcta": false
+                    }
+                ]
+            },
+            {
+                "pregunta": "¿Cuándo es el cumpleaños de la abuela Tere?",
+                "opciones": [
+                    {
+                        "texto": "En Verano",
+                        "correcta": true
+                    },
+                    {
+                        "texto": "En Invierno",
+                        "correcta": false
+                    },
+                    {
+                        "texto": "En Primavera",
+                        "correcta": false
+                    }
+                ]
+            },
+            {
+                "pregunta": "¿Cómo se llama el gato del tío Pier?",
+                "opciones": [
+                    {
+                        "texto": "Gardfield",
+                        "correcta": false
+                    },
+                    {
+                        "texto": "Felix",
+                        "correcta": false
+                    },
+                    {
+                        "texto": "Pity",
+                        "correcta": true
+                    },
+                    {
+                        "texto": "Tom",
+                        "correcta": false
+                    }
+                ]
+            },
+            {
+                "pregunta": "¿Cómo se hacía llamar Milo de chico?",
+                "opciones": [
+                    {
+                        "texto": "Kiko",
+                        "correcta": false
+                    },
+                    {
+                        "texto": "Koki",
+                        "correcta": false
+                    },
+                    {
+                        "texto": "Kike",
+                        "correcta": true
+                    }
+                ]
+            },
+            {
+                "pregunta": "¿Cuántos cajones hay en tu casa?",
+                "opciones": [
+                    {
+                        "texto": "18",
+                        "correcta": false
+                    },
+                    {
+                        "texto": "21",
+                        "correcta": true
+                    },
+                    {
+                        "texto": "192",
+                        "correcta": false
+                    }
+                ]
+            },
+            {
+                "pregunta": "¿Cuál es la marca de la cafetera de casa?",
+                "opciones": [
+                    {
+                        "texto": "Nespresso",
+                        "correcta": false
+                    },
+                    {
+                        "texto": "Dolce Gusto",
+                        "correcta": false
+                    },
+                    {
+                        "texto": "Peabody",
+                        "correcta": true
+                    }
+                ]
+            },
+            {
+                "pregunta": "¿En qué mes cumple los años papá?",
+                "opciones": [
+                    {
+                        "texto": "Febrero",
+                        "correcta": false
+                    },
+                    {
+                        "texto": "Mayo",
+                        "correcta": true
+                    },
+                    {
+                        "texto": "Julio",
+                        "correcta": false
+                    }
+                ]
+            }
+        ],
+        "sonido_exito": "respuesta_correcta.mp3",
+        "sonido_fallo": "respuesta_incorrecta.mp3"
+    },
+    "resultado_exito": {
+        "target": "ENTRADA_BOSQUE",
+        "recompensa": null
+    },
+    "resultado_fallo": {
+        "target": "FINAL_CORTO_2",
+        "mensaje": "Ups, respuesta incorrecta."
+    }
+}

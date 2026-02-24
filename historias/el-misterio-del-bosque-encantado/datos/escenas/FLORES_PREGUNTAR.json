@@ -1,0 +1,100 @@
+{
+    "id": "FLORES_PREGUNTAR",
+    "tipo": "escena",
+    "fondo": "bosque_animales_sin_color.webp",
+    "texto": "Irupé se acerca y le pregunta a la ardilla por qué está tan triste. La ardilla, con voz bajita, responde: \"La bruja Romi... se llevó todos los colores en un frasco de cristal\". \"¡Tenemos que ir a ver a esa bruja!\", dice Indi.",
+    "audio": "exploracion.mp3",
+    "efectos": [
+        {
+            "tipo": "luciérnagas",
+            "estilo": {
+                "x": 50,
+                "y": 100,
+                "ancho": 100,
+                "z_index": 5
+            },
+            "cantidad": 30,
+            "color": "blanco"
+        },
+        {
+            "tipo": "luciérnagas",
+            "estilo": {
+                "x": 50,
+                "y": 100,
+                "ancho": 100,
+                "z_index": 5
+            },
+            "cantidad": 10,
+            "color": "rosa"
+        },
+        {
+            "tipo": "luciérnagas",
+            "estilo": {
+                "x": 50,
+                "y": 100,
+                "ancho": 100,
+                "z_index": 5
+            },
+            "cantidad": 10,
+            "color": "esmeralda"
+        }
+    ],
+    "elementos": [
+        {
+            "tipo": "personaje",
+            "id": "ardilla_gris",
+            "imagen": "ardilla_gris.webp",
+            "estilo": {
+                "x": 24,
+                "y": 75,
+                "ancho": 26,
+                "z_index": 5
+            },
+            "animacion": "movimiento-sutil"
+        },
+        {
+            "tipo": "personaje",
+            "id": "irupe",
+            "imagen": "irupe_espaldas_1.webp",
+            "estilo": {
+                "x": 19,
+                "y": 85,
+                "ancho": 15,
+                "z_index": 8
+            },
+            "animacion": "movimiento-sutil-2"
+        },
+        {
+            "tipo": "personaje",
+            "id": "indira",
+            "imagen": "indira_espaldas_1.webp",
+            "estilo": {
+                "x": 9,
+                "y": 113,
+                "ancho": 21,
+                "z_index": 10
+            },
+            "animacion": "movimiento-sutil"
+        },
+        {
+            "tipo": "personaje",
+            "id": "nuria",
+            "imagen": "nuria_espaldas_1.webp",
+            "estilo": {
+                "x": 25,
+                "y": 100,
+                "ancho": 16,
+                "z_index": 10
+            },
+            "animacion": "movimiento-sutil"
+        }
+    ],
+    "opciones": [
+        {
+            "texto": "Seguir el camino hacia la casa de la bruja",
+            "accion": "navegar",
+            "target": "CAMINO_CASA_BRUJA",
+            "tipo_target": "escena"
+        }
+    ]
+}

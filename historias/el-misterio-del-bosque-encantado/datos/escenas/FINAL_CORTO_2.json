@@ -1,0 +1,75 @@
+{
+    "id": "FINAL_CORTO_2",
+    "tipo": "escena",
+    "fondo": "cuarto_iru.webp",
+    "texto": "\"¡Casi!\", dice papá. \"Necesitás practicar un poco más. Mañana será otro día perfecto para una aventura\". Te quedás en casa, pensando en los misterios del bosque. ¡Fin!",
+    "audio": "aventuras.mp3",
+    "efectos": [
+        {
+            "tipo": "luciérnagas",
+            "estilo": {
+                "x": 50,
+                "y": 100,
+                "ancho": 100,
+                "z_index": 5
+            },
+            "cantidad": 4,
+            "color": "dorado"
+        },
+        {
+            "tipo": "luciérnagas",
+            "estilo": {
+                "x": 50,
+                "y": 100,
+                "ancho": 100,
+                "z_index": 5
+            },
+            "cantidad": 4,
+            "color": "esmeralda"
+        },
+        {
+            "tipo": "luciérnagas",
+            "estilo": {
+                "x": 50,
+                "y": 100,
+                "ancho": 100,
+                "z_index": 5
+            },
+            "cantidad": 4,
+            "color": "rosa"
+        }
+    ],
+    "elementos": [
+        {
+            "tipo": "personaje",
+            "id": "mama_papa",
+            "imagen": "mama_papa.webp",
+            "estilo": {
+                "x": 50,
+                "y": 109,
+                "ancho": 33,
+                "z_index": 10
+            }
+        },
+        {
+            "tipo": "objeto",
+            "id": "fin",
+            "imagen": "fin.webp",
+            "estilo": {
+                "x": 21,
+                "y": 51,
+                "ancho": 29,
+                "z_index": 10
+            },
+            "animacion": "flotacion-3d"
+        }
+    ],
+    "opciones": [
+        {
+            "texto": "Volver a empezar",
+            "accion": "reiniciar",
+            "target": "INICIO",
+            "tipo_target": "escena"
+        }
+    ]
+}

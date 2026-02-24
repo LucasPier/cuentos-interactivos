@@ -1,0 +1,102 @@
+{
+    "id": "TIO_PIER_RECOMPENSA",
+    "tipo": "escena",
+    "fondo": "bosque_hongos_magicos.webp",
+    "texto": "\"¡Lo encontraste!\", grita el tío Pier. \"Sos muy lista, Irupé\". El tío Pier saca de su bolsillo una flor brillante y mágica. \"Esta es una flor de luz. Úsenla para iluminar el camino secreto que las llevará más rápido a la casa de la bruja Romi. ¡Buena suerte!\".",
+    "audio": "magico.mp3",
+    "efectos": [
+        {
+            "tipo": "luciérnagas",
+            "estilo": {
+                "x": 50,
+                "y": 100,
+                "ancho": 100,
+                "z_index": 5
+            },
+            "cantidad": 20,
+            "color": "esmeralda"
+        },
+        {
+            "tipo": "luciérnagas",
+            "estilo": {
+                "x": 50,
+                "y": 100,
+                "ancho": 100,
+                "z_index": 5
+            },
+            "cantidad": 20,
+            "color": "violeta"
+        },
+        {
+            "tipo": "luciérnagas",
+            "estilo": {
+                "x": 50,
+                "y": 100,
+                "ancho": 100,
+                "z_index": 5
+            },
+            "cantidad": 20,
+            "color": "cyan-bio"
+        },
+        {
+            "tipo": "polvo_hadas",
+            "estilo": {
+                "x": 50,
+                "y": 27,
+                "ancho": 100,
+                "z_index": 5
+            },
+            "cantidad": 15,
+            "color": "cyan-bio",
+            "tamano": "3px"
+        },
+        {
+            "tipo": "destellos",
+            "estilo": {
+                "x": 51,
+                "y": 61,
+                "ancho": 18,
+                "alto": 32,
+                "z_index": 10
+            },
+            "cantidad": 80,
+            "color": "dorado",
+            "tamano": "8px"
+        }
+    ],
+    "elementos": [
+        {
+            "tipo": "personaje",
+            "id": "tio_pier",
+            "imagen": "tio_pier_flor_de_luz.webp",
+            "estilo": {
+                "x": 44,
+                "y": 151,
+                "ancho": 43,
+                "z_index": 10
+            },
+            "animacion": "movimiento-sutil"
+        },
+        {
+            "tipo": "objeto",
+            "id": "flor_luz",
+            "imagen": "flor_de_luz.webp",
+            "estilo": {
+                "x": 57,
+                "y": 81,
+                "ancho": 18,
+                "z_index": 12
+            },
+            "efecto": "rebote",
+            "animacion": "respiracion-resplandor"
+        }
+    ],
+    "opciones": [
+        {
+            "texto": "Agradecer al tío Pier y continuar",
+            "accion": "navegar",
+            "target": "CAMINO_SECRETO_CASA_BRUJA",
+            "tipo_target": "escena"
+        }
+    ]
+}

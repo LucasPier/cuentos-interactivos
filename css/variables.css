@@ -1,0 +1,71 @@
+/* ==============================================
+   DESIGN TOKENS — Paleta Bosque Mágico
+   ============================================== */
+
+:root {
+    /* ---- Colores de fondo ---- */
+    --color-fondo-oscuro: #0a0f19;
+    --color-fondo-panel: rgba(10, 15, 25, 0.85);
+    --color-fondo-panel-hover: rgba(16, 24, 40, 0.92);
+
+    /* ---- Paleta: Bosque encantado ---- */
+    --color-esmeralda: #065f46;
+    --color-esmeralda-claro: #10b981;
+    --color-esmeralda-sutil: #064e3b;
+    --color-dorado: #d4a017;
+    --color-dorado-claro: #fbbf24;
+    --color-dorado-brillante: #facc15;
+    --color-violeta: #7c3aed;
+    --color-violeta-claro: #a78bfa;
+    --color-cyan-bio: #22d3ee;
+    --color-rosa-magico: #f472b6;
+    --color-blanco: #ffffff;
+
+    /* ---- Texto ---- */
+    --color-texto-principal: #f0fdf4;
+    --color-texto-secundario: #a7f3d0;
+    --color-texto-sombra: rgba(0, 0, 0, 0.6);
+
+    /* ---- Botones ---- */
+    --boton-bg: linear-gradient(135deg, #065f46 0%, #064e3b 100%);
+    --boton-bg-hover: linear-gradient(135deg, #10b981 0%, #065f46 100%);
+    --boton-bg-activo: linear-gradient(135deg, #047857 0%, #065f46 100%);
+    --boton-borde: var(--color-dorado);
+    --boton-sombra: 0 4px 15px rgba(6, 95, 70, 0.4), 0 0 20px rgba(212, 160, 23, 0.1);
+    --boton-sombra-hover: 0 6px 20px rgba(16, 185, 129, 0.5), 0 0 30px rgba(212, 160, 23, 0.2);
+    --boton-radio: 12px;
+    --boton-min-alto: 52px;
+    --boton-padding: 14px 28px;
+
+    /* ---- Tipografía ---- */
+    --fuente-narrativa: 'Nunito', sans-serif;
+    --fuente-titulo: 'Nunito', sans-serif;
+    --tamano-texto-base: clamp(1rem, 2.8vw, 1.35rem);
+    --tamano-texto-grande: clamp(1.1rem, 3.2vw, 1.5rem);
+    --tamano-titulo: clamp(1.8rem, 5vw, 3rem);
+    --tamano-boton: clamp(1rem, 2.5vw, 1.2rem);
+    --line-height-texto: 1.65;
+
+    /* ---- Espaciado ---- */
+    --espaciado-sm: 8px;
+    --espaciado-md: 16px;
+    --espaciado-lg: 24px;
+    --espaciado-xl: 32px;
+
+    /* ---- Transiciones ---- */
+    --transicion-base: 300ms ease;
+    --transicion-lenta: 500ms ease-out;
+    --transicion-escena: 400ms ease-in-out;
+
+    /* ---- Z-index layers ---- */
+    --z-fondo: 0;
+    --z-efectos: 5;
+    --z-elementos: 10;
+    --z-panel-texto: 100;
+    --z-panel-opciones: 200;
+    --z-panel-desafio: 300;
+    --z-pantalla-inicio: 1000;
+    --z-pantalla-biblioteca: 1050;
+    --z-ui-controles: 1100;
+    --z-indicador-carga: 1200;
+}

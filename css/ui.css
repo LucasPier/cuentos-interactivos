@@ -1,0 +1,33 @@
+/* ==============================================
+   UI — Controles permanentes y utilidades
+   ============================================== */
+
+/* Los estilos base de .btn-ui están en layout.css */
+
+/* ---- Estado toggle texto ---- */
+.btn-toggle-texto[aria-pressed="true"] {
+    background: rgba(16, 185, 129, 0.25);
+    border-color: var(--color-esmeralda-claro);
+}
+
+/* ---- Estado mute ---- */
+.btn-mute[aria-pressed="true"] {
+    background: rgba(239, 68, 68, 0.2);
+    border-color: rgba(239, 68, 68, 0.4);
+}
+
+/* ---- Estado fullscreen ---- */
+.btn-fullscreen[aria-pressed="true"] {
+    background: rgba(59, 130, 246, 0.2);
+    border-color: rgba(59, 130, 246, 0.4);
+}
+
+/* ---- Utilidades de visibilidad ---- */
+.oculto-visual {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+}

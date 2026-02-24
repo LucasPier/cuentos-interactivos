@@ -1,0 +1,70 @@
+{
+    "id": "INICIO",
+    "tipo": "escena",
+    "fondo": "cuarto_iru.webp",
+    "texto": "Irupé, es un día perfecto para una aventura. Desde la ventana se ve el bosque encantado. ¿Qué querés hacer?",
+    "audio": "aventuras.mp3",
+    "efectos": [
+        {
+            "tipo": "luciérnagas",
+            "estilo": {
+                "x": 50,
+                "y": 100,
+                "ancho": 100,
+                "z_index": 5
+            },
+            "cantidad": 4,
+            "color": "dorado"
+        },
+        {
+            "tipo": "luciérnagas",
+            "estilo": {
+                "x": 50,
+                "y": 100,
+                "ancho": 100,
+                "z_index": 5
+            },
+            "cantidad": 4,
+            "color": "esmeralda"
+        },
+        {
+            "tipo": "luciérnagas",
+            "estilo": {
+                "x": 50,
+                "y": 100,
+                "ancho": 100,
+                "z_index": 5
+            },
+            "cantidad": 4,
+            "color": "rosa"
+        }
+    ],
+    "elementos": [
+        {
+            "tipo": "personaje",
+            "id": "irupe",
+            "imagen": "irupe.webp",
+            "estilo": {
+                "x": 50,
+                "y": 87,
+                "ancho": 14,
+                "z_index": 11
+            },
+            "efecto": "rebote"
+        }
+    ],
+    "opciones": [
+        {
+            "texto": "Salir a explorar",
+            "accion": "navegar",
+            "target": "ENCUENTRO_PADRES",
+            "tipo_target": "escena"
+        },
+        {
+            "texto": "Quedarme a jugar con mis juguetes",
+            "accion": "navegar",
+            "target": "FINAL_CORTO_1",
+            "tipo_target": "escena"
+        }
+    ]
+}

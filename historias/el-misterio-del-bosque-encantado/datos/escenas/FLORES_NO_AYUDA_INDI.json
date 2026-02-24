@@ -1,0 +1,112 @@
+{
+    "id": "FLORES_NO_AYUDA_INDI",
+    "tipo": "escena",
+    "fondo": "bosque_animales_sin_color.webp",
+    "texto": "Decidís seguir adelante. \"¡Vamos, no nos detengamos!\", decís. Justo en ese momento, ven a una pequeña ardilla sentada en una rama. Pero... ¡es completamente gris! Indi se levanta sola, sacudiéndose el polvo. \"Pobrecita, parece muy triste\", dice Indi. \"¿Qué podemos hacer para ayudarla?\", pregunta Nuria.",
+    "audio": "exploracion.mp3",
+    "efectos": [
+        {
+            "tipo": "luciérnagas",
+            "estilo": {
+                "x": 50,
+                "y": 100,
+                "ancho": 100,
+                "z_index": 5
+            },
+            "cantidad": 30,
+            "color": "blanco"
+        },
+        {
+            "tipo": "luciérnagas",
+            "estilo": {
+                "x": 50,
+                "y": 100,
+                "ancho": 100,
+                "z_index": 5
+            },
+            "cantidad": 10,
+            "color": "rosa"
+        },
+        {
+            "tipo": "luciérnagas",
+            "estilo": {
+                "x": 50,
+                "y": 100,
+                "ancho": 100,
+                "z_index": 5
+            },
+            "cantidad": 10,
+            "color": "esmeralda"
+        }
+    ],
+    "elementos": [
+        {
+            "tipo": "personaje",
+            "id": "ardilla_gris",
+            "imagen": "ardilla_gris.webp",
+            "estilo": {
+                "x": 24,
+                "y": 75,
+                "ancho": 26,
+                "z_index": 5
+            },
+            "animacion": "movimiento-sutil"
+        },
+        {
+            "tipo": "personaje",
+            "id": "irupe",
+            "imagen": "irupe_espaldas_1.webp",
+            "estilo": {
+                "x": 19,
+                "y": 96,
+                "ancho": 17,
+                "z_index": 8
+            },
+            "animacion": "movimiento-sutil-2"
+        },
+        {
+            "tipo": "personaje",
+            "id": "indira",
+            "imagen": "indira_espaldas_1.webp",
+            "estilo": {
+                "x": 9,
+                "y": 100,
+                "ancho": 18,
+                "z_index": 10
+            },
+            "animacion": "movimiento-sutil"
+        },
+        {
+            "tipo": "personaje",
+            "id": "nuria",
+            "imagen": "nuria_espaldas_1.webp",
+            "estilo": {
+                "x": 25,
+                "y": 100,
+                "ancho": 16,
+                "z_index": 10
+            },
+            "animacion": "movimiento-sutil"
+        }
+    ],
+    "opciones": [
+        {
+            "texto": "Intentar hacerle cosquillas con una flor",
+            "accion": "navegar",
+            "target": "FLORES_COSQUILLAS",
+            "tipo_target": "escena"
+        },
+        {
+            "texto": "Preguntarle a la ardilla qué le pasa",
+            "accion": "navegar",
+            "target": "FLORES_PREGUNTAR",
+            "tipo_target": "escena"
+        },
+        {
+            "texto": "Buscar pistas alrededor",
+            "accion": "navegar",
+            "target": "FLORES_PISTAS",
+            "tipo_target": "escena"
+        }
+    ]
+}

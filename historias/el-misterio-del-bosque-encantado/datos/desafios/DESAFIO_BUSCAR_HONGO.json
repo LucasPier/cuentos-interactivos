@@ -1,0 +1,131 @@
+{
+    "id": "DESAFIO_BUSCAR_HONGO",
+    "tipo": "desafio",
+    "subtipo": "minijuego_observacion",
+    "instruccion": "Tocá los hongos hasta encontrar el que se ríe.",
+    "fondo": "bosque_hongos_magicos.webp",
+    "audio": "magico.mp3",
+    "efectos": [
+        {
+            "tipo": "luciérnagas",
+            "estilo": {
+                "x": 50,
+                "y": 100,
+                "ancho": 100,
+                "z_index": 5
+            },
+            "cantidad": 20,
+            "color": "esmeralda"
+        },
+        {
+            "tipo": "luciérnagas",
+            "estilo": {
+                "x": 50,
+                "y": 100,
+                "ancho": 100,
+                "z_index": 5
+            },
+            "cantidad": 20,
+            "color": "violeta"
+        },
+        {
+            "tipo": "luciérnagas",
+            "estilo": {
+                "x": 50,
+                "y": 100,
+                "ancho": 100,
+                "z_index": 5
+            },
+            "cantidad": 20,
+            "color": "cyan-bio"
+        },
+        {
+            "tipo": "polvo_hadas",
+            "estilo": {
+                "x": 50,
+                "y": 27,
+                "ancho": 100,
+                "z_index": 5
+            },
+            "cantidad": 15,
+            "color": "cyan-bio",
+            "tamano": "3px"
+        }
+    ],
+    "configuracion": {
+        "objetivo": "hongo_que_rie",
+        "ubicacion_instrucciones": "arriba",
+        "correcto_aleatorio": true,
+        "sonido_correcto": "risa_hongo.mp3",
+        "elementos_interactivos": [
+            {
+                "id": "hongo_1",
+                "imagen": "hongo_que_no_rie.webp",
+                "imagen_final": "hongo_que_rie.webp",
+                "x": 10,
+                "y": 93,
+                "ancho": 15,
+                "sonido": "boing.mp3",
+                "animacion": "respiracion"
+            },
+            {
+                "id": "hongo_2",
+                "imagen": "hongo_que_no_rie_2.webp",
+                "imagen_final": "hongo_que_rie_2.webp",
+                "x": 30,
+                "y": 103,
+                "ancho": 18,
+                "sonido": "plop.mp3",
+                "animacion": "respiracion"
+            },
+            {
+                "id": "hongo_target",
+                "imagen": "hongo_que_no_rie.webp",
+                "imagen_final": "hongo_que_rie.webp",
+                "x": 74,
+                "y": 102,
+                "ancho": 17,
+                "sonido": "uiii.mp3",
+                "animacion": "respiracion"
+            },
+            {
+                "id": "hongo_4",
+                "imagen": "hongo_que_no_rie.webp",
+                "imagen_final": "hongo_que_rie.webp",
+                "x": 55,
+                "y": 84,
+                "ancho": 12,
+                "sonido": "uiii.mp3",
+                "animacion": "respiracion"
+            },
+            {
+                "id": "hongo_5",
+                "imagen": "hongo_que_no_rie.webp",
+                "imagen_final": "hongo_que_rie.webp",
+                "x": 45,
+                "y": 104,
+                "ancho": 13,
+                "sonido": "plop.mp3",
+                "animacion": "respiracion"
+            },
+            {
+                "id": "hongo_6",
+                "imagen": "hongo_que_no_rie_2.webp",
+                "imagen_final": "hongo_que_rie_2.webp",
+                "x": 90,
+                "y": 109,
+                "ancho": 13,
+                "sonido": "boing.mp3",
+                "animacion": "respiracion"
+            }
+        ]
+    },
+    "resultado_exito": {
+        "target": "TIO_PIER_RECOMPENSA",
+        "recompensa": "flor_de_luz"
+    },
+    "resultado_fallo": {
+        "target": "ENCUENTRO_TIO_PIER",
+        "mensaje": "Sigue buscando..."
+    }
+}

@@ -1,0 +1,63 @@
+{
+    "id": "ENCUENTRO_PADRES",
+    "tipo": "escena",
+    "fondo": "cuarto_iru.webp",
+    "texto": "¡Hola, Irupé!, te dice mamá. \"El bosque está lleno de secretos, y para resolverlos hay que ser muy observadora. ¡Tenés que ganarte tu Licencia de Exploradora!\", agrega papá, guiñándote un ojo. \"Para conseguirla, tenés que demostrarnos que sos curiosa, que investigás y prestás atención a todo lo que pasa a tu alrededor. Preparate para la prueba...\"",
+    "audio": "aventuras.mp3",
+    "efectos": [
+        {
+            "tipo": "luciérnagas",
+            "estilo": {
+                "x": 50,
+                "y": 100,
+                "ancho": 100,
+                "z_index": 5
+            },
+            "cantidad": 4,
+            "color": "dorado"
+        },
+        {
+            "tipo": "luciérnagas",
+            "estilo": {
+                "x": 50,
+                "y": 100,
+                "ancho": 100,
+                "z_index": 5
+            },
+            "cantidad": 4,
+            "color": "esmeralda"
+        },
+        {
+            "tipo": "luciérnagas",
+            "estilo": {
+                "x": 50,
+                "y": 100,
+                "ancho": 100,
+                "z_index": 5
+            },
+            "cantidad": 4,
+            "color": "rosa"
+        }
+    ],
+    "elementos": [
+        {
+            "tipo": "personaje",
+            "id": "mama_papa",
+            "imagen": "mama_papa.webp",
+            "estilo": {
+                "x": 50,
+                "y": 109,
+                "ancho": 33,
+                "z_index": 10
+            }
+        }
+    ],
+    "opciones": [
+        {
+            "texto": "Responder la pregunta",
+            "accion": "navegar",
+            "target": "DESAFIO_INICIAL",
+            "tipo_target": "desafio"
+        }
+    ]
+}

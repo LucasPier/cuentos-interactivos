@@ -1,0 +1,81 @@
+{
+    "id": "DESAFIO_LANZAR_PIEDRA",
+    "tipo": "desafio",
+    "subtipo": "minijuego_clicks",
+    "instruccion": "Tocá la piedra tres veces para lanzarla al río.",
+    "fondo": "rio_sin_puente_magico.webp",
+    "audio": "bosque.mp3",
+    "efectos": [
+        {
+            "tipo": "luciérnagas",
+            "estilo": {
+                "x": 50,
+                "y": 100,
+                "ancho": 100,
+                "z_index": 5
+            },
+            "cantidad": 15,
+            "color": "esmeralda"
+        },
+        {
+            "tipo": "luciérnagas",
+            "estilo": {
+                "x": 50,
+                "y": 100,
+                "ancho": 100,
+                "z_index": 5
+            },
+            "cantidad": 15,
+            "color": "cyan-bio"
+        },
+        {
+            "tipo": "luciérnagas",
+            "estilo": {
+                "x": 50,
+                "y": 100,
+                "ancho": 100,
+                "z_index": 5
+            },
+            "cantidad": 10,
+            "color": "violeta"
+        },
+        {
+            "tipo": "polvo_hadas",
+            "estilo": {
+                "x": 50,
+                "y": 27,
+                "ancho": 100,
+                "z_index": 5
+            },
+            "cantidad": 15,
+            "color": "esmeralda",
+            "tamano": "5px"
+        }
+    ],
+    "configuracion": {
+        "objetivo_clicks": 3,
+        "ubicacion_instrucciones": "arriba",
+        "sonido_exito": "piedra_agua.mp3",
+        "objeto_interactivo": {
+            "imagen": "piedra_magica.webp",
+            "x": 50,
+            "y": 80,
+            "ancho": 15,
+            "sonido": "piedra.mp3",
+            "animacion": "flotacion"
+        },
+        "mensajes_progreso": [
+            "¡Una vez!",
+            "¡Dos veces!",
+            "¡Listo!"
+        ]
+    },
+    "resultado_exito": {
+        "target": "RIO_PUENTE_MAGICO",
+        "recompensa": null
+    },
+    "resultado_fallo": {
+        "target": "RIO_DUENDE_FALLO",
+        "mensaje": "Se te cayó la piedra..."
+    }
+}

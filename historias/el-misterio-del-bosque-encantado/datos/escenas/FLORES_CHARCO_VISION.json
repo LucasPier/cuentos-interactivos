@@ -1,0 +1,131 @@
+{
+    "id": "FLORES_CHARCO_VISION",
+    "tipo": "escena",
+    "fondo": "vision_bruja_charco.webp",
+    "texto": "En el reflejo del charco aparece una bruja robando los colores de las flores y los animalitos. \"¡Es la Bruja Romi!\", susurra Indira asustada. \"No la imaginaba capaz de hacer esto\". En el agua ven que la bruja Romi se llevó los colores atrapados en un frasco brillante.",
+    "audio": "exploracion.mp3",
+    "efectos": [
+        {
+            "tipo": "luciérnagas",
+            "estilo": {
+                "x": 50,
+                "y": 100,
+                "ancho": 100,
+                "z_index": 5
+            },
+            "cantidad": 20,
+            "color": "blanco"
+        },
+        {
+            "tipo": "destellos",
+            "estilo": {
+                "x": 53.4,
+                "y": 64,
+                "ancho": 6.8,
+                "alto": 13,
+                "z_index": 10
+            },
+            "cantidad": 15,
+            "color": "esmeralda",
+            "tamano": "8px"
+        },
+        {
+            "tipo": "destellos",
+            "estilo": {
+                "x": 53.4,
+                "y": 64,
+                "ancho": 6.8,
+                "alto": 13,
+                "z_index": 10
+            },
+            "cantidad": 15,
+            "color": "rosa",
+            "tamano": "8px"
+        },
+        {
+            "tipo": "destellos",
+            "estilo": {
+                "x": 53.4,
+                "y": 64,
+                "ancho": 6.8,
+                "alto": 13,
+                "z_index": 10
+            },
+            "cantidad": 15,
+            "color": "blanco",
+            "tamano": "8px"
+        },
+        {
+            "tipo": "destellos",
+            "estilo": {
+                "x": 53.4,
+                "y": 64,
+                "ancho": 6.8,
+                "alto": 13,
+                "z_index": 10
+            },
+            "cantidad": 15,
+            "color": "violeta",
+            "tamano": "8px"
+        },
+        {
+            "tipo": "destellos",
+            "estilo": {
+                "x": 53.4,
+                "y": 64,
+                "ancho": 6.8,
+                "alto": 13,
+                "z_index": 10
+            },
+            "cantidad": 15,
+            "color": "dorado",
+            "tamano": "8px"
+        }
+    ],
+    "elementos": [
+        {
+            "tipo": "personaje",
+            "id": "indira",
+            "imagen": "indira_espaldas_1.webp",
+            "estilo": {
+                "x": 9,
+                "y": 180,
+                "ancho": 44,
+                "z_index": 10
+            },
+            "animacion": "shake"
+        },
+        {
+            "tipo": "personaje",
+            "id": "irupe",
+            "imagen": "irupe_espaldas_1.webp",
+            "estilo": {
+                "x": 30,
+                "y": 191,
+                "ancho": 47,
+                "z_index": 10
+            },
+            "animacion": "movimiento-sutil"
+        },
+        {
+            "tipo": "personaje",
+            "id": "nuria",
+            "imagen": "nuria_espaldas_3.webp",
+            "estilo": {
+                "x": 67,
+                "y": 164,
+                "ancho": 35,
+                "z_index": 10
+            },
+            "animacion": "movimiento-sutil-2"
+        }
+    ],
+    "opciones": [
+        {
+            "texto": "¡Tenemos que ir a la casa de la bruja!",
+            "accion": "navegar",
+            "target": "CAMINO_CASA_BRUJA",
+            "tipo_target": "escena"
+        }
+    ]
+}

@@ -1,0 +1,262 @@
+{
+    "id": "DESAFIO_ACERTIJO_DUENDE",
+    "tipo": "desafio",
+    "subtipo": "pregunta_real",
+    "instruccion": "Resolvé el acertijo de Milo.",
+    "fondo": "rio_duende_hada.webp",
+    "audio": "bosque.mp3",
+    "efectos": [
+        {
+            "tipo": "luciérnagas",
+            "estilo": {
+                "x": 50,
+                "y": 100,
+                "ancho": 100,
+                "z_index": 5
+            },
+            "cantidad": 20,
+            "color": "rosa"
+        },
+        {
+            "tipo": "luciérnagas",
+            "estilo": {
+                "x": 50,
+                "y": 100,
+                "ancho": 100,
+                "z_index": 5
+            },
+            "cantidad": 20,
+            "color": "cyan-bio"
+        },
+        {
+            "tipo": "polvo_hadas",
+            "estilo": {
+                "x": 50,
+                "y": 27,
+                "ancho": 100,
+                "z_index": 5
+            },
+            "cantidad": 15,
+            "color": "cyan-bio",
+            "tamano": "5px"
+        }
+    ],
+    "configuracion": {
+        "preguntas": [
+            {
+                "pregunta": "Todos me quieren para descansar. ¡Si ya te lo he dicho! No lo pensés más. ¿Qué soy?",
+                "opciones": [
+                    {
+                        "texto": "Una cama",
+                        "correcta": false
+                    },
+                    {
+                        "texto": "Una silla",
+                        "correcta": true
+                    },
+                    {
+                        "texto": "Un sillón",
+                        "correcta": false
+                    }
+                ]
+            },
+            {
+                "pregunta": "Llevo mi casa al hombro, camino sin una pata y voy dejando mi huella con un hilito de plata. ¿Qué soy?",
+                "opciones": [
+                    {
+                        "texto": "Una tortuga",
+                        "correcta": false
+                    },
+                    {
+                        "texto": "Un caracol",
+                        "correcta": true
+                    },
+                    {
+                        "texto": "Un gusanito",
+                        "correcta": false
+                    }
+                ]
+            },
+            {
+                "pregunta": "Salgo tempranito y me voy a dormir a la tarde. Te doy luz y te dejo calentita. ¿Qué soy?",
+                "opciones": [
+                    {
+                        "texto": "La luna",
+                        "correcta": false
+                    },
+                    {
+                        "texto": "El sol",
+                        "correcta": true
+                    },
+                    {
+                        "texto": "Una estufa",
+                        "correcta": false
+                    }
+                ]
+            },
+            {
+                "pregunta": "Vuelo sin alas y silbo sin boca. No me podés ver, pero podés sentir cómo te despeino. ¿Qué soy?",
+                "opciones": [
+                    {
+                        "texto": "El viento",
+                        "correcta": true
+                    },
+                    {
+                        "texto": "Un pajarito",
+                        "correcta": false
+                    },
+                    {
+                        "texto": "Un secador de pelo",
+                        "correcta": false
+                    }
+                ]
+            },
+            {
+                "pregunta": "Soy blanquita como el algodón y floto en el cielo. Si me pongo a llorar, dejo el pasto mojado. ¿Qué soy?",
+                "opciones": [
+                    {
+                        "texto": "Una ovejita",
+                        "correcta": false
+                    },
+                    {
+                        "texto": "Una nube",
+                        "correcta": true
+                    },
+                    {
+                        "texto": "Una manguera",
+                        "correcta": false
+                    }
+                ]
+            },
+            {
+                "pregunta": "Corro sin parar pero no tengo piecitos. Si me querés agarrar, me escapo entre tus dedos. ¿Qué soy?",
+                "opciones": [
+                    {
+                        "texto": "El agua",
+                        "correcta": true
+                    },
+                    {
+                        "texto": "Un pececito",
+                        "correcta": false
+                    },
+                    {
+                        "texto": "La arena",
+                        "correcta": false
+                    }
+                ]
+            },
+            {
+                "pregunta": "Soy larga a la mañana, cortita al mediodía y a la noche me pierdo en la oscuridad. Siempre voy pegadita a tus pies. ¿Qué soy?",
+                "opciones": [
+                    {
+                        "texto": "Tu sombra",
+                        "correcta": true
+                    },
+                    {
+                        "texto": "Tus zapatillas",
+                        "correcta": false
+                    },
+                    {
+                        "texto": "Tu huella",
+                        "correcta": false
+                    }
+                ]
+            },
+            {
+                "pregunta": "Tengo agujas pero no sé coser. Tengo números pero no sé contar. Te aviso cuándo ir al cole o a jugar. ¿Qué soy?",
+                "opciones": [
+                    {
+                        "texto": "Un cactus",
+                        "correcta": false
+                    },
+                    {
+                        "texto": "Un reloj",
+                        "correcta": true
+                    },
+                    {
+                        "texto": "Un erizo",
+                        "correcta": false
+                    }
+                ]
+            },
+            {
+                "pregunta": "Me visto de verde en verano y de marrón en otoño. Si me suelto de la rama, me pongo a bailar en el aire hasta llegar al piso. ¿Qué soy?",
+                "opciones": [
+                    {
+                        "texto": "Un pajarito",
+                        "correcta": false
+                    },
+                    {
+                        "texto": "Una mariposa",
+                        "correcta": false
+                    },
+                    {
+                        "texto": "Una hojita",
+                        "correcta": true
+                    }
+                ]
+            },
+            {
+                "pregunta": "Soy blanca por dentro y verde por fuera. Si querés que te lo diga... ¡esperá! ¿Qué soy?",
+                "opciones": [
+                    {
+                        "texto": "Una manzana verde",
+                        "correcta": false
+                    },
+                    {
+                        "texto": "Una pera",
+                        "correcta": true
+                    },
+                    {
+                        "texto": "Una ranita",
+                        "correcta": false
+                    }
+                ]
+            },
+            {
+                "pregunta": "Lleno mi panza con agua, pero si me doy vuelta... ¡la escupo todita arriba de las plantas! ¿Qué soy?",
+                "opciones": [
+                    {
+                        "texto": "Un sapito",
+                        "correcta": false
+                    },
+                    {
+                        "texto": "Una regadera",
+                        "correcta": true
+                    },
+                    {
+                        "texto": "Un globo de agua",
+                        "correcta": false
+                    }
+                ]
+            },
+            {
+                "pregunta": "Tengo sombrerito pero no tengo cabeza. Tengo un solo pie pero no sé caminar. A veces soy rojo con pintitas y vivo cerquita de los árboles. ¿Qué soy?",
+                "opciones": [
+                    {
+                        "texto": "Un honguito",
+                        "correcta": true
+                    },
+                    {
+                        "texto": "Un gnomo",
+                        "correcta": false
+                    },
+                    {
+                        "texto": "Un paraguas",
+                        "correcta": false
+                    }
+                ]
+            }
+        ],
+        "sonido_exito": "respuesta_correcta.mp3",
+        "sonido_fallo": "respuesta_incorrecta.mp3"
+    },
+    "resultado_exito": {
+        "target": "RIO_DUENDE_RECOMPENSA",
+        "recompensa": "piedra_magica"
+    },
+    "resultado_fallo": {
+        "target": "RIO_DUENDE_FALLO",
+        "mensaje": "Milo no está impresionado."
+    }
+}

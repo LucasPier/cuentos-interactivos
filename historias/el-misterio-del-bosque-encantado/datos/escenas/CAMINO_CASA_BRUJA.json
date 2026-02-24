@@ -1,0 +1,76 @@
+{
+    "id": "CAMINO_CASA_BRUJA",
+    "tipo": "escena",
+    "fondo": "bosque_hongos_magicos.webp",
+    "texto": "Siguiendo el camino, llegan a una parte muy extraña del bosque. Hay hongos gigantes y luminosos por todas partes. Sentado sobre uno de ellos, encuentran al tío Pier, que está lamiendo un hongo de color azul.",
+    "audio": "magico.mp3",
+    "efectos": [
+        {
+            "tipo": "luciérnagas",
+            "estilo": {
+                "x": 50,
+                "y": 100,
+                "ancho": 100,
+                "z_index": 5
+            },
+            "cantidad": 20,
+            "color": "esmeralda"
+        },
+        {
+            "tipo": "luciérnagas",
+            "estilo": {
+                "x": 50,
+                "y": 100,
+                "ancho": 100,
+                "z_index": 5
+            },
+            "cantidad": 20,
+            "color": "violeta"
+        },
+        {
+            "tipo": "luciérnagas",
+            "estilo": {
+                "x": 50,
+                "y": 100,
+                "ancho": 100,
+                "z_index": 5
+            },
+            "cantidad": 20,
+            "color": "cyan-bio"
+        },
+        {
+            "tipo": "polvo_hadas",
+            "estilo": {
+                "x": 50,
+                "y": 27,
+                "ancho": 100,
+                "z_index": 5
+            },
+            "cantidad": 15,
+            "color": "cyan-bio",
+            "tamano": "3px"
+        }
+    ],
+    "elementos": [
+        {
+            "tipo": "personaje",
+            "id": "tio_pier",
+            "imagen": "tio_pier_sentado.webp",
+            "estilo": {
+                "x": 60,
+                "y": 101,
+                "ancho": 30,
+                "z_index": 10
+            },
+            "animacion": "movimiento-sutil"
+        }
+    ],
+    "opciones": [
+        {
+            "texto": "Saludar al tío Pier",
+            "accion": "navegar",
+            "target": "ENCUENTRO_TIO_PIER",
+            "tipo_target": "escena"
+        }
+    ]
+}

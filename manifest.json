@@ -1,0 +1,36 @@
+{
+    "name": "La Biblioteca del Tío Pier",
+    "short_name": "Tío Pier",
+    "description": "Cuentos interactivos mágicos para Irupé",
+    "start_url": "./index.html",
+    "display": "fullscreen",
+    "background_color": "#d2baff",
+    "theme_color": "#d2baff",
+    "orientation": "landscape",
+    "icons": [
+        {
+            "src": "biblioteca/imagenes/iconos/icono_192.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "any"
+        },
+        {
+            "src": "biblioteca/imagenes/iconos/icono_m_192.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "maskable"
+        },
+        {
+            "src": "biblioteca/imagenes/iconos/icono.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any"
+        },
+        {
+            "src": "biblioteca/imagenes/iconos/icono_m.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "maskable"
+        }
+    ]
+}

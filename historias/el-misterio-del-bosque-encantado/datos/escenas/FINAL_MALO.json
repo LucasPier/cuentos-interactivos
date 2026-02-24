@@ -1,0 +1,203 @@
+{
+    "id": "FINAL_MALO",
+    "tipo": "escena",
+    "fondo": "interior_casa_bruja.webp",
+    "texto": "Irupé se cruza de brazos y dice en voz fuerte: \"¡Devolvé los colores ahora mismo! ¡Lo que hiciste estuvo mal!\". Romi se asusta y comienza a llorar más fuerte. Toma el frasco y se lo entrega a Irupé. Luego corre y se encierra en su habitación. Irupé, Indi y Nuria salen de la casa con el frasco. Al abrirlo, los colores vuelven al bosque... pero algo no se siente bien. Romi sigue sola. ¡Fin!",
+    "audio": "suspenso.mp3",
+    "efectos": [
+        {
+            "tipo": "luciérnagas",
+            "estilo": {
+                "x": 50,
+                "y": 100,
+                "ancho": 100,
+                "z_index": 5
+            },
+            "cantidad": 8,
+            "color": "rosa"
+        },
+        {
+            "tipo": "luciérnagas",
+            "estilo": {
+                "x": 50,
+                "y": 100,
+                "ancho": 100,
+                "z_index": 5
+            },
+            "cantidad": 8,
+            "color": "violeta"
+        },
+        {
+            "tipo": "luciérnagas",
+            "estilo": {
+                "x": 50,
+                "y": 100,
+                "ancho": 100,
+                "z_index": 5
+            },
+            "cantidad": 8,
+            "color": "cyan-bio"
+        },
+        {
+            "tipo": "luciérnagas",
+            "estilo": {
+                "x": 50,
+                "y": 100,
+                "ancho": 100,
+                "z_index": 5
+            },
+            "cantidad": 8,
+            "color": "esmeralda"
+        },
+        {
+            "tipo": "destellos",
+            "estilo": {
+                "x": 61,
+                "y": 45,
+                "ancho": 18,
+                "alto": 32,
+                "z_index": 10
+            },
+            "cantidad": 15,
+            "color": "dorado",
+            "tamano": "8px"
+        },
+        {
+            "tipo": "destellos",
+            "estilo": {
+                "x": 63,
+                "y": 45,
+                "ancho": 18,
+                "alto": 32,
+                "z_index": 10
+            },
+            "cantidad": 15,
+            "color": "rosa",
+            "tamano": "8px"
+        },
+        {
+            "tipo": "destellos",
+            "estilo": {
+                "x": 61,
+                "y": 45,
+                "ancho": 18,
+                "alto": 32,
+                "z_index": 10
+            },
+            "cantidad": 15,
+            "color": "cyan-bio",
+            "tamano": "8px"
+        },
+        {
+            "tipo": "destellos",
+            "estilo": {
+                "x": 63,
+                "y": 45,
+                "ancho": 18,
+                "alto": 32,
+                "z_index": 10
+            },
+            "cantidad": 15,
+            "color": "esmeralda",
+            "tamano": "8px"
+        },
+        {
+            "tipo": "destellos",
+            "estilo": {
+                "x": 58.4,
+                "y": 63,
+                "ancho": 4.8,
+                "alto": 13,
+                "z_index": 10
+            },
+            "cantidad": 15,
+            "color": "esmeralda",
+            "tamano": "8px"
+        },
+        {
+            "tipo": "destellos",
+            "estilo": {
+                "x": 58.4,
+                "y": 63,
+                "ancho": 4.8,
+                "alto": 13,
+                "z_index": 10
+            },
+            "cantidad": 15,
+            "color": "rosa",
+            "tamano": "8px"
+        },
+        {
+            "tipo": "destellos",
+            "estilo": {
+                "x": 58.4,
+                "y": 63,
+                "ancho": 4.8,
+                "alto": 13,
+                "z_index": 10
+            },
+            "cantidad": 15,
+            "color": "blanco",
+            "tamano": "8px"
+        },
+        {
+            "tipo": "destellos",
+            "estilo": {
+                "x": 58.4,
+                "y": 63,
+                "ancho": 4.8,
+                "alto": 13,
+                "z_index": 10
+            },
+            "cantidad": 15,
+            "color": "violeta",
+            "tamano": "8px"
+        },
+        {
+            "tipo": "destellos",
+            "estilo": {
+                "x": 58.4,
+                "y": 63,
+                "ancho": 4.8,
+                "alto": 13,
+                "z_index": 10
+            },
+            "cantidad": 15,
+            "color": "dorado",
+            "tamano": "8px"
+        }
+    ],
+    "elementos": [
+        {
+            "tipo": "personaje",
+            "id": "bruja_romi",
+            "imagen": "bruja_romi_triste.webp",
+            "estilo": {
+                "x": 50,
+                "y": 94,
+                "ancho": 21,
+                "z_index": 10
+            },
+            "animacion": "movimiento-sutil"
+        },
+        {
+            "tipo": "objeto",
+            "id": "fin",
+            "imagen": "fin.webp",
+            "estilo": {
+                "x": 34,
+                "y": 50,
+                "ancho": 29,
+                "z_index": 10
+            }
+        }
+    ],
+    "opciones": [
+        {
+            "texto": "Volver a empezar",
+            "accion": "reiniciar",
+            "target": "INICIO",
+            "tipo_target": "escena"
+        }
+    ]
+}

@@ -1,0 +1,121 @@
+{
+    "id": "RIO_PUENTE_MAGICO",
+    "tipo": "escena",
+    "fondo": "rio_puente_magico.webp",
+    "texto": "Del agua surge un hermoso puente hecho de luz y flores acuáticas. Milo y Jazmín despiden a las niñas con una sonrisa. Las tres amigas cruzan el puente, que las lleva directo a un claro en el bosque.",
+    "audio": "bosque.mp3",
+    "efectos": [
+        {
+            "tipo": "luciérnagas",
+            "estilo": {
+                "x": 50,
+                "y": 100,
+                "ancho": 100,
+                "z_index": 5
+            },
+            "cantidad": 20,
+            "color": "rosa"
+        },
+        {
+            "tipo": "luciérnagas",
+            "estilo": {
+                "x": 50,
+                "y": 100,
+                "ancho": 100,
+                "z_index": 5
+            },
+            "cantidad": 20,
+            "color": "cyan-bio"
+        },
+        {
+            "tipo": "polvo_hadas",
+            "estilo": {
+                "x": 50,
+                "y": 27,
+                "ancho": 100,
+                "z_index": 5
+            },
+            "cantidad": 15,
+            "color": "cyan-bio",
+            "tamano": "5px"
+        },
+        {
+            "tipo": "polvo_hadas",
+            "estilo": {
+                "x": 34,
+                "y": 142,
+                "ancho": 15,
+                "z_index": 5
+            },
+            "cantidad": 20,
+            "color": "rosa",
+            "tamano": "3px"
+        }
+    ],
+    "elementos": [
+        {
+            "tipo": "personaje",
+            "id": "irupe",
+            "imagen": "irupe_caminando.webp",
+            "estilo": {
+                "x": 24,
+                "y": 70,
+                "ancho": 10,
+                "z_index": 8
+            }
+        },
+        {
+            "tipo": "personaje",
+            "id": "indira",
+            "imagen": "indira_caminando.webp",
+            "estilo": {
+                "x": 15,
+                "y": 74,
+                "ancho": 11,
+                "z_index": 10
+            }
+        },
+        {
+            "tipo": "personaje",
+            "id": "nuria",
+            "imagen": "nuria_caminando.webp",
+            "estilo": {
+                "x": 20,
+                "y": 79,
+                "ancho": 10,
+                "z_index": 10
+            }
+        },
+        {
+            "tipo": "personaje",
+            "id": "duende_milo",
+            "imagen": "duende_milo_espaldas.webp",
+            "estilo": {
+                "x": 48,
+                "y": 117,
+                "ancho": 19,
+                "z_index": 20
+            }
+        },
+        {
+            "tipo": "personaje",
+            "id": "hada_jazmin",
+            "imagen": "hada_jazmin_espaldas.webp",
+            "estilo": {
+                "x": 34,
+                "y": 111,
+                "ancho": 13,
+                "z_index": 11
+            },
+            "animacion": "flotacion-aura"
+        }
+    ],
+    "opciones": [
+        {
+            "texto": "Cruzar el puente hacia la casa de la bruja",
+            "accion": "navegar",
+            "target": "CASA_BRUJA_EXTERIOR",
+            "tipo_target": "escena"
+        }
+    ]
+}

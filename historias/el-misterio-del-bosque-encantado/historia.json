@@ -1,0 +1,19 @@
+{
+    "id": "el-misterio-del-bosque-encantado",
+    "titulo": "El Misterio del Bosque Encantado",
+    "subtitulo": "Una aventura mágica para Irupé,\nhecha con cariño por el tío Pier.",
+    "portada": "imagenes/fondos/entrada_bosque.webp",
+    "tarjeta": "imagenes/tarjeta/tarjeta.webp",
+    "logo": "imagenes/logo/logo_s.webp",
+    "musica_inicio": "el_misterio_del_bosque_encantado.mp3",
+    "escena_inicial": "INICIO",
+    "efectos": {
+        "luciernagas": true
+    },
+    "colores": {
+        "boton_jugar_bg": "linear-gradient(135deg, #d4a017 0%, #facc15 50%, #d4a017 100%)",
+        "boton_jugar_borde": "#fbbf24",
+        "boton_jugar_color": "#0a0f19",
+        "subtitulo_color": "#a7f3d0"
+    }
+}

@@ -1,0 +1,125 @@
+/* ==============================================
+   LAYOUT — Contenedor 16:9 centrado + responsive
+   ============================================== */
+
+#juego {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    /* Mantener proporción 16:9 centrada */
+    max-width: calc(100vh * 16 / 9);
+    max-height: calc(100vw * 9 / 16);
+    margin: auto;
+    overflow: hidden;
+    background: var(--color-fondo-oscuro);
+}
+
+/* ---- Capa de escena ---- */
+#escena {
+    position: absolute;
+    inset: 0;
+    z-index: var(--z-fondo);
+    overflow: hidden;
+}
+
+/* ---- Indicador de carga ---- */
+#indicador-carga {
+    position: absolute;
+    inset: 0;
+    z-index: var(--z-indicador-carga);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: rgba(2, 6, 23, 0.85);
+    gap: var(--espaciado-md);
+}
+
+#indicador-carga.oculto {
+    display: none;
+}
+
+.logo-carga {
+    width: 300px;
+    height: auto;
+    animation: fade-loop 1.5s ease-in-out infinite alternate;
+}
+
+.logo-carga[src=""] {
+    display: none;
+}
+
+@keyframes fade-loop {
+    0% {
+        opacity: 0.3;
+        transform: scale(0.95);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* ---- Controles UI permanentes ---- */
+.ui-controles {
+    position: absolute;
+    top: var(--espaciado-md);
+    z-index: var(--z-ui-controles);
+    display: flex;
+    gap: var(--espaciado-sm);
+}
+
+.ui-controles--derecha {
+    right: var(--espaciado-md);
+}
+
+.ui-controles--izquierda {
+    left: var(--espaciado-md);
+}
+
+.btn-ui {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--color-fondo-panel);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    border: 1px solid rgba(167, 243, 208, 0.15);
+    transition: background var(--transicion-base), transform var(--transicion-base);
+}
+
+.btn-ui:hover {
+    background: var(--color-fondo-panel-hover);
+    transform: scale(1.08);
+}
+
+.btn-ui:active {
+    transform: scale(0.95);
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 900px),
+(max-height: 600px) {
+    .btn-ui {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+
+    .ui-controles {
+        top: var(--espaciado-sm);
+    }
+
+    .ui-controles--derecha {
+        right: var(--espaciado-sm);
+    }
+
+    .ui-controles--izquierda {
+        left: var(--espaciado-sm);
+    }
+}

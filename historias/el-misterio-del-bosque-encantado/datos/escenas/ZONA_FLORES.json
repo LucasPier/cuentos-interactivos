@@ -1,0 +1,95 @@
+{
+    "id": "ZONA_FLORES",
+    "tipo": "escena",
+    "fondo": "bosque_flores.webp",
+    "texto": "Eligen el camino de las flores. El suelo está cubierto de pétalos que brillan con cada paso. De repente, Indi tropieza con una raíz y cae al suelo. \"¡Ay!\", se queja. Nuria se detiene a su lado. ¿Qué hacés?",
+    "audio": "exploracion.mp3",
+    "efectos": [
+        {
+            "tipo": "luciérnagas",
+            "estilo": {
+                "x": 50,
+                "y": 100,
+                "ancho": 100,
+                "z_index": 5
+            },
+            "cantidad": 20,
+            "color": "rosa"
+        },
+        {
+            "tipo": "luciérnagas",
+            "estilo": {
+                "x": 50,
+                "y": 100,
+                "ancho": 100,
+                "z_index": 5
+            },
+            "cantidad": 20,
+            "color": "cyan-bio"
+        },
+        {
+            "tipo": "polvo_hadas",
+            "estilo": {
+                "x": 50,
+                "y": 27,
+                "ancho": 100,
+                "z_index": 5
+            },
+            "cantidad": 8,
+            "color": "rosa",
+            "tamano": "5px"
+        }
+    ],
+    "elementos": [
+        {
+            "tipo": "personaje",
+            "id": "irupe",
+            "imagen": "irupe_espaldas_1.webp",
+            "estilo": {
+                "x": 51,
+                "y": 96,
+                "ancho": 17,
+                "z_index": 10
+            },
+            "animacion": "movimiento-sutil"
+        },
+        {
+            "tipo": "personaje",
+            "id": "indira",
+            "imagen": "indira_tropieza.webp",
+            "estilo": {
+                "x": 37,
+                "y": 100,
+                "ancho": 17,
+                "z_index": 10
+            },
+            "animacion": "movimiento-sutil"
+        },
+        {
+            "tipo": "personaje",
+            "id": "nuria",
+            "imagen": "nuria_espaldas_1.webp",
+            "estilo": {
+                "x": 61,
+                "y": 99,
+                "ancho": 16,
+                "z_index": 10
+            },
+            "animacion": "movimiento-sutil-2"
+        }
+    ],
+    "opciones": [
+        {
+            "texto": "Ayudar a Indi a levantarse",
+            "accion": "navegar",
+            "target": "FLORES_AYUDA_INDI",
+            "tipo_target": "escena"
+        },
+        {
+            "texto": "Seguir adelante sin esperar",
+            "accion": "navegar",
+            "target": "FLORES_NO_AYUDA_INDI",
+            "tipo_target": "escena"
+        }
+    ]
+}
