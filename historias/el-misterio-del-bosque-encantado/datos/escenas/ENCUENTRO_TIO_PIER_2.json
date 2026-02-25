@@ -55,7 +55,7 @@
         {
             "tipo": "personaje",
             "id": "tio_pier",
-            "imagen": "tio_pier.webp",
+            "imagen": "tio_pier_pensativo.webp",
             "estilo": {
                 "x": 48,
                 "y": 94,

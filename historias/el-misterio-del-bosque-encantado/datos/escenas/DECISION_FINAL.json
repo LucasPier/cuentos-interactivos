@@ -2,7 +2,7 @@
     "id": "DECISION_FINAL",
     "tipo": "escena",
     "fondo": "interior_casa_bruja.webp",
-    "texto": "Ahora que saben la verdad, Irupé y sus amigas deben decidir qué hacer. Romi no es mala, solo está muy triste y sola.",
+    "texto": "Ahora que saben la verdad, vos y tus amigas deben decidir qué hacer. Romi no es mala, solo está muy triste y sola.",
     "audio": "suspenso.mp3",
     "efectos": [
         {
