@@ -325,6 +325,45 @@
             return;
         }
 
+        // --- MANEJO ESPECIAL PARA RANGE REQUESTS (AUDIO OFFLINE) ---
+        // El browser pide audio con "Range: bytes=0-" o similares.
+        // caches.match() no encuentra esas requests aunque el archivo esté cacheado
+        // (porque fue guardado sin el header Range). Hay que resolverlo manualmente.
+        const rangeHeader = event.request.headers.get('Range');
+        if (rangeHeader) {
+            event.respondWith((async () => {
+                // Buscar el archivo completo en caché (sin Range header)
+                const cachedFull = await caches.match(event.request.url, { ignoreSearch: true });
+                if (!cachedFull) {
+                    // No está en caché, intentar red
+                    return fetch(event.request).catch(() => {
+                        console.warn(`[Service Worker] No se pudo obtener de red ni de caché (range): ${event.request.url}`);
+                        return new Response(null, { status: 503, statusText: 'Service Unavailable' });
+                    });
+                }
+
+                // Parsear el rango solicitado: "bytes=inicio-fin" o "bytes=inicio-"
+                const arrayBuffer = await cachedFull.clone().arrayBuffer();
+                const totalBytes = arrayBuffer.byteLength;
+
+                const [, startStr, endStr] = /bytes=(\d*)-(\d*)/.exec(rangeHeader) || [];
+                const start = startStr ? parseInt(startStr, 10) : 0;
+                const end = endStr ? parseInt(endStr, 10) : totalBytes - 1;
+                const slicedBuffer = arrayBuffer.slice(start, end + 1);
+
+                return new Response(slicedBuffer, {
+                    status: 206,
+                    statusText: 'Partial Content',
+                    headers: {
+                        'Content-Type': cachedFull.headers.get('Content-Type') || 'audio/mpeg',
+                        'Content-Range': `bytes ${start}-${end}/${totalBytes}`,
+                        'Content-Length': String(slicedBuffer.byteLength)
+                    }
+                });
+            })());
+            return;
+        }
+
         // --- ESTRATEGIA NORMAL (APP CACHE FIRST) ---
         event.respondWith(
             caches.match(event.request, { ignoreSearch: true }).then(cachedResponse => {
@@ -336,6 +375,8 @@
                 // Si no está en caché, probar red como fallback
                 return fetch(event.request).catch(() => {
                     console.warn(`[Service Worker] No se pudo obtener de red ni de caché: ${event.request.url}`);
+                    // Un catch sin return devuelve undefined, y eso tira TypeError en el browser
+                    return new Response(null, { status: 503, statusText: 'Service Unavailable' });
                 });
             })
         );
