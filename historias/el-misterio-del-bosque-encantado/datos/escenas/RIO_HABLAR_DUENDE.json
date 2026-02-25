@@ -2,7 +2,7 @@
     "id": "RIO_HABLAR_DUENDE",
     "tipo": "escena",
     "fondo": "rio_duende_hada.webp",
-    "texto": "\"¡Hola!\", saludas con amabilidad. \"La bruja Romi se robó los colores del bosque y necesitamos encontrar su casa para recuperarlos\". Milo las mira de pies a cabeza con desconfianza.",
+    "texto": "\"¡Hola!\", saludás con amabilidad. \"La bruja Romi se robó los colores del bosque y necesitamos encontrar su casa para recuperarlos\". Milo las mira de pies a cabeza con desconfianza.",
     "audio": "bosque.mp3",
     "efectos": [
         {

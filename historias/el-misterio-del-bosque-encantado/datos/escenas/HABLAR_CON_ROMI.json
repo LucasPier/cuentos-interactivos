@@ -2,7 +2,7 @@
     "id": "HABLAR_CON_ROMI",
     "tipo": "escena",
     "fondo": "interior_casa_bruja.webp",
-    "texto": "Irupé se acerca con cuidado. \"¿Romi?\", pregunta con voz suave. La bruja se da la vuelta. Tiene los ojos rojos de tanto llorar. \"¿Qué quieren?\", dice con voz triste. Irupé le pregunta: \"¿Por qué estás tan triste? ¿Y por qué te llevaste los colores del bosque?\". Romi suspira. \"Me sentía muy sola\", confiesa. \"El bosque estaba tan lleno de alegría y color que me hacía sentir aún más triste. Pensé que si me llevaba los colores, yo me sentiría mejor... pero no funcionó. Ahora me siento peor\".",
+    "texto": "Te acercás con cuidado. \"¿Romi?\", preguntás con voz suave. La bruja se da la vuelta. Tiene los ojos rojos de tanto llorar. \"¿Qué quieren?\", dice con voz triste. Le preguntás: \"¿Por qué estás tan triste? ¿Y por qué te llevaste los colores del bosque?\". Romi suspira. \"Me sentía muy sola\", confiesa. \"El bosque estaba tan lleno de alegría y color que me hacía sentir aún más triste. Pensé que si me llevaba los colores, yo me sentiría mejor... pero no funcionó. Ahora me siento peor\".",
     "audio": "suspenso.mp3",
     "efectos": [
         {

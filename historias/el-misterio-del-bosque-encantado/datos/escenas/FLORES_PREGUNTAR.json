@@ -2,7 +2,7 @@
     "id": "FLORES_PREGUNTAR",
     "tipo": "escena",
     "fondo": "bosque_animales_sin_color.webp",
-    "texto": "Irupé se acerca y le pregunta a la ardilla por qué está tan triste. La ardilla, con voz bajita, responde: \"La bruja Romi... se llevó todos los colores en un frasco de cristal\". \"¡Tenemos que ir a ver a esa bruja!\", dice Indi.",
+    "texto": "Te acercás y le preguntás a la ardilla por qué está tan triste. La ardilla, con voz bajita, responde: \"La bruja Romi... se llevó todos los colores en un frasco de cristal\". \"¡Tenemos que ir a ver a esa bruja!\", dice Indi.",
     "audio": "exploracion.mp3",
     "efectos": [
         {

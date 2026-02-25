@@ -8,9 +8,9 @@
         CACHE_CSS = '1',
         CACHE_JS = '1',
         CACHE_CHALLENGES = '1',
-        CACHE_EMBE_IMAGENES = '1',
+        CACHE_EMBE_IMAGENES = '2',
         CACHE_EMBE_AUDIOS = '1',
-        CACHE_EMBE_DATOS = '1',
+        CACHE_EMBE_DATOS = '2',
         CACHE_FONTS = '1';
 
     const NOMBRE_CACHE_FONTS = `cache-fonts-v${CACHE_FONTS}`;
@@ -202,6 +202,7 @@
                 RUTA_EMBE + '/imagenes/personajes/nuria/nuria_espaldas_3.webp',
                 RUTA_EMBE + '/imagenes/personajes/sapo_blanco/sapo_blanco.webp',
                 RUTA_EMBE + '/imagenes/personajes/tio_pier/tio_pier.webp',
+                RUTA_EMBE + '/imagenes/personajes/tio_pier/tio_pier_pensativo.webp',
                 RUTA_EMBE + '/imagenes/personajes/tio_pier/tio_pier_flor_de_luz.webp',
                 RUTA_EMBE + '/imagenes/personajes/tio_pier/tio_pier_sentado.webp',
                 RUTA_EMBE + '/imagenes/tarjeta/tarjeta.webp'

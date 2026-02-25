@@ -72,7 +72,7 @@ Este documento contiene la estructura narrativa completa, las escenas, los diál
 ### **ESCENA: `ENTRADA_BOSQUE`**
 *   **IMAGEN:** `entrada_bosque.webp` (con `abuela_tere.webp`).
 *   **TEXTO:**
-    > ¡Lo lograste! Llegás a la entrada del bosque. La abuela Tere te espera allí. "Irupé, algo extraño sucede", dice con voz misteriosa. "Los animalitos del bosque están perdiendo sus colores y su alegría. Necesitamos tu ayuda para resolver este misterio". En ese momento llegan tus amigas Indi y Nuria. "¡Vamos con vos!", dicen. Ahora las tres juntas deben decidir por dónde empezar.
+    > ¡Lo lograste! Llegás a la entrada del bosque. La abuela Tere te estaba esperando. "Irupé, algo extraño sucede", dice con voz misteriosa. "Los animalitos del bosque están perdiendo sus colores y su alegría. Necesitamos tu ayuda para resolver este misterio". En ese momento llegan tus amigas Indi y Nuria. "¡Vamos con vos!", dicen. Ahora las tres juntas deben decidir por dónde empezar.
 *   **NARRATIVA ADICIONAL:**
     > En ese momento llegan tus amigas Indi y Nuria. "¡Vamos con vos!", dicen. Ahora las tres juntas deben decidir por dónde empezar.
 *   **OPCIONES:**
@@ -108,7 +108,7 @@ Este documento contiene la estructura narrativa completa, las escenas, los diál
 ### **ESCENA: `FLORES_COSQUILLAS`**
 *   **IMAGEN:** `bosque_animales_sin_color.webp`
 *   **TEXTO:**
-    > Irupé toma una flor suave y le hace cosquillas a la ardilla en la panza. La ardilla hace "¡Achís!", pero sigue igual de gris. Parece que necesitarán otro plan.
+    > Tomás una flor suave y le hacés cosquillas a la ardilla en la panza. La ardilla hace "¡Achís!", pero sigue igual de gris. Parece que necesitarán otro plan.
 *   **OPCIONES:**
     1.  **Botón 1:** "Preguntarle qué le pasa" -> Va a `FLORES_PREGUNTAR`.
     2.  **Botón 2:** "Buscar pistas alrededor" -> Va a `FLORES_PISTAS`.
@@ -116,7 +116,7 @@ Este documento contiene la estructura narrativa completa, las escenas, los diál
 ### **ESCENA: `FLORES_PREGUNTAR`**
 *   **IMAGEN:** `bosque_animales_sin_color.webp`
 *   **TEXTO:**
-    > Irupé se acerca y le pregunta a la ardilla por qué está tan triste. La ardilla, con voz bajita, responde: "La bruja Romi... se llevó todos los colores en un frasco de cristal". "¡Tenemos que ir a ver a esa bruja!", dice Indi.
+    > Te acercás y le preguntás a la ardilla por qué está tan triste. La ardilla, con voz bajita, responde: "La bruja Romi... se llevó todos los colores en un frasco de cristal". "¡Tenemos que ir a ver a esa bruja!", dice Indi.
 *   **OPCIONES:**
     1.  **Botón 1:** "Seguir el camino hacia la casa de la bruja" -> Va a `CAMINO_CASA_BRUJA`.
 
@@ -151,7 +151,7 @@ Este documento contiene la estructura narrativa completa, las escenas, los diál
 ### **ESCENA: `ENCUENTRO_TIO_PIER`**
 *   **IMAGEN:** `bosque_hongos_magicos.webp` (con `tio_pier.webp`).
 *   **TEXTO:**
-    > "¡Hola, tío Pier!", exclama Irupé. El tío Pier se da la vuelta y sonríe. "¡Oh, Irupé! ¡Indi! ¡Nuria! ¡Qué sorpresa! ¿Qué andan haciendo por acá?", dice con voz alegre. "¡Tío Pier! La bruja Romi se robó los colores de los animalitos y las flores. ¡Estamos buscando su casa para recuperarlos!", le responde Indira, muy decidida.
+    > "¡Hola, tío Pier!", exclamás. El tío Pier se da la vuelta y sonríe. "¡Oh, Irupé! ¡Indi! ¡Nuria! ¡Qué sorpresa! ¿Qué andan haciendo por acá?", dice con voz alegre. "¡Tío Pier! La bruja Romi se robó los colores de los animalitos y las flores. ¡Estamos buscando su casa para recuperarlos!", le responde Indira, muy decidida.
 *   **OPCIONES:**
     1.  **Botón 1:** "Continuar charlando" -> Va a `ENCUENTRO_TIO_PIER_2`.
 
@@ -185,7 +185,7 @@ Este documento contiene la estructura narrativa completa, las escenas, los diál
 ### **ESCENA: `CAMINO_SECRETO_CASA_BRUJA`**
 *   **IMAGEN:** `camino_secreto.webp`
 *   **TEXTO:**
-    > Irupé levanta la flor mágica y esta comienza a brillar con una luz cálida. Sus destellos revelan un sendero oculto entre los árboles, lleno de polvo de hadas. «¡Mirá, un atajo!», exclama Nuria. Siguiendo el camino secreto iluminado por la flor, llegan rápidamente al claro donde vive la bruja.
+    > Levantás la flor mágica y esta comienza a brillar con una luz cálida. Sus destellos revelan un sendero oculto entre los árboles, lleno de polvo de hadas. «¡Mirá, un atajo!», exclama Nuria. Siguiendo el camino secreto iluminado por la flor, llegan rápidamente al claro donde vive la bruja.
 *   **OPCIONES:**
     1.  **Botón 1:** "Avanzar por el claro" -> Va a `CASA_BRUJA_EXTERIOR`.
 
@@ -199,7 +199,7 @@ Este documento contiene la estructura narrativa completa, las escenas, los diál
 ### **ESCENA: `HABLAR_CON_ROMI`**
 *   **IMAGEN:** `interior_casa_bruja.webp` (con `bruja_romi.webp` mirando hacia ellas, con lágrimas).
 *   **TEXTO:**
-    > Irupé se acerca con cuidado. "¿Romi?", pregunta con voz suave. La bruja se da la vuelta. Tiene los ojos rojos de tanto llorar. "¿Qué quieren?", dice con voz triste. Irupé le pregunta: "¿Por qué estás tan triste? ¿Y por qué te llevaste los colores del bosque?". Romi suspira. "Me sentía muy sola", confiesa. "El bosque estaba tan lleno de alegría y color que me hacía sentir aún más triste. Pensé que si me llevaba los colores, yo me sentiría mejor... pero no funcionó. Ahora me siento peor".
+    > Te acercás con cuidado. "¿Romi?", preguntás con voz suave. La bruja se da la vuelta. Tiene los ojos rojos de tanto llorar. "¿Qué quieren?", dice con voz triste. Le preguntás: "¿Por qué estás tan triste? ¿Y por qué te llevaste los colores del bosque?". Romi suspira. "Me sentía muy sola", confiesa. "El bosque estaba tan lleno de alegría y color que me hacía sentir aún más triste. Pensé que si me llevaba los colores, yo me sentiría mejor... pero no funcionó. Ahora me siento peor".
 *   **OPCIONES:**
     1.  **Botón 1:** "Siguiente" -> Va a `DECISION_FINAL`.
 
@@ -207,7 +207,7 @@ Este documento contiene la estructura narrativa completa, las escenas, los diál
 ### **ESCENA: `DECISION_FINAL`**
 *   **IMAGEN:** `interior_casa_bruja.webp` (con `bruja_romi.webp`).
 *   **TEXTO:**
-    > Ahora que saben la verdad, Irupé y sus amigas deben decidir qué hacer. Romi no es mala, solo está muy triste y sola.
+    > Ahora que saben la verdad, vos y tus amigas deben decidir qué hacer. Romi no es mala, solo está muy triste y sola.
 *   **OPCIONES:**
     1.  **Botón 1:** "Enojarse con ella y exigir que devuelva los colores" -> Va a `FINAL_MALO`.
     2.  **Botón 2:** "Invitarla a jugar con ellas para que no esté triste" -> Va a `FINAL_BUENO`.
@@ -218,21 +218,21 @@ Este documento contiene la estructura narrativa completa, las escenas, los diál
 ### **ESCENA: `FINAL_BUENO`**
 *   **IMAGEN:** `final_bosque_con_color.webp` (con todos los personajes sonriendo).
 *   **TEXTO:**
-    > Irupé se acerca a Romi carinosamente. "No tenés que estar sola", dice. "¿Querés jugar con nosotras?". Romi sonríe y una lágrima de felicidad libera los colores del frasco. El bosque recupera su brillo. La abuela Tere aparece y dice: "Lo hicieron muy bien, niñas. La amistad es la magia más poderosa". ¡Has completado la aventura con el mejor final!
+    > Te acercás a Romi cariñosamente. "No tenés que estar sola", le decís. "¿Querés jugar con nosotras?". Romi sonríe y una lágrima de felicidad libera los colores del frasco. El bosque recupera su brillo. La abuela Tere aparece y dice: "Lo hicieron muy bien, chicas. La amistad es la magia más poderosa". ¡Completaste la aventura con un gran final!
 *   **OPCIONES:**
     1.  **Botón 1:** "Volver a empezar" -> Va a `INICIO`.
 
 ### **ESCENA: `FINAL_SECRETO`**
 *   **IMAGEN:** `final_secreto_transformacion.webp`
 *   **TEXTO:**
-    > Irupé le ofrece a Romi la flor de luz. Una lágrima de emoción cae sobre los pétalos y desata una magia poderosa. La casa oscura se llena de luz y flores. Romi sonríe radiante. "Gracias", dice. La abuela Tere aparece: "Han descubierto la magia más grande de todas: la generosidad". ¡Desbloqueaste el final secreto!
+    > Le ofrecés a Romi la flor de luz. Una lágrima de emoción cae sobre los pétalos y desata una magia poderosa. La casa oscura se llena de luz y flores. Romi sonríe radiante. "Gracias", dice. La abuela Tere aparece: "Han descubierto la magia más grande de todas: la generosidad". ¡Desbloqueaste el final secreto!
 *   **OPCIONES:**
     1.  **Botón 1:** "Volver a empezar" -> Va a `INICIO`.
 
 ### **ESCENA: `FINAL_MALO`**
 *   **IMAGEN:** `interior_casa_bruja.webp` (con `bruja_romi.webp` llorando más fuerte).
 *   **TEXTO:**
-    > Irupé se cruza de brazos y dice en voz fuerte: "¡Devolvé los colores ahora mismo! ¡Lo que hiciste estuvo mal!". Romi se asusta y comienza a llorar más fuerte. Toma el frasco y se lo entrega a Irupé. Luego corre y se encierra en su habitación. Irupé, Indi y Nuria salen de la casa con el frasco. Al abrirlo, los colores vuelven al bosque... pero algo no se siente bien. Romi sigue sola. ¡Fin!
+    > Te cruzás de brazos y decís en voz fuerte: "¡Devolvé los colores ahora mismo! ¡Lo que hiciste estuvo mal!". Romi se asusta y comienza a llorar más fuerte. Toma el frasco y te lo entrega. Luego corre y se encierra en su habitación. Salís de la casa con Indi y Nuria llevando el frasco. Al abrirlo, los colores vuelven al bosque... pero algo no se siente bien. Romi sigue sola. ¡Fin!
 *   **OPCIONES:**
     1.  **Botón 1:** "Volver a empezar" -> Va a `INICIO`.
 
@@ -263,7 +263,7 @@ Este documento contiene la estructura narrativa completa, las escenas, los diál
 ### **ESCENA: `RIO_HABLAR_DUENDE`**
 *   **IMAGEN:** `rio_duende_hada.webp` (con `duende_milo.webp` y `hada_jazmin.webp`).
 *   **TEXTO:**
-    > "¡Hola!", saludas con amabilidad. "La bruja Romi se robó los colores del bosque y necesitamos encontrar su casa para recuperarlos". Milo las mira de pies a cabeza con desconfianza.
+    > "¡Hola!", saludás con amabilidad. "La bruja Romi se robó los colores del bosque y necesitamos encontrar su casa para recuperarlos". Milo las mira de pies a cabeza con desconfianza.
 *   **OPCIONES:**
     1.  **Botón 1:** "Esperar la respuesta de Milo" -> Va a `RIO_HABLAR_DUENDE_2`.
 

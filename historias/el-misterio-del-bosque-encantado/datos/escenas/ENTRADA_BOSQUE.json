@@ -2,7 +2,7 @@
     "id": "ENTRADA_BOSQUE",
     "tipo": "escena",
     "fondo": "entrada_bosque.webp",
-    "texto": "¡Lo lograste! Llegás a la entrada del bosque. La abuela Tere te espera allí. \"Irupé, algo extraño sucede\", dice con voz misteriosa. \"Los animalitos del bosque están perdiendo sus colores y su alegría. Necesitamos tu ayuda para resolver este misterio\". En ese momento llegan tus amigas Indi y Nuria. \"¡Vamos con vos!\", dicen. Ahora las tres juntas deben decidir por dónde empezar.",
+    "texto": "¡Lo lograste! Llegás a la entrada del bosque. La abuela Tere te estaba esperando. \"Irupé, algo extraño sucede\", dice con voz misteriosa. \"Los animalitos del bosque están perdiendo sus colores y su alegría. Necesitamos tu ayuda para resolver este misterio\". En ese momento llegan tus amigas Indi y Nuria. \"¡Vamos con vos!\", dicen. Ahora las tres juntas deben decidir por dónde empezar.",
     "audio": "aventuras.mp3",
     "efectos": [
         {
