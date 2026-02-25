@@ -82,13 +82,13 @@ Usuario pide actualizar SW
 
 ```bash
 # Desde la raíz del proyecto:
-python .agent/skills/sw-updater/scripts/analizar-sw.py
+python .agents/skills/sw-updater/scripts/analizar-sw.py
 
 # Con archivos específicos:
-python .agent/skills/sw-updater/scripts/analizar-sw.py --archivo ruta/a/archivo.json otra/ruta.webp
+python .agents/skills/sw-updater/scripts/analizar-sw.py --archivo ruta/a/archivo.json otra/ruta.webp
 
 # Ayuda completa:
-python .agent/skills/sw-updater/scripts/analizar-sw.py --help
+python .agents/skills/sw-updater/scripts/analizar-sw.py --help
 ```
 
 El script es de **solo lectura**. No modifica nada.
@@ -108,7 +108,7 @@ El script es de **solo lectura**. No modifica nada.
 ## Ejemplo de Flujo
 
 ```
-1. Ejecutar: python .agent/skills/sw-updater/scripts/analizar-sw.py
+1. Ejecutar: python .agents/skills/sw-updater/scripts/analizar-sw.py
 2. Leer el reporte
 3. Proponer al usuario los cambios en service-worker.js (diff claro)
 4. Preguntar: "¿Actualizamos VERSION_APP de 1.0.0 a 1.0.1?"

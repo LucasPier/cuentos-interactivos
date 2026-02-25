@@ -28,18 +28,18 @@ Todos los scripts se encuentran en la carpeta `scripts/` de esta skill. Puedes u
 ### 1. Verificar diferencias de Texto Narrativo
 Compara el campo `texto` de cada JSON contra la sección `*   **TEXTO:**` del MD.
 ```bash
-python .agent/skills/sync-historia/scripts/check_texts.py --dir <ruta-absoluta-a-la-historia>
+python .agents/skills/sync-historia/scripts/check_texts.py --dir <ruta-absoluta-a-la-historia>
 ```
 
 ### 2. Verificar diferencias de Opciones/Botones
 Compara los campos `texto` de los botones en el JSON contra la sección `*   **OPCIONES:**` del MD. **Nota:** No usar para autocompletar porque el MD tiene sintaxis de destino (`-> Va a...`).
 ```bash
-python .agent/skills/sync-historia/scripts/check_opciones.py --dir <ruta-absoluta-a-la-historia>
+python .agents/skills/sync-historia/scripts/check_opciones.py --dir <ruta-absoluta-a-la-historia>
 ```
 
 ### 3. Actualizar `historia.md` Automáticamente
 Crea un archivo nuevo (o sobreescribe) volcando exactamente los textos encontrados en los JSON hacia el MD.
 ```bash
-python .agent/skills/sync-historia/scripts/update_md.py --dir <ruta-absoluta-a-la-historia> [--in-place]
+python .agents/skills/sync-historia/scripts/update_md.py --dir <ruta-absoluta-a-la-historia> [--in-place]
 ```
 > **Atención:** Al usar el script de actualización, siempre confirma primero con `check_texts.py` para estar seguro de los cambios.
