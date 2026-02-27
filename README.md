@@ -4,17 +4,20 @@
   <img src="biblioteca/imagenes/juego_biblioteca.webp" alt="Pantalla de inicio" style="border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); max-width: 100%;">
 </div>
 
-## ¿Qué es este proyecto? (El Alma)
-
-Este proyecto nace de un regalo muy especial. La historia inicial, **"El Misterio del Bosque Encantado"**, fue creada pura y exclusivamente como un obsequio para mi sobrina Irupé, para celebrar y acompañar el momento en el que aprendió a leer. 
-
-El objetivo es ofrecer una experiencia de lectura interactiva, donde niños y niñas no sean solo espectadores, sino protagonistas que deciden el rumbo de la aventura. El proyecto creció y se convirtió en un **motor genérico**, lo que permite crear múltiples historias independientes bajo la misma aplicación.
-
-### ¡Jugalo ahora!
+## ¡Jugalo ahora! 🎮
 
 Si querés vivir la experiencia y jugar las historias disponibles, podés hacerlo directamente desde acá:
 👉 **[https://lucaspier.github.io/cuentos-interactivos](https://lucaspier.github.io/cuentos-interactivos)**
 
+---
+
+## Proyecto
+
+Este proyecto nace de la combinación de dos grandes motivaciones. Por un lado, el interés por crear un proyecto íntegramente con Inteligencia Artificial, a modo de experimentación. Y por el otro, la idea de hacerle un regalo a mi sobrina Irupé, que está en pleno proceso de aprendizaje de la lectura.
+
+La historia inicial, **"El Misterio del Bosque Encantado"**, fue nuestro primer paso, pero el juego no es exclusivo para ella. La idea es ir adaptando esta historia, o creando historias nuevas, para otros sobrinos y sobrinas cuando también atraviesen el proceso de aprender a leer.
+
+El objetivo es ofrecer una experiencia de lectura interactiva, donde niños y niñas no sean solo espectadores, sino protagonistas que deciden el rumbo de la aventura. El proyecto creció y se convirtió en un **motor genérico**, lo que permite crear múltiples historias independientes bajo la misma aplicación.
 ---
 
 ## Características Principales 🚀
@@ -36,6 +39,22 @@ Este código es **completamente libre** (licencia GPLv3). La idea es que cualqui
 Toda la lógica de qué dice un personaje, a dónde vas y qué imágenes ves, **está guardada en archivos de texto simples (JSON)** separados del código duro del motor. ¡Con cambiar unos textos y un par de imágenes, podés crear un mundo totalmente nuevo!
 
 Animate a descargar el repositorio, revisar cómo están estructuradas las carpetas en `historias/` y ¡empezá a escribir tu aventura!
+
+---
+
+## Desarrollo Íntegramente con IA 🤖
+
+Todo el desarrollo de este proyecto se hizo experimentando con distintos modelos de Inteligencia Artificial en todas sus etapas (planificación, desarrollo de la historia, desarrollo del juego, creación de piezas musicales, creación de imágenes, etc). 
+
+Los modelos que hicieron posible esta locura son:
+*   **Claude Opus 4.5**
+*   **Claude Opus 4.6**
+*   **Claude Sonnet 4.5**
+*   **Claude Sonnet 4.6**
+*   **Gemini 3 Pro**
+*   **Gemini 3.1 Pro**
+*   **Gemini 3 Flash**
+*   **Nano Banana Pro** (para generación de imágenes)
 
 ---
 

@@ -19,7 +19,10 @@
 }
 ```
 
-### Recompensas del juego
+### Ejemplo de Recompensas (varía por historia)
+
+> [!NOTE]
+> Las recompensas no son fijas ni parte del core del motor. Cada historia define sus propios ítems (flags) y condiciones. La siguiente tabla es solo un ejemplo de cómo se estructuran en "El Misterio del Bosque Encantado":
 
 | Recompensa | Otorgada por | Desbloquea |
 |------------|-------------|------------|
@@ -55,8 +58,8 @@ Ejemplo: `"tiene_flor_de_luz"` → verifica si `recompensas["flor_de_luz"] === t
 
 ### Imágenes
 
-1. **Al cargar una escena**: `ImagePreloader.extraerImagenes(datos)` extrae todas las URLs de fondo + elementos. Luego `precargar(urls)` las descarga con `new Image()`.
-2. **Precarga anticipada**: Después de renderizar una escena, `GameEngine.#precargarSiguientes()` carga fire-and-forget los JSONs e imágenes de las escenas referenciadas en las opciones actuales.
+1. **Al cargar escena o desafío**: `ImagePreloader.extraerImagenes(datos)` extrae todas las URLs de fondo, elementos visuales (`elementos`) y elementos interactivos propios de la configuración de un desafío (`minijuego_observacion`, `minijuego_clicks`). Luego `precargar(urls)` las descarga con `new Image()`.
+2. **Precarga anticipada**: Después de renderizar, `GameEngine.#precargarSiguientes()` carga fire-and-forget los JSONs e imágenes de los destinos referenciados en las opciones actuales (evaluando dinámicamente el `tipo_target`: escena o desafío).
 3. **Deduplicación**: Un `Set` interno de `ImagePreloader` evita descargar la misma imagen dos veces.
 
 ### JSONs
