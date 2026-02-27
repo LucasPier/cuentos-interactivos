@@ -18,6 +18,7 @@ Este proyecto nace de la combinación de dos grandes motivaciones. Por un lado, 
 La historia inicial, **"El Misterio del Bosque Encantado"**, fue nuestro primer paso, pero el juego no es exclusivo para ella. La idea es ir adaptando esta historia, o creando historias nuevas, para otros sobrinos y sobrinas cuando también atraviesen el proceso de aprender a leer.
 
 El objetivo es ofrecer una experiencia de lectura interactiva, donde niños y niñas no sean solo espectadores, sino protagonistas que deciden el rumbo de la aventura. El proyecto creció y se convirtió en un **motor genérico**, lo que permite crear múltiples historias independientes bajo la misma aplicación.
+
 ---
 
 ## Características Principales 🚀
