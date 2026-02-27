@@ -8,6 +8,7 @@ El contenedor `#juego` tiene las siguientes capas visuales, ordenadas por z-inde
 |---------|------|----------|-------------|
 | 0 | Fondo | `#escena` | Composición visual (fondo + personajes) |
 | 5 | Efectos | `.escena-efectos` | Contenedores dinámicos generados por EffectsRenderer |
+| 10 | Elementos | N/A | Reservado para elementos interactivos en escena (`--z-elementos`) |
 | 100 | Texto | `#panel-texto` | Texto narrativo con glassmorphism |
 | 200 | Opciones | `#panel-opciones` | Botones de decisión |
 | 300 | Desafío | `#panel-desafio` | Overlay de minijuegos (cuando `.activo`) |
@@ -40,11 +41,15 @@ El contenedor `#juego` tiene las siguientes capas visuales, ordenadas por z-inde
 |-------|-------|-----|
 | `--color-esmeralda` | `#065f46` | Fondo de botones, acentos principales |
 | `--color-esmeralda-claro` | `#10b981` | Hover de botones, spinner |
+| `--color-esmeralda-sutil` | `#064e3b` | Sombras y fondos oscuros de botones |
 | `--color-dorado` | `#d4a017` | Bordes de botones, brillo del título |
 | `--color-dorado-claro` | `#fbbf24` | Efecto shimmer |
+| `--color-dorado-brillante` | `#facc15` | Brillo intenso, partículas |
 | `--color-violeta` | `#7c3aed` | Acentos mágicos |
+| `--color-violeta-claro` | `#a78bfa` | Neblinas, destellos y auras |
 | `--color-cyan-bio` | `#22d3ee` | Bioluminiscencia |
 | `--color-rosa-magico` | `#f472b6` | Partículas del final secreto |
+| `--color-blanco` | `#ffffff` | Texto, destellos blancos |
 
 ### Tipografía
 
@@ -159,8 +164,8 @@ Aplica una rutina de movimiento o de brillo constante a la etiqueta `<img>` inte
 |--------|-----|-----------|
 | `.efecto-shake` | Error en minijuego | Sacudida horizontal rápida |
 | `.efecto-pulse` | Acierto en minijuego | Escala 1 → 1.2 → 1 |
-| `.desafio-feedback.exito` | Respuesta correcta | Slide-in + fondo verde |
-| `.desafio-feedback.fallo` | Respuesta incorrecta | Slide-in + fondo rojo |
+| `.desafio-feedback.exito` | Respuesta correcta | Fade-in 300ms + fondo esmeralda traslúcido |
+| `.desafio-feedback.fallo` | Respuesta incorrecta | Fade-in 300ms + fondo rojo traslúcido |
 
 ---
 
@@ -185,9 +190,17 @@ Aplica una rutina de movimiento o de brillo constante a la etiqueta `<img>` inte
 
 - Posición: esquina superior izquierda.
 - Emoji: 🔊 (sin mute) / 🔇 (muteado).
-- Stub visual: alterna el emoji y `aria-pressed`, pero no hay audio implementado.
+- Al hacer clic, delega la lógica real al singleton `AudioManager.toggleMute()`.
+- Actualiza `aria-pressed` adecuadamente.
 
-### Ambos son botones circulares (48px) con glassmorphism:
+### Botón fullscreen (`#btn-fullscreen`)
+
+- Posición: esquina superior izquierda (junto al mute).
+- Emoji: ⛶ (normal) / ✕ (fullscreen).
+- Alterna el modo pantalla completa mediante `document.documentElement.requestFullscreen()`.
+- Responde nativamente a cambios externos (como la tecla ESC o F11) vía el evento `fullscreenchange`.
+
+### Los tres son botones circulares (48px) con glassmorphism:
 
 ```css
 .btn-ui {

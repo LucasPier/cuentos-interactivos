@@ -153,9 +153,16 @@ historias/nombre-de-la-historia/
 1. Crear `js/challenges/NuevoHandler.js`:
 ```javascript
 export class NuevoHandler {
+    #audioManager;
+
+    constructor(audioManager) {
+        this.#audioManager = audioManager;
+    }
+
     ejecutar(datos, panelEl, preloader) {
         return new Promise((resolve) => {
             // Renderizar dentro de panelEl
+            // Usar this.#audioManager.reproducirEfecto(...) para sonidos
             // resolve(true) si éxito, resolve(false) si fallo
         });
     }
@@ -165,7 +172,7 @@ export class NuevoHandler {
 2. Registrarlo en `main.js`:
 ```javascript
 import { NuevoHandler } from './challenges/NuevoHandler.js';
-challengeManager.registrar('nuevo_subtipo', new NuevoHandler());
+challengeManager.registrar('nuevo_subtipo', new NuevoHandler(audioManager));
 ```
 
 3. Crear el JSON del desafío con `"subtipo": "nuevo_subtipo"`.

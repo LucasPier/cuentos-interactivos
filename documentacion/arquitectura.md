@@ -83,8 +83,9 @@ main.js (Bootstrap)
   │     │     ├── StateManager       (estado por historia)
   │     │     ├── ImagePreloader     (precarga + rutas dinámicas)
   │     │     ├── SceneRenderer      (composición visual)
-  │     │     ├── EffectsRenderer    (capa visual dinámica: luciérnagas, etc.)
+  │     │     │     └── EffectsRenderer    (capa visual dinámica en escenas)
   │     │     ├── ChallengeManager   (dispatch de desafíos)
+  │     │     │     ├── EffectsRenderer    (capa visual dinámica en desafíos)
   │     │     │     ├── PreguntaRealHandler
   │     │     │     ├── ObservacionHandler
   │     │     │     └── ClicksHandler

@@ -23,7 +23,7 @@ Utilizado para escenas narrativas, diálogos y menús de decisión.
   "audio": "audio_fondo.mp3", // Opcional: música de fondo (busca en carpeta audios/)
   "audio_narracion": "audio_opcional.mp3",
   "efectos": [
-    // Efectos visuales de fondo (ej: luciérnagas, nieve, destellos) configurables.
+    // Efectos visuales de fondo (ej: luciérnagas, polvo_hadas/nieve, destellos/sparkles) configurables.
     // Colores soportados: dorado, esmeralda, cyan-bio, violeta, rosa, blanco.
     // Ejemplos:
     // { "tipo": "luciérnagas", "estilo": { "x": 50, "y": 100, "ancho": 100, "z_index": 5 }, "cantidad": 15, "color": "dorado" }
@@ -55,7 +55,7 @@ Lista de imágenes que se superponen al fondo. Se usa posicionamiento porcentual
     "z_index": 10 // Orden de apilamiento (mayor número = más adelante)
   },
   "efecto": "aparecer_suave", // Opcional (efecto de entrada): "rebote", "aparecer_suave", etc.
-  "animacion": "respiracion-aura" // Opcional (animación continua): "flotacion", "respiracion", "aura", "resplandor", o combos ("flotacion-aura", etc)
+  "animacion": "respiracion-aura" // Opcional (animación continua): "flotacion", "respiracion", "aura", "resplandor", "movimiento-sutil", "movimiento-sutil-2", o combos ("flotacion-aura", etc)
 }
 ```
 
@@ -66,7 +66,7 @@ Los botones que permiten al usuario interactuar.
 ```json
 {
   "texto": "Saludar al Tío Pier",
-  "accion": "navegar", // "navegar" | "link_externo" | "reiniciar"
+  "accion": "navegar", // "navegar" | "reiniciar"
   "target": "ENCUENTRO_TIO_PIER", // ID del siguiente archivo JSON (sin extensión)
   "tipo_target": "escena", // "escena" | "desafio"
   "condicion": null // Opcional: "{tiene_flor_de_luz}" (lógica futura)
