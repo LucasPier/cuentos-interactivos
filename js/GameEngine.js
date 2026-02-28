@@ -28,6 +28,9 @@ export class GameEngine {
     /** Flag para prevenir navegación múltiple simultánea */
     #navegando = false;
 
+    /** Callbacks registrados para cambio de escena/desafío */
+    #onCambioEscenaCallbacks = [];
+
     /** Configuración de la historia activa */
     #configHistoria = null;
     /** Ruta base de la historia activa */
@@ -187,6 +190,7 @@ export class GameEngine {
             this.#audioManager.detener();
             this.#pantallaInicioEl.classList.add('oculto');
             this.#pantallaInicioEl.innerHTML = '';
+            this.#configHistoria = null;
             if (this.#onVolverBiblioteca) {
                 this.#onVolverBiblioteca();
             }
@@ -266,6 +270,9 @@ export class GameEngine {
             // Registrar en state
             this.#stateManager.setEscenaActual(id);
 
+            // Notificar a observadores (DevPanel, etc.)
+            this.#notificarCambioEscena(id, 'escena', datos);
+
             // Resetear toggle de texto antes de renderizar
             this.#uiManager.resetearTexto();
 
@@ -313,6 +320,9 @@ export class GameEngine {
             await this.#preloader.precargar(imagenes);
 
             this.#uiManager.ocultarCarga();
+
+            // Notificar a observadores (DevPanel, etc.)
+            this.#notificarCambioEscena(id, 'desafio', datos);
 
             // Audio de fondo específico para este desafío
             if (datos.audio) {
@@ -371,6 +381,69 @@ export class GameEngine {
         // Volver a la pantalla de inicio de ESTA historia
         this.cargarHistoria(this.#configHistoria, this.#rutaBase, this.#onVolverBiblioteca);
         this.#navegando = false;
+    }
+
+    // ─── API pública para DevPanel / extensiones ─────
+
+    /**
+     * Configuración de la historia activa (solo lectura).
+     * @returns {object|null}
+     */
+    get configActual() {
+        return this.#configHistoria;
+    }
+
+    /**
+     * Registra un callback que se invoca al cambiar de escena o desafío.
+     * @param {function(string, string, object)} callback — Recibe (id, tipo, datosJSON)
+     * @returns {function} Función para desuscribirse
+     */
+    onCambioEscena(callback) {
+        this.#onCambioEscenaCallbacks.push(callback);
+        return () => {
+            this.#onCambioEscenaCallbacks = this.#onCambioEscenaCallbacks.filter(cb => cb !== callback);
+        };
+    }
+
+    /**
+     * Navega a una escena o desafío arbitrario (uso dev/testing).
+     * Ignora el flag de navegación para permitir saltos libres.
+     * Si el juego no había arrancado (pantalla de inicio visible), lo inicia.
+     * @param {string} id — ID de la escena o desafío
+     * @param {string} tipo — 'escena' o 'desafio'
+     */
+    async navegarA(id, tipo = 'escena') {
+        this.#navegando = false;
+
+        // Si la pantalla de inicio está activa, preparar el juego antes de navegar
+        if (!this.#pantallaInicioEl.classList.contains('oculto')) {
+            this.#pantallaInicioEl.classList.add('oculto');
+            document.getElementById('panel-texto').style.display = '';
+            document.getElementById('panel-opciones').style.display = '';
+            this.#uiManager.mostrarControles();
+        }
+
+        if (tipo === 'desafio') {
+            await this.#cargarDesafio(id);
+        } else {
+            await this.#cargarEscena(id);
+        }
+    }
+
+    /**
+     * Notifica a todos los callbacks registrados sobre un cambio de escena/desafío.
+     * @param {string} id
+     * @param {string} tipo
+     * @param {object} datos
+     */
+    #notificarCambioEscena(id, tipo, datos) {
+        for (const cb of this.#onCambioEscenaCallbacks) {
+            try {
+                cb(id, tipo, datos);
+            } catch (e) {
+                console.error('[GameEngine] Error en callback onCambioEscena:', e);
+            }
+        }
     }
 
     /**

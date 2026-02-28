@@ -7,7 +7,9 @@
 ├── index.html                 # Entry point — estructura de capas
 ├── manifest.json              # Configuración PWA (íconos, colores, display)
 ├── service-worker.js          # Service Worker: Cache First y soporte offline
-├── GEMINI.md                  # Instrucciones para agentes IA
+├── AGENTS.md                  # Instrucciones centrales para agentes IA
+├── CLAUDE.md                  # Referencia a AGENTS.md (Copilot/Claude)
+├── GEMINI.md                  # Referencia a AGENTS.md (Antigravity/Gemini CLI)
 ├── documentacion/             # Carpeta con documentación del proyecto
 │   ├── index.md               # Entry point de la doc técnica que enlaza a los demás
 │   ├── arquitectura.md        # Diagrama, módulos JS, dependencias y flujo general
@@ -25,7 +27,8 @@
 │   ├── desafios.css           # Layout de minijuegos y feedback
 │   ├── animaciones.css        # Keyframes (float, bounce, shake, pulse, partículas)
 │   ├── inicio.css             # Pantalla de inicio dinámica (overlay, logo, botón, luciérnagas)
-│   └── ui.css                 # Estados de botones toggle (texto, mute)
+│   ├── ui.css                 # Estados de botones toggle (texto, mute)
+│   └── dev-panel.css          # Panel de desarrollo (cargado dinámicamente)
 │
 ├── js/
 │   ├── main.js                # Bootstrap: instancia módulos y arranca la biblioteca
@@ -38,6 +41,8 @@
 │   ├── ChallengeManager.js    # Dispatcher de desafíos (Strategy Pattern)
 │   ├── UIManager.js           # Controles permanentes (toggle texto, mute, carga dinámica)
 │   ├── AudioManager.js        # Sistema de audio (fondo + efectos)
+│   ├── EffectsRenderer.js     # Capa visual dinámica (luciérnagas, polvo, etc.)
+│   ├── DevPanel.js            # Panel de desarrollo (lazy, zero-impact en producción)
 │   └── challenges/
 │       ├── PreguntaRealHandler.js     # Handler: pregunta con opciones múltiples
 │       ├── ObservacionHandler.js      # Handler: encontrar elemento en la escena
@@ -46,7 +51,9 @@
 ├── biblioteca/
 │   ├── historias.json         # Catálogo de historias disponibles
 │   └── imagenes/
-│       └── fondo.webp         # Fondo de la pantalla de biblioteca
+│       ├── fondo.webp         # Fondo de la pantalla de biblioteca
+│       ├── juego_biblioteca.webp # Imagen decorativa del juego
+│       └── iconos/            # Favicons e íconos PWA
 │
 └── historias/                 # Cada historia vive en su propia carpeta
     └── el-misterio-del-bosque-encantado/
@@ -55,13 +62,14 @@
         ├── historia.md        # Guion completo, diálogos y descripciones
         ├── resumen_detallado.md # Mapa lógico de la historia y ramificaciones
         ├── datos/
-        │   ├── escenas/       # 27 archivos JSON de escenas
+        │   ├── escenas/       # 33 archivos JSON de escenas
         │   └── desafios/      # 4 archivos JSON de desafíos
         ├── imagenes/
         │   ├── fondos/        # Fondos WEBP (16:9)
         │   ├── personajes/{id}/ # Subcarpetas por personaje (fondo transparente)
         │   ├── objetos/       # Objetos WEBP (fondo transparente)
-        │   └── logo/          # Logo y portada de la historia
+        │   ├── logo/          # Logo y portada de la historia
+        │   └── tarjeta/       # Imagen de tarjeta para la biblioteca
         └── audios/            # Archivos de audio de la historia
 ```
 
@@ -92,6 +100,10 @@ main.js (Bootstrap)
   │     │     ├── UIManager          (controles permanentes + logo de carga dinámico)
   │     │     └── AudioManager       (fondo + efectos)
   │     └── (callback: volver a biblioteca)
+  │
+  └── [DevPanel]  ←── lazy, import() dinámico (activación: ?dev=true / Ctrl+Shift+D)
+        ├── GameEngine       (navegación, inspección, callbacks)
+        └── StateManager     (lectura/escritura de estado)
 ```
 
 ## Principios
@@ -215,7 +227,7 @@ GameEngine.#manejarNavegacion(accion, target, tipoTarget):
 ### Comportamiento de reinicio
 
 - **"Reiniciar"** (desde opciones del juego): Vuelve a la pantalla de inicio de la historia actual, NO a la biblioteca.
-- **Botón "Salir"** (desde pantalla de inicio de la historia): Vuelve a la biblioteca.
+- **Botón "Salir"** (desde pantalla de inicio de la historia): Anula `configHistoria` (deja `configActual` en `null`), detiene audio y vuelve a la biblioteca vía callback.
 - **Recarga de página** (F5): Vuelve a la biblioteca (estado fresco).
 
 ---
@@ -230,17 +242,18 @@ No tiene lógica de negocio. Solo:
 - Los instancia en el orden correcto
 - Registra handlers en ChallengeManager
 - Crea GameEngine con dependency injection
-- Crea BibliotecaManager con GameEngine + AudioManager + UIManager
+- Crea BibliotecaManager con GameEngine + AudioManager + UIManager + callback `onMostrarBiblioteca` (para cerrar el DevPanel al volver a la biblioteca)
 - Llama `biblioteca.inicializar()`
+- Detecta activación del DevPanel (`?dev=true` en URL o `Ctrl+Shift+D`) y lo carga con `import()` dinámico. Ambos mecanismos tienen un guard que requiere historia activa (`engine.configActual`) para abrir el panel
 
 ### `BibliotecaManager.js`
 **Rol**: Pantalla de selección de historias ("La Biblioteca del Tío Pier").
 
 | Método | Visibilidad | Descripción |
 |--------|-------------|-------------|
-| `constructor({engine, stateManager, audioManager, uiManager})` | público | Recibe dependencias inyectadas |
+| `constructor({engine, stateManager, audioManager, uiManager, onMostrarBiblioteca?})` | público | Recibe dependencias inyectadas y callback opcional para notificar al volver |
 | `inicializar()` | público | Fetch del catálogo, carga configs, renderiza tarjetas |
-| `mostrar()` | público | Muestra la biblioteca (callback al volver de una historia) |
+| `mostrar()` | público | Muestra la biblioteca, oculta controles UI y ejecuta `onMostrarBiblioteca` si existe |
 | `#renderizarTarjetas(historias)` | privado | Genera botones con portada + overlay + título |
 | `#seleccionarHistoria(config, ruta)` | privado | Verifica si hay partida en curso y dispara modal o carga directa |
 | `#mostrarModalRetomar(config, ruta)` | privado | Genera dinámicamente el modal UI estilo madera |
@@ -261,6 +274,9 @@ No tiene lógica de negocio. Solo:
 | `#manejarNavegacion(...)` | privado | Dispatcher de acciones (navegar/reiniciar) con guard de doble-click |
 | `#reiniciar()` | privado | Limpia estado, re-carga pantalla de inicio de la misma historia |
 | `#precargarSiguientes(opciones)` | privado | Fire-and-forget: precarga JSONs e imágenes de escenas futuras |
+| `get configActual` | público | Getter: devuelve la config de la historia activa (`#configHistoria`) |
+| `onCambioEscena(callback)` | público | Registra un callback `(id, tipo, datos)` invocado tras cada cambio. Retorna función de desuscripción |
+| `navegarA(id, tipo)` | público | Navega programáticamente a una escena o desafío (uso dev/testing). Resetea el guard de doble-click. Si la pantalla de inicio está visible, la oculta e inicializa la UI del juego antes de navegar |
 
 ### `ContentLoader.js`
 **Rol**: Capa de acceso a datos. Centraliza todos los `fetch()` con rutas dinámicas por historia.
@@ -290,6 +306,8 @@ No tiene lógica de negocio. Solo:
 | `tieneRecompensa(nombre)` | Verifica si el jugador tiene una recompensa |
 | `evaluarCondicion(condicion)` | Evalúa condiciones del JSON (ver §9) |
 | `getHistorial()` | Devuelve copia del array de escenas visitadas |
+| `getRecompensas()` | Devuelve copia shallow del objeto de recompensas |
+| `revocarRecompensa(nombre)` | Elimina una recompensa otorgada y persiste |
 | `reiniciar()` | Limpia todo el estado y el localStorage de la historia activa |
 
 **Persistencia por historia**: La clave de `localStorage` es dinámica: `biblioteca_{historiaId}`. Cada historia tiene su estado aislado. El constructor NO restaura estado automáticamente; espera a que `setHistoriaActual()` defina qué historia cargar.
@@ -388,6 +406,41 @@ Usa el **Strategy Pattern**: cada subtipo de desafío tiene un handler registrad
 | `get muteado` | Getter del estado de mute actual |
 
 **Manejo de visibilidad**: El constructor registra un listener de `visibilitychange` que pausa automáticamente el BGM cuando la app pasa a segundo plano (cambio de pestaña, minimizar navegador) y lo reanuda al volver a primer plano. Un flag interno (`#pausadoPorVisibilidad`) distingue la pausa automática de una manual (mute, cambio de escena, etc.) para no interferir con la lógica del juego. Solo se afecta el BGM; los SFX son cortos y fire-and-forget.
+
+### `DevPanel.js`
+**Rol**: Panel de desarrollo para inspección y navegación rápida durante el desarrollo. Carga lazy (dynamic `import()`) — zero-impact en producción.
+
+**Activación**: `?dev=true` en la URL o `Ctrl+Shift+D`. Ambos mecanismos viven en `main.js` y ejecutan el `import('./DevPanel.js')`. `?dev=true` crea el panel y su botón toggle al inicio, pero el botón permanece oculto (vive dentro de `.ui-controles--izquierda`, que arranca con `display: none` en el HTML) hasta que se carga una historia. `Ctrl+Shift+D` tiene un guard que requiere `engine.configActual` — no funciona en la pantalla de biblioteca.
+
+**Inyección de CSS**: `activar()` es `async` y espera a que el `<link>` a `css/dev-panel.css` cargue completamente (`onload`) antes de crear el DOM del panel. Esto evita que se vea la transición CSS de cierre al insertar el panel sin estilos aplicados.
+
+**Persistencia de config**: Usa `sessionStorage` (clave `dev_config`) para recordar los toggles de Configuración Dev (`sinFullscreen`, `sinTransiciones`, `sinAudio`) durante la sesión de la pestaña. Sobrevive recargas (F5), se limpia al cerrar la pestaña.
+
+| Método / Getter | Visibilidad | Descripción |
+|--------|-------------|-------------|
+| `constructor({engine, stateManager})` | público | Recibe dependencias. No crea DOM todavía |
+| `activar()` | público | **Async.** Espera carga del CSS, luego crea DOM, registra listeners, suscribe a cambios de escena |
+| `desactivar()` | público | Remueve DOM, CSS y listeners. Limpia estado |
+| `abrir()` | público | Desliza el panel visible (translateX). Guard: requiere `engine.configActual` (historia activa) |
+| `cerrar()` | público | Oculta el panel con animación de slide-out |
+| `ir(id, tipo)` | público | Atajo de consola: navega a escena/desafío vía `engine.navegarA()` |
+| `estado()` | público | Atajo de consola: imprime estado actual (escena, recompensas, historial) |
+| `otorgar(nombre)` | público | Atajo de consola: otorga recompensa vía `stateManager` |
+| `revocar(nombre)` | público | Atajo de consola: revoca recompensa vía `stateManager` |
+| `get _abierto` | público | Getter booleano del estado visual del panel |
+
+**Secciones del panel** (acordeón colapsable):
+
+| Sección | Contenido |
+|---------|-----------|
+| Navegación Rápida | Input de texto libre para navegar por ID + dos selects (escenas y desafíos desde `historia.json`) con botón "Ir". Resalta la escena activa con ▸ en el dropdown |
+| Inspector de Escena | Vista formateada de la escena/desafío actual: datos básicos (ID, tipo, fondo, audio), elementos, efectos, opciones con evaluación de condiciones en vivo, y respuesta correcta para desafíos. Se actualiza automáticamente vía callback `onCambioEscena` |
+| Inspector de Estado | Escena actual, historial (orden inverso), recompensas con botón ✕ para revocar, input + botón para otorgar nuevas, y botones "Limpiar estado" (historia actual) / "Limpiar todo" (todo el localStorage de biblioteca) |
+| Configuración Dev | Tres toggles funcionales: **Deshabilitar fullscreen** (patchea `Element.prototype.requestFullscreen`), **Deshabilitar transiciones** (setea `--transicion-escena: 0ms`), **Deshabilitar audio** (mutea elementos `<audio>` vía MutationObserver para atrapar los creados dinámicamente) |
+
+**Expuesto en `window.devPanel`** para uso rápido desde la consola del navegador.
+
+**Exclusión PWA**: Los archivos `DevPanel.js` y `dev-panel.css` NO se agregan al Service Worker — son herramientas de desarrollo solamente.
 
 ---
 
