@@ -62,15 +62,8 @@ export class SceneRenderer {
         // ── Capa 0: Fondo ──
         this.#renderizarFondo(datos.fondo);
 
-        // ── Efectos Globales ──
-        if (datos.efectos && datos.efectos.length > 0) {
-            this.#effectsRenderer.renderizar(datos.efectos, this.#escenaEl);
-        }
-
-        // ── Capas N: Elementos ──
-        if (datos.elementos && datos.elementos.length > 0) {
-            this.#renderizarElementos(datos.elementos);
-        }
+        // ── Capas N: Elementos + Efectos (mismo contenedor para z-index compartido) ──
+        this.#renderizarElementos(datos.elementos, datos.efectos);
 
         // ── Texto narrativo ──
         this.#renderizarTexto(datos.texto);
@@ -109,12 +102,24 @@ export class SceneRenderer {
     }
 
     /**
-     * Renderiza los elementos visuales (personajes, objetos).
+     * Renderiza los elementos visuales (personajes, objetos) y los efectos
+     * dentro del mismo contenedor para que compartan stacking context.
      * @param {Array} elementos — Array de elementos del JSON
+     * @param {Array} [efectos] — Array de efectos del JSON
      */
-    #renderizarElementos(elementos) {
+    #renderizarElementos(elementos, efectos) {
         const contenedor = document.createElement('div');
         contenedor.className = 'escena-elementos';
+
+        // Renderizar efectos dentro del contenedor de elementos (sin wrapper)
+        if (efectos && efectos.length > 0) {
+            this.#effectsRenderer.renderizar(efectos, contenedor, { envolver: false });
+        }
+
+        if (!elementos || !elementos.length) {
+            this.#escenaEl.appendChild(contenedor);
+            return;
+        }
 
         for (const elem of elementos) {
             const div = document.createElement('div');

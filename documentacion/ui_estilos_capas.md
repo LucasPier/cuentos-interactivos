@@ -6,9 +6,8 @@ El contenedor `#juego` tiene las siguientes capas visuales, ordenadas por z-inde
 
 | Z-index | Capa | Elemento | Descripción |
 |---------|------|----------|-------------|
-| 0 | Fondo | `#escena` | Composición visual (fondo + personajes) |
-| 5 | Efectos | `.escena-efectos` | Contenedores dinámicos generados por EffectsRenderer |
-| 10 | Elementos | N/A | Reservado para elementos interactivos en escena (`--z-elementos`) |
+| 0 | Fondo | `.escena-fondo` | Imagen de fondo de la escena |
+| 10 | Elementos + Efectos | `.escena-elementos` | Contenedor compartido: efectos (`.efecto-contenedor`, z-index por JSON, default `--z-efectos`: 5) y elementos visuales (`.elemento-visual`, z-index por JSON, default 10). Comparten stacking context para intercalado libre. |
 | 100 | Texto | `#panel-texto` | Texto narrativo con glassmorphism |
 | 200 | Opciones | `#panel-opciones` | Botones de decisión |
 | 300 | Desafío | `#panel-desafio` | Overlay de minijuegos (cuando `.activo`) |
