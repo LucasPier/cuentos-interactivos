@@ -1,12 +1,8 @@
 ---
 name: doc-arquitectura
 description: |
-  Carga la documentación técnica de arquitectura del motor de juego "La Biblioteca del Tío Pier".
-  Activar cuando se mencione o se trabaje sobre: módulos JS, GameEngine, BibliotecaManager,
-  ContentLoader, StateManager, ImagePreloader, SceneRenderer, EffectsRenderer, ChallengeManager,
-  UIManager, AudioManager, main.js, ES Modules, inyección de dependencias, flujo de ejecución,
-  arquitectura del motor, dependencias entre módulos, service worker, PWA, modo offline,
-  Cache First, beforeinstallprompt, estructura de carpetas del proyecto.
+  Carga docs de arquitectura: módulos JS, flujo de ejecución, PWA y service worker.
+  Activar al trabajar sobre módulos JS, GameEngine o la estructura del motor de juego.
 ---
 
 # doc-arquitectura

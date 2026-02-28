@@ -1,8 +1,8 @@
 ---
 name: sync-historia
 description: |
-  Comprueba y sincroniza los textos de los archivos JSON de las escenas con el archivo historia.md de un cuento.
-  Activa cuando el usuario menciona: sincronizar historia, actualizar historia.md con json, chequear diferencias de texto, comparar escenas, recuperar scripts de textos.
+  Sincroniza textos de JSONs de escenas con historia.md.
+  Activar al comparar o actualizar narrativa entre archivos JSON y la documentación.
 ---
 
 # Sync Historia - Sincronizador de Narrativa

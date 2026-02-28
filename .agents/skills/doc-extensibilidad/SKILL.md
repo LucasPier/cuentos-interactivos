@@ -1,11 +1,8 @@
 ---
 name: doc-extensibilidad
 description: |
-  Carga la documentación de formato e extensibilidad de historias de "La Biblioteca del Tío Pier".
-  Activar cuando se mencione o se trabaje sobre: nueva historia, agregar historia, historias.json,
-  historia.json, catálogo de historias, estructura de historia, extensibilidad,
-  nuevo minijuego, nuevo handler, nueva recompensa, nueva variable, BibliotecaManager
-  config, agregar cuento, portada de historia, contrato de datos, formato historia.
+  Carga docs de formato y extensibilidad de historias (historia.json, historias.json).
+  Activar al agregar historias, nuevos handlers, recompensas o expandir el catálogo.
 ---
 
 # doc-extensibilidad

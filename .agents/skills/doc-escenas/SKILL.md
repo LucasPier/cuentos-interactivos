@@ -1,12 +1,8 @@
 ---
 name: doc-escenas
 description: |
-  Carga la documentación del formato JSON de escenas narrativas y desafíos de "La Biblioteca del Tío Pier".
-  Activar cuando se mencione o se trabaje sobre: escena JSON, crear escena, modificar escena,
-  desafío, minijuego, minijuego_observacion, minijuego_clicks, pregunta_real, schema de escena,
-  estructura del JSON, campos de escena, elementos interactivos, opciones de escena,
-  fondo de escena, personajes en escena, texto narrativo JSON, formato desafío,
-  ChallengeHandler, nueva escena.
+  Carga docs del formato JSON de escenas y desafíos/minijuegos.
+  Activar al crear o modificar escenas, desafíos, minijuegos o ChallengeHandlers.
 ---
 
 # doc-escenas

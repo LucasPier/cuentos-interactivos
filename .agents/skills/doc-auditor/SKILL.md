@@ -1,15 +1,8 @@
 ---
 name: doc-auditor
 description: |
-  Audita, corrige y crea documentación del proyecto "La Biblioteca del Tío Pier".
-  Tres modos: auditoría particular (un archivo .md específico), auditoría general
-  (esquema global: GEMINI.md + documentacion/index.md), y documentar nuevo contenido.
-  Nunca modifica nada sin mostrar un draft y recibir aprobación explícita del usuario.
-  Activar cuando el usuario mencione: auditar docs, auditoría documentación,
-  auditar arquitectura.md, auditar formato_escenas.md, auditar GEMINI.md,
-  revisar docs, documento desactualizado, verificar documentación, corregir docs,
-  informe de documentación, documentar skills, crear documentación de X,
-  actualizar la doc, agregar sección de documentación, la doc dice algo incorrecto.
+  Audita, corrige y crea documentación .md del proyecto. Requiere aprobación antes de modificar.
+  Activar al pedir: auditar docs, revisar documentación, corregir doc, documentar algo nuevo.
 ---
 
 # doc-auditor — Auditor y Gestor de Documentación

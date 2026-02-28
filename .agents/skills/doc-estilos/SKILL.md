@@ -1,12 +1,8 @@
 ---
 name: doc-estilos
 description: |
-  Carga la documentación de UI, estilos y capas visuales de "La Biblioteca del Tío Pier".
-  Activar cuando se mencione o se trabaje sobre: CSS, estilos, animaciones, z-index,
-  capas visuales, design tokens, variables CSS, tipografía, layout 16:9, pantalla de inicio,
-  biblioteca visual, botones UI, glassmorphism, keyframes, responsive, transiciones,
-  reset.css, variables.css, layout.css, escena.css, desafios.css, animaciones.css,
-  inicio.css, ui.css.
+  Carga docs de UI, CSS, animaciones y sistema de capas (z-index).
+  Activar al trabajar con estilos, layout, design tokens, keyframes o componentes visuales.
 ---
 
 # doc-estilos

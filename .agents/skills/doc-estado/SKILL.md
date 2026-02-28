@@ -1,11 +1,8 @@
 ---
 name: doc-estado
 description: |
-  Carga la documentación de persistencia, recompensas y condiciones de "La Biblioteca del Tío Pier".
-  Activar cuando se mencione o se trabaje sobre: localStorage, estado del juego, recompensas, flags,
-  condiciones, partida guardada, continuar partida, precarga, cache, ImagePreloader,
-  ContentLoader, evaluación de condiciones, campo `condicion`, `tiene_X`, progreso,
-  guardar avance, inventario, ítems obtenidos.
+  Carga docs de persistencia, recompensas y condiciones del estado del juego.
+  Activar al trabajar con localStorage, flags, partida guardada, recompensas o precarga.
 ---
 
 # doc-estado
