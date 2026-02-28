@@ -367,13 +367,20 @@ Usa el **Strategy Pattern**: cada subtipo de desafío tiene un handler registrad
 ### `AudioManager.js`
 **Rol**: Sistema de audio con reproducción de fondo y efectos dinámica.
 
-- `setRutaBase(ruta)` — actualiza el path relativo base para audios de la historia actual.
-- `reproducirFondo(archivo)` — música de fondo en loop
-- `detenerFondo()` — detiene la música de fondo
-- `reproducirNarracion(archivo)` — narración de la escena
-- `reproducirEfecto(archivo)` — efecto de sonido
-- `detener()` — detiene todo el audio
-- `toggleMute()` — alterna mute global
+| Método / Getter | Descripción |
+|--------|-------------|
+| `setRutaBase(ruta)` | Actualiza el path relativo base para audios de la historia actual |
+| `reproducirFondo(archivo)` | Música de fondo en loop (vol 0.5). Evita reinicio si ya suena el mismo track |
+| `detenerFondo()` | Pausa + reset del BGM actual |
+| `reproducirNarracion(archivo)` | Narración de la escena (stub, pendiente de implementación) |
+| `reproducirEfecto(archivo)` | Efecto de sonido fire-and-forget (vol 0.8). Resuelve ruta con `rutaBase + 'audios/'` |
+| `pausar()` | Pausa el BGM sin destruirlo |
+| `reanudar()` | Reanuda el BGM pausado (si existe y no está muteado) |
+| `detener()` | Alias de `detenerFondo()` |
+| `toggleMute()` | Alterna mute global. Retorna el nuevo estado |
+| `get muteado` | Getter del estado de mute actual |
+
+**Manejo de visibilidad**: El constructor registra un listener de `visibilitychange` que pausa automáticamente el BGM cuando la app pasa a segundo plano (cambio de pestaña, minimizar navegador) y lo reanuda al volver a primer plano. Un flag interno (`#pausadoPorVisibilidad`) distingue la pausa automática de una manual (mute, cambio de escena, etc.) para no interferir con la lógica del juego. Solo se afecta el BGM; los SFX son cortos y fire-and-forget.
 
 ---
 

@@ -21,6 +21,27 @@ export class AudioManager {
     /** Ruta base para resolver archivos de audio */
     #rutaBase = '';
 
+    /** true cuando el BGM fue pausado automáticamente por pérdida de visibilidad */
+    #pausadoPorVisibilidad = false;
+
+    constructor() {
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden) {
+                // App pasó a segundo plano: pausar BGM si está sonando
+                if (this.#bgm && !this.#bgm.paused) {
+                    this.pausar();
+                    this.#pausadoPorVisibilidad = true;
+                }
+            } else {
+                // App volvió a primer plano: reanudar solo si la pausa fue automática
+                if (this.#pausadoPorVisibilidad) {
+                    this.reanudar();
+                    this.#pausadoPorVisibilidad = false;
+                }
+            }
+        });
+    }
+
     /**
      * Configura la ruta base de la historia activa.
      * @param {string} rutaBase
@@ -41,6 +62,7 @@ export class AudioManager {
 
         this.detenerFondo(); // Detener anterior si existe
 
+        this.#pausadoPorVisibilidad = false;
         this.#bgmSrc = archivo;
         this.#bgm = new Audio(archivo);
         this.#bgm.loop = true;
@@ -66,6 +88,7 @@ export class AudioManager {
             this.#bgm = null;
             this.#bgmSrc = null;
         }
+        this.#pausadoPorVisibilidad = false;
     }
 
     /**
@@ -98,6 +121,17 @@ export class AudioManager {
      */
     pausar() {
         if (this.#bgm) this.#bgm.pause();
+    }
+
+    /**
+     * Reanuda la reproducción del BGM si estaba pausado.
+     */
+    reanudar() {
+        if (this.#bgm && this.#bgm.paused && !this.#muteado) {
+            this.#bgm.play().catch(e => {
+                console.log('[AudioManager] Error al reanudar:', e);
+            });
+        }
     }
 
     /**
