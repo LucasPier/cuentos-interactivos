@@ -37,7 +37,13 @@
     "boton_jugar_borde": "#d4a017",
     "boton_jugar_color": "#1a1207",
     "subtitulo_color": "#d1d5db"
-  }
+  },
+  "escenas": [                              // Opcional: lista de IDs de escenas (para DevPanel)
+    "INICIO", "ENTRADA_BOSQUE", "..."
+  ],
+  "desafios": [                             // Opcional: lista de IDs de desafíos (para DevPanel)
+    "DESAFIO_INICIAL", "..."
+  ]
 }
 ```
 

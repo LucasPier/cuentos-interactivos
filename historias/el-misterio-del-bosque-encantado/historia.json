@@ -15,5 +15,46 @@
         "boton_jugar_borde": "#fbbf24",
         "boton_jugar_color": "#0a0f19",
         "subtitulo_color": "#a7f3d0"
-    }
+    },
+    "escenas": [
+        "INICIO",
+        "ENTRADA_BOSQUE",
+        "ZONA_RIO",
+        "ZONA_FLORES",
+        "RIO_DUENDE",
+        "RIO_HABLAR_DUENDE",
+        "RIO_HABLAR_DUENDE_2",
+        "RIO_DUENDE_FALLO",
+        "RIO_DUENDE_RECOMPENSA",
+        "RIO_PUENTE_MAGICO",
+        "RIO_SAPO",
+        "FLORES_PISTAS",
+        "FLORES_PREGUNTAR",
+        "FLORES_CHARCO",
+        "FLORES_CHARCO_VISION",
+        "FLORES_COSQUILLAS",
+        "FLORES_AYUDA_INDI",
+        "FLORES_NO_AYUDA_INDI",
+        "HABLAR_CON_ROMI",
+        "CAMINO_CASA_BRUJA",
+        "CAMINO_SECRETO_CASA_BRUJA",
+        "CASA_BRUJA_EXTERIOR",
+        "INTERIOR_CASA_BRUJA",
+        "ENCUENTRO_TIO_PIER",
+        "ENCUENTRO_TIO_PIER_2",
+        "TIO_PIER_RECOMPENSA",
+        "DECISION_FINAL",
+        "ENCUENTRO_PADRES",
+        "FINAL_BUENO",
+        "FINAL_MALO",
+        "FINAL_SECRETO",
+        "FINAL_CORTO_1",
+        "FINAL_CORTO_2"
+    ],
+    "desafios": [
+        "DESAFIO_INICIAL",
+        "DESAFIO_BUSCAR_HONGO",
+        "DESAFIO_LANZAR_PIEDRA",
+        "DESAFIO_ACERTIJO_DUENDE"
+    ]
 }

@@ -20,7 +20,7 @@ Script de análisis + guía de decisiones para mantener el `service-worker.js` s
 
 - El usuario comiteó o está por commitear archivos nuevos/modificados que deben estar disponibles offline
 - El usuario pregunta explícitamente por el SW o las cachés
-- Aparece la regla de laburo de `GEMINI.md`: *"Si agregás, renombrás o eliminás recursos estáticos, consultá si actualizar el SW"*
+- Aparece la regla de laburo de `AGENTS.md`/`CLAUDE.md`/`GEMINI.md`: *"Si agregás, renombrás o eliminás recursos estáticos, consultá si actualizar el SW"*
 - El usuario pide actualizar un archivo específico en el SW
 
 ---

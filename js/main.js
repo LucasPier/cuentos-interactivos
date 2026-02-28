@@ -57,12 +57,56 @@ document.addEventListener('DOMContentLoaded', () => {
         engine,
         stateManager,
         audioManager,
-        uiManager
+        uiManager,
+        onMostrarBiblioteca: () => {
+            if (devPanel?._abierto) devPanel.cerrar();
+        }
     });
 
     biblioteca.inicializar();
 
     console.log('[main] La Biblioteca del Tío Pier — Motor inicializado ✨');
+
+    // ─── DevPanel: Modo Desarrollo (lazy) ────────────
+
+    let devPanel = null;
+
+    async function activarDevPanel() {
+        if (devPanel) return;
+        const { DevPanel } = await import('./DevPanel.js');
+        devPanel = new DevPanel({ engine, stateManager });
+        await devPanel.activar();
+        window.devPanel = devPanel;
+    }
+
+    function toggleDevPanel() {
+        // No permitir DevPanel si no hay historia cargada
+        if (!engine.configActual) return;
+        if (!devPanel) {
+            activarDevPanel();
+        } else {
+            // Toggle: si está abierto cerrar, si cerrado abrir
+            if (devPanel._abierto) {
+                devPanel.cerrar();
+            } else {
+                devPanel.abrir();
+            }
+        }
+    }
+
+    // Detección por URL (?dev=true)
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('dev') === 'true') {
+        activarDevPanel();
+    }
+
+    // Atajo global: Ctrl+Shift+D
+    document.addEventListener('keydown', (e) => {
+        if (e.ctrlKey && e.shiftKey && e.key === 'D') {
+            e.preventDefault();
+            toggleDevPanel();
+        }
+    });
 
     // 6. Registrar Service Worker para PWA
     if ('serviceWorker' in navigator) {

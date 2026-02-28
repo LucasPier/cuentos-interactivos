@@ -105,6 +105,25 @@ export class StateManager {
     }
 
     /**
+     * Revoca una recompensa del jugador.
+     * @param {string} nombre — Nombre de la recompensa a revocar
+     */
+    revocarRecompensa(nombre) {
+        if (!nombre) return;
+        delete this.#estado.recompensas[nombre];
+        this.#persistir();
+        console.log(`[StateManager] Recompensa revocada: "${nombre}"`);
+    }
+
+    /**
+     * Retorna una copia del objeto de recompensas.
+     * @returns {Object} Copia shallow de recompensas { nombre: true, ... }
+     */
+    getRecompensas() {
+        return { ...this.#estado.recompensas };
+    }
+
+    /**
      * Evalúa una condición del JSON contra el estado actual.
      * 
      * Convención: las condiciones vienen como "tiene_X" donde X

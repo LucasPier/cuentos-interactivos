@@ -1,0 +1,461 @@
+/**
+ * dev-panel.css — Estilos del Panel de Desarrollo.
+ * 
+ * Se carga dinámicamente solo al activar el modo dev.
+ * NO incluir en index.html ni en el Service Worker.
+ */
+
+/* ── Panel principal ─────────────────────────────── */
+
+#panel-dev {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 38%;
+    height: 100%;
+    z-index: var(--z-panel-dev, 1500);
+    background: rgba(10, 15, 25, 0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-left: 1px solid rgba(167, 243, 208, 0.15);
+    color: var(--color-texto-principal, #f0fdf4);
+    font-family: var(--fuente-narrativa, 'Nunito', sans-serif);
+    font-size: 13px;
+    line-height: 1.4;
+    overflow-y: auto;
+    overflow-x: hidden;
+    transform: translateX(0);
+    transition: transform 300ms ease-in-out;
+    display: flex;
+    flex-direction: column;
+}
+
+#panel-dev.dev-panel--cerrado {
+    transform: translateX(100%);
+    pointer-events: none;
+}
+
+/* Scrollbar sutil */
+#panel-dev::-webkit-scrollbar {
+    width: 5px;
+}
+
+#panel-dev::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+#panel-dev::-webkit-scrollbar-thumb {
+    background: rgba(167, 243, 208, 0.2);
+    border-radius: 3px;
+}
+
+/* ── Header del panel ────────────────────────────── */
+
+.dev-panel-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 14px;
+    border-bottom: 1px solid rgba(167, 243, 208, 0.1);
+    flex-shrink: 0;
+}
+
+.dev-panel-header h2 {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--color-texto-secundario, #a7f3d0);
+    letter-spacing: 0.5px;
+}
+
+.dev-panel-cerrar {
+    background: none;
+    border: none;
+    color: var(--color-texto-secundario, #a7f3d0);
+    font-size: 18px;
+    cursor: pointer;
+    padding: 2px 6px;
+    border-radius: 4px;
+    transition: background 200ms;
+}
+
+.dev-panel-cerrar:hover {
+    background: rgba(167, 243, 208, 0.1);
+}
+
+/* ── Secciones colapsables (acordeón) ────────────── */
+
+.dev-seccion {
+    border-bottom: 1px solid rgba(167, 243, 208, 0.08);
+}
+
+.dev-seccion-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 14px;
+    cursor: pointer;
+    user-select: none;
+    transition: background 200ms;
+}
+
+.dev-seccion-header:hover {
+    background: rgba(167, 243, 208, 0.05);
+}
+
+.dev-seccion-header h3 {
+    margin: 0;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: var(--color-texto-secundario, #a7f3d0);
+}
+
+.dev-seccion-flecha {
+    font-size: 10px;
+    transition: transform 200ms;
+    color: var(--color-texto-secundario, #a7f3d0);
+}
+
+.dev-seccion.abierta .dev-seccion-flecha {
+    transform: rotate(90deg);
+}
+
+.dev-seccion-contenido {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 300ms ease;
+    padding: 0 14px;
+}
+
+.dev-seccion.abierta .dev-seccion-contenido {
+    max-height: 2000px;
+    padding: 6px 14px 12px;
+}
+
+/* ── Elementos de formulario ─────────────────────── */
+
+.dev-fila {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 8px;
+    align-items: center;
+}
+
+.dev-fila-vertical {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-bottom: 8px;
+}
+
+.dev-input {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(167, 243, 208, 0.15);
+    border-radius: 6px;
+    color: var(--color-texto-principal, #f0fdf4);
+    font-family: 'Consolas', 'Monaco', monospace;
+    font-size: 12px;
+    padding: 5px 8px;
+    outline: none;
+    transition: border-color 200ms;
+}
+
+.dev-input:focus {
+    border-color: rgba(167, 243, 208, 0.4);
+}
+
+.dev-select {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(167, 243, 208, 0.15);
+    border-radius: 6px;
+    color: var(--color-texto-principal, #f0fdf4);
+    font-family: 'Consolas', 'Monaco', monospace;
+    font-size: 12px;
+    padding: 5px 8px;
+    outline: none;
+    cursor: pointer;
+}
+
+.dev-select option {
+    background: #0a0f19;
+    color: #f0fdf4;
+}
+
+.dev-btn {
+    background: rgba(167, 243, 208, 0.12);
+    border: 1px solid rgba(167, 243, 208, 0.2);
+    border-radius: 6px;
+    color: var(--color-texto-secundario, #a7f3d0);
+    font-family: var(--fuente-narrativa, 'Nunito', sans-serif);
+    font-size: 11px;
+    font-weight: 600;
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: background 200ms, border-color 200ms;
+    white-space: nowrap;
+}
+
+.dev-btn:hover {
+    background: rgba(167, 243, 208, 0.2);
+    border-color: rgba(167, 243, 208, 0.35);
+}
+
+.dev-btn--peligro {
+    color: #fca5a5;
+    border-color: rgba(252, 165, 165, 0.2);
+    background: rgba(252, 165, 165, 0.08);
+}
+
+.dev-btn--peligro:hover {
+    background: rgba(252, 165, 165, 0.18);
+    border-color: rgba(252, 165, 165, 0.35);
+}
+
+.dev-btn--primario {
+    color: #0a0f19;
+    background: var(--color-texto-secundario, #a7f3d0);
+    border-color: var(--color-texto-secundario, #a7f3d0);
+}
+
+.dev-btn--primario:hover {
+    opacity: 0.85;
+}
+
+/* ── Labels ──────────────────────────────────────── */
+
+.dev-label {
+    font-size: 11px;
+    font-weight: 600;
+    color: rgba(167, 243, 208, 0.6);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 2px;
+}
+
+/* ── Dato (key: value) ───────────────────────────── */
+
+.dev-dato {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 4px;
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.dev-dato-key {
+    color: rgba(167, 243, 208, 0.5);
+    white-space: nowrap;
+    min-width: 70px;
+}
+
+.dev-dato-value {
+    color: var(--color-texto-principal, #f0fdf4);
+    font-family: 'Consolas', 'Monaco', monospace;
+    word-break: break-all;
+}
+
+/* ── Listas ──────────────────────────────────────── */
+
+.dev-lista {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    max-height: 150px;
+    overflow-y: auto;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 6px;
+    border: 1px solid rgba(167, 243, 208, 0.06);
+}
+
+.dev-lista li {
+    padding: 3px 8px;
+    font-size: 11px;
+    font-family: 'Consolas', 'Monaco', monospace;
+    border-bottom: 1px solid rgba(167, 243, 208, 0.04);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 4px;
+}
+
+.dev-lista li:last-child {
+    border-bottom: none;
+}
+
+.dev-lista-actual {
+    color: var(--color-texto-secundario, #a7f3d0);
+    font-weight: 700;
+}
+
+/* ── Opciones inspector ──────────────────────────── */
+
+.dev-opcion {
+    padding: 4px 8px;
+    margin-bottom: 3px;
+    border-radius: 4px;
+    font-size: 11px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(167, 243, 208, 0.06);
+}
+
+.dev-opcion--oculta {
+    opacity: 0.45;
+    border-color: rgba(252, 165, 165, 0.15);
+}
+
+.dev-opcion-condicion {
+    font-size: 10px;
+    color: #fca5a5;
+    font-style: italic;
+}
+
+.dev-opcion-target {
+    font-size: 10px;
+    color: rgba(167, 243, 208, 0.5);
+    font-family: 'Consolas', 'Monaco', monospace;
+}
+
+/* ── Respuesta correcta ─────────────────────────── */
+
+.dev-respuesta-correcta {
+    background: rgba(74, 222, 128, 0.08);
+    border: 1px solid rgba(74, 222, 128, 0.2);
+    border-radius: 6px;
+    padding: 6px 10px;
+    margin-bottom: 6px;
+    font-size: 12px;
+}
+
+.dev-respuesta-correcta strong {
+    color: #4ade80;
+}
+
+/* ── Recompensas ─────────────────────────────────── */
+
+.dev-recompensa {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 3px 8px;
+    font-size: 11px;
+    font-family: 'Consolas', 'Monaco', monospace;
+}
+
+.dev-recompensa-borrar {
+    background: none;
+    border: none;
+    color: #fca5a5;
+    cursor: pointer;
+    font-size: 14px;
+    padding: 0 2px;
+    line-height: 1;
+}
+
+.dev-recompensa-borrar:hover {
+    color: #f87171;
+}
+
+/* ── Toggles (switch) ────────────────────────────── */
+
+.dev-toggle-fila {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 6px 0;
+    border-bottom: 1px solid rgba(167, 243, 208, 0.05);
+}
+
+.dev-toggle-fila:last-child {
+    border-bottom: none;
+}
+
+.dev-toggle-label {
+    font-size: 12px;
+    color: var(--color-texto-principal, #f0fdf4);
+}
+
+.dev-toggle {
+    position: relative;
+    width: 36px;
+    height: 20px;
+    flex-shrink: 0;
+}
+
+.dev-toggle input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.dev-toggle-slider {
+    position: absolute;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 200ms;
+}
+
+.dev-toggle-slider::before {
+    content: '';
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    left: 2px;
+    bottom: 2px;
+    background: #f0fdf4;
+    border-radius: 50%;
+    transition: transform 200ms;
+}
+
+.dev-toggle input:checked + .dev-toggle-slider {
+    background: var(--color-texto-secundario, #a7f3d0);
+}
+
+.dev-toggle input:checked + .dev-toggle-slider::before {
+    transform: translateX(16px);
+}
+
+/* ── Mensaje "sin historia" ──────────────────────── */
+
+.dev-sin-historia {
+    text-align: center;
+    padding: 16px;
+    color: rgba(167, 243, 208, 0.4);
+    font-style: italic;
+    font-size: 12px;
+}
+
+/* ── Separador ───────────────────────────────────── */
+
+.dev-separador {
+    height: 1px;
+    background: rgba(167, 243, 208, 0.08);
+    margin: 8px 0;
+}
+
+/* ── Botón toggle en la UI (🛠️) ──────────────────── */
+
+#btn-dev-panel {
+    /* Hereda estilos de .ui-controles button via cascada */
+    cursor: pointer;
+}
+
+/* ── Responsive ──────────────────────────────────── */
+
+@media (max-width: 768px) {
+    #panel-dev {
+        width: 60%;
+    }
+}
+
+@media (max-width: 480px) {
+    #panel-dev {
+        width: 75%;
+        font-size: 12px;
+    }
+}

@@ -46,6 +46,7 @@ El motor usa **ES Modules nativos** con inyección de dependencias. Todos los m�
 | `ChallengeManager.js` | Registry de handlers de desafíos (Strategy Pattern) |
 | `UIManager.js` | Controles permanentes + **Logo de carga dinámico** |
 | `AudioManager.js` | Sistema de audio (fondo, narración, efectos) |
+| `DevPanel.js` | Panel de desarrollo: lazy, zero-impact en producción (`?dev=true` / `Ctrl+Shift+D`) |
 
 ### Challenge Handlers (`/js/challenges/`)
 
@@ -70,6 +71,7 @@ Para agregar un nuevo tipo: crear handler con método `ejecutar(datos, panelEl, 
 | `inicio.css` | Pantalla de inicio: overlay, título dorado, botón "Jugar" con shimmer, luciérnagas |
 | `biblioteca.css` | Estilos visuales de la pantalla de selección de historias |
 | `ui.css` | Estados toggle de botones |
+| `dev-panel.css` | Panel de desarrollo: glassmorphism, slide-in, acordeón (cargado dinámicamente) |
 
 ### Sistema de Capas (Z-index)
 
@@ -84,6 +86,7 @@ Para agregar un nuevo tipo: crear handler con método `ejecutar(datos, panelEl, 
 | 1050 | `#pantalla-biblioteca` | Selección de historias |
 | 1100 | `.ui-controles` | Botones permanentes |
 | 1200 | `#indicador-carga` | Logo de la historia (animado) |
+| 1500 | `#panel-dev` | Panel de desarrollo (solo en modo dev) |
 
 ### Flujo Principal
 
@@ -166,6 +169,7 @@ El proyecto cuenta con skills específicas inyectadas automáticamente en tu con
 5.  **Contenido en JSON:** La narrativa, configuración de desafíos y lógica de ramificación viven en los JSONs, NO hardcodeadas en JavaScript.
 6.  **Documentación:** Ante cambios significativos en módulos, actualizar los archivos de la carpeta `documentacion/`. No se debe dejar registro de "cómo era antes" sino solo importa cómo queda el proyecto actual.
 7.  **Consultas PWA:** Si agregás, renombrás o eliminás recursos estáticos (imágenes, audios o JSONs) o creás una historia nueva, ESTÁS OBLIGADO a preguntarle al usuario si debés actualizar el caché del `service-worker.js`. De lo contrario el juego quedará roto al abrirse modo avión. No asumas ni ejecutes modificaciones enteras al SW en silencio.
+8.  **Navegador con DevPanel:** Si usás una herramienta que abre el proyecto en un navegador, agregá el parámetro `?dev=true` a la URL (o activalo con `Ctrl+Shift+D` una vez cargado). Esto habilita el **Panel de Desarrollo**, que te da visibilidad del estado actual, escena, recompensas y herramientas de depuración sin tocar la consola.
 
 ---
 *Si sos una IA y estás leyendo esto: Portate bien, consultá antes de tocar los documentos de planificación, y tené siempre en cuenta que el voseo y el tono rioplatense son innegociables para mantener la identidad del proyecto.*

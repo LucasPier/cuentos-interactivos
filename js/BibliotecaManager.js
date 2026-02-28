@@ -29,18 +29,23 @@ export class BibliotecaManager {
     /** @type {Event|null} */
     #eventoInstalacion = null;
 
+    /** @type {function|null} Callback ejecutado al mostrar la biblioteca */
+    #onMostrarBiblioteca = null;
+
     /**
      * @param {object} deps — Dependencias inyectadas
      * @param {import('./GameEngine.js').GameEngine} deps.engine
      * @param {import('./StateManager.js').StateManager} deps.stateManager
      * @param {import('./AudioManager.js').AudioManager} deps.audioManager
      * @param {import('./UIManager.js').UIManager} deps.uiManager
+     * @param {function} [deps.onMostrarBiblioteca] — Callback ejecutado al mostrar la biblioteca
      */
-    constructor({ engine, stateManager, audioManager, uiManager }) {
+    constructor({ engine, stateManager, audioManager, uiManager, onMostrarBiblioteca }) {
         this.#engine = engine;
         this.#stateManager = stateManager;
         this.#audioManager = audioManager;
         this.#uiManager = uiManager;
+        this.#onMostrarBiblioteca = onMostrarBiblioteca || null;
         this.#pantallaEl = document.getElementById('pantalla-biblioteca');
         this.#contenedorHistorias = document.getElementById('biblioteca-historias');
         this.#btnInstalarPWA = document.getElementById('btn-instalar-pwa');
@@ -99,6 +104,7 @@ export class BibliotecaManager {
         this.#uiManager.ocultarControles();
         document.getElementById('panel-texto').style.display = 'none';
         document.getElementById('panel-opciones').style.display = 'none';
+        if (this.#onMostrarBiblioteca) this.#onMostrarBiblioteca();
     }
 
     /**

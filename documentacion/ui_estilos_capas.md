@@ -15,6 +15,7 @@ El contenedor `#juego` tiene las siguientes capas visuales, ordenadas por z-inde
 | 1050 | Biblioteca | `#pantalla-biblioteca` | Selección de historias |
 | 1100 | UI | `.ui-controles` | Botones permanentes (toggle texto, mute) |
 | 1200 | Carga | `#indicador-carga` | Logo de la historia con animación fade-loop |
+| 1500 | DevPanel | `#panel-dev` | Panel de desarrollo (lazy, solo en modo dev) |
 
 ---
 
@@ -33,6 +34,7 @@ El contenedor `#juego` tiene las siguientes capas visuales, ordenadas por z-inde
 | `animaciones.css` | `@keyframes` para float, bounce, shake, pulse, fadeIn/fadeOut, partículas del final secreto |
 | `inicio.css` | Estilos para pantalla de inicio dinámica: overlay, logo, botón "Jugar" con shimmer, luciérnagas |
 | `ui.css` | Estados de los botones toggle (texto visible/oculto) |
+| `dev-panel.css` | Panel de desarrollo: glassmorphism, slide-in, acordeón, responsive (cargado dinámicamente) |
 
 ### Paleta de colores
 
@@ -198,6 +200,14 @@ Aplica una rutina de movimiento o de brillo constante a la etiqueta `<img>` inte
 - Emoji: ⛶ (normal) / ✕ (fullscreen).
 - Alterna el modo pantalla completa mediante `document.documentElement.requestFullscreen()`.
 - Responde nativamente a cambios externos (como la tecla ESC o F11) vía el evento `fullscreenchange`.
+
+### Botón DevPanel (`#btn-dev-panel`)
+
+- Posición: esquina inferior derecha.
+- Emoji: 🛠️.
+- Solo existe cuando el DevPanel está activado (modo dev).
+- Alterna apertura/cierre del panel de desarrollo.
+- Usa la misma clase `.btn-ui` con glassmorphism circular.
 
 ### Los tres son botones circulares (48px) con glassmorphism:
 

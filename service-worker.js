@@ -4,13 +4,13 @@
     const VERSION_APP = "1.1.0";
 
     // Versiones de caché
-    const CACHE_BIBLIOTECA = '1',
-        CACHE_CSS = '2',
-        CACHE_JS = '2',
+    const CACHE_BIBLIOTECA = '2',
+        CACHE_CSS = '3',
+        CACHE_JS = '3',
         CACHE_CHALLENGES = '1',
         CACHE_EMBE_IMAGENES = '2',
         CACHE_EMBE_AUDIOS = '1',
-        CACHE_EMBE_DATOS = '2',
+        CACHE_EMBE_DATOS = '3',
         CACHE_FONTS = '1';
 
     const NOMBRE_CACHE_FONTS = `cache-fonts-v${CACHE_FONTS}`;
