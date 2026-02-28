@@ -174,7 +174,8 @@ GameEngine.#cargarEscena(id):
      a. Fade-out de escena anterior (opacity → 0, delay 400ms)
      b. Limpia DOM previo
      c. Renderiza fondo como <img> dentro de .escena-fondo
-     d. Renderiza elementos (personajes/objetos) con posición por CSS custom properties
+     d. Renderiza elementos + efectos en un solo contenedor .escena-elementos
+        (comparten stacking context para z-index independiente por cada uno)
      e. Renderiza texto narrativo en #panel-texto
      f. Renderiza opciones filtradas por condición en #panel-opciones
      g. Delay 50ms (para que el browser pinte)
@@ -323,7 +324,7 @@ No tiene lógica de negocio. Solo:
 
 **Composición por capas**:
 1. `#renderizarFondo(nombre)` → `<div class="escena-fondo"><img></div>`
-2. `#renderizarElementos(elementos)` → `<div class="escena-elementos">` con elementos posicionados
+2. `#renderizarElementos(elementos, efectos)` → `<div class="escena-elementos">` con efectos y elementos posicionados en el mismo stacking context
 3. `#renderizarTexto(texto)` → actualiza `.texto-narrativo`
 4. `#renderizarOpciones(opciones, state, callback)` → botones filtrados por condición
 
@@ -362,7 +363,13 @@ Usa el **Strategy Pattern**: cada subtipo de desafío tiene un handler registrad
 **Indicador de carga dinámico**: En lugar de un spinner genérico, muestra el logo de la historia activa con una animación `fade-loop` (opacity + scale). El src se actualiza vía `setLogoCarga()` cuando se carga una historia.
 
 ### `EffectsRenderer.js`
-**Rol**: Capa visual dinámica responsable de crear contenedores DOM interactivos basados en la configuración "efectos" del JSON, manejando parámetros de posicionamiento (`--x, --y, --ancho, --alto, --z-index`), animaciones y partículas (ej: `.particula-luciernaga`).
+**Rol**: Procesador de efectos visuales dinámicos (luciérnagas, polvo de hadas, nieve, destellos). Crea contenedores `.efecto-contenedor` con partículas posicionadas via custom properties (`--x, --y, --ancho, --alto, --z-index`).
+
+| Método | Descripción |
+|--------|-------------|
+| `renderizar(efectos, padre, { envolver })` | Crea los efectos. Con `envolver: true` (default), los envuelve en un `<div class="escena-efectos">` (usado por desafíos). Con `envolver: false`, appenda los `.efecto-contenedor` directo al padre (usado por escenas, para compartir stacking context con los elementos). |
+
+**Uso dual**: `SceneRenderer` lo llama con `{ envolver: false }` para que efectos y elementos compartan z-index dentro de `.escena-elementos`. `ChallengeManager` lo llama sin opciones (default `envolver: true`) para mantener el wrapper `.escena-efectos` dentro de `#panel-desafio`.
 
 ### `AudioManager.js`
 **Rol**: Sistema de audio con reproducción de fondo y efectos dinámica.

@@ -37,10 +37,10 @@
     bottom: calc((100 - var(--y)) * 1%);
     width: calc(var(--ancho) * 1%);
     height: calc(var(--alto, 100) * 1%);
-    /* El alto puede desbordar o ser al 100% de la escena para permitir que partículas caigan/suban libremente */
-    z-index: var(--z-index);
+    z-index: var(--z-index, var(--z-efectos));
     transform: translateX(-50%);
     pointer-events: none;
+    overflow: hidden;
 }
 
 /* ---- Contenedor de elementos (personajes/objetos) ---- */

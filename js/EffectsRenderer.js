@@ -13,26 +13,40 @@ export class EffectsRenderer {
      * Si no hay efectos o el array está vacío, no hace nada.
      * @param {Array} efectos - Configuración desde el JSON
      * @param {HTMLElement} contenedorPadre - `#escena` o `#panel-desafio`
-     * @returns {HTMLElement|null} El nodo `.escena-efectos` creado, o null
+     * @param {object} [opciones] - Opciones de renderizado
+     * @param {boolean} [opciones.envolver=true] - Si true, crea un wrapper `.escena-efectos`.
+     *        Si false, appenda los `.efecto-contenedor` directamente al padre.
+     * @returns {HTMLElement|HTMLElement[]|null} El nodo `.escena-efectos` (envolver=true),
+     *          array de `.efecto-contenedor` (envolver=false), o null si no hay efectos.
      */
-    renderizar(efectos, contenedorPadre) {
+    renderizar(efectos, contenedorPadre, { envolver = true } = {}) {
         if (!efectos || !efectos.length) return null;
 
-        const containerEfectos = document.createElement('div');
-        containerEfectos.className = 'escena-efectos';
+        // Contenedor destino: wrapper .escena-efectos o directamente el padre
+        const destino = envolver
+            ? document.createElement('div')
+            : contenedorPadre;
+
+        if (envolver) destino.className = 'escena-efectos';
+
+        const contenedoresCreados = [];
 
         for (const config of efectos) {
             if (config.tipo === 'luciérnagas') {
-                this.#crearLuciernagas(config, containerEfectos);
+                contenedoresCreados.push(this.#crearLuciernagas(config, destino));
             } else if (config.tipo === 'polvo_hadas' || config.tipo === 'nieve') {
-                this.#crearPolvoHadas(config, containerEfectos);
+                contenedoresCreados.push(this.#crearPolvoHadas(config, destino));
             } else if (config.tipo === 'destellos' || config.tipo === 'sparkles') {
-                this.#crearDestellos(config, containerEfectos);
+                contenedoresCreados.push(this.#crearDestellos(config, destino));
             }
         }
 
-        contenedorPadre.appendChild(containerEfectos);
-        return containerEfectos;
+        if (envolver) {
+            contenedorPadre.appendChild(destino);
+            return destino;
+        }
+
+        return contenedoresCreados;
     }
 
     /**
@@ -71,6 +85,7 @@ export class EffectsRenderer {
         }
 
         mainContainer.appendChild(wrapper);
+        return wrapper;
     }
 
     /**
@@ -110,6 +125,7 @@ export class EffectsRenderer {
         }
 
         mainContainer.appendChild(wrapper);
+        return wrapper;
     }
 
     /**
@@ -142,6 +158,7 @@ export class EffectsRenderer {
         }
 
         mainContainer.appendChild(wrapper);
+        return wrapper;
     }
 
     // --- Helpers Utilitarios ---

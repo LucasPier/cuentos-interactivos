@@ -29,6 +29,10 @@ Utilizado para escenas narrativas, diálogos y menús de decisión.
     // { "tipo": "luciérnagas", "estilo": { "x": 50, "y": 100, "ancho": 100, "z_index": 5 }, "cantidad": 15, "color": "dorado" }
     // { "tipo": "polvo_hadas", "estilo": { "x": 50, "y": 100, "ancho": 100, "z_index": 5 }, "cantidad": 30, "color": "blanco", "tamano": "3px" }
     // { "tipo": "destellos", "estilo": { "x": 50, "y": 50, "ancho": 20, "alto": 20, "z_index": 10 }, "cantidad": 5, "color": "cyan-bio", "tamano": "8px" }
+    // Nota: en escenas, los efectos y elementos comparten stacking context
+    // dentro de .escena-elementos. Un efecto con z_index menor al z_index de
+    // un elemento aparecerá detrás de él, y viceversa.
+    // Default: efectos z_index=5, elementos z_index=10.
   ],
   "elementos": [ 
     // Array de elementos visuales superpuestos (Personajes, Objetos)

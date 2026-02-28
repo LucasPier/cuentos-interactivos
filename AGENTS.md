@@ -75,9 +75,8 @@ Para agregar un nuevo tipo: crear handler con método `ejecutar(datos, panelEl, 
 
 | Z | Elemento | Función |
 |---|----------|---------|
-| 0 | `#escena` | Composición visual (fondo base) |
-| 5 | `.efecto` | Capa de partículas y efectos visuales (EffectsRenderer) |
-| 10 | `.elemento-escena` | Personajes y objetos interactivos |
+| 0 | `.escena-fondo` | Imagen de fondo de la escena |
+| 10 | `.escena-elementos` | Contenedor compartido de efectos (`.efecto-contenedor`, z default 5) y elementos visuales (`.elemento-visual`, z default 10) |
 | 100 | `#panel-texto` | Texto narrativo |
 | 200 | `#panel-opciones` | Botones de decisión |
 | 300 | `#panel-desafio` | Overlay de minijuegos |
