@@ -135,8 +135,14 @@ Reglas Globales (Aplican a todas las historias):
 
 ## Agent Skills (Herramientas IA)
 
-El proyecto cuenta con skills específicas inyectadas automáticamente en tu contexto para asistir en el desarrollo y mantenimiento (como las de documentación `doc-*`, despliegue, etc.). 
+El proyecto cuenta con skills específicas inyectadas automáticamente en tu contexto para asistir en el desarrollo y mantenimiento.
 **Regla:** Revisá siempre tu lista de `<skills>` disponibles y **usá estas herramientas nativas** del proyecto antes de intentar resolver tareas complejas a ciegas o leyendo archivos manualmente.
+
+| Skill | Rol |
+|-------|-----|
+| `docs` | **Documentación integral:** consultar, auditar, corregir, crear y sincronizar toda la documentación técnica y narrativa del proyecto |
+| `dev-server` | Levantar servidor HTTP local para servir el proyecto |
+| `sw-updater` | Gestionar actualizaciones del caché en `service-worker.js` |
 
 ## Referencia de Documentación
 

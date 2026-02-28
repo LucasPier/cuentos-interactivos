@@ -34,13 +34,12 @@ El agente debe ir a fondo en UN documento. Verificar:
 
 El agente verifica el esquema global, **de a un documento a la vez**.
 
-### Sobre `GEMINI.md`
+### Sobre `AGENTS.md`
 
 | Sección | Qué verificar | Fuente de verdad |
 |---------|---------------|------------------|
 | Tabla de Módulos JS | Todos los `.js` en `/js/` presentes y con rol correcto | `ls js/` |
 | Tabla de Challenge Handlers | Todos los handlers en `js/challenges/` | `ls js/challenges/` |
-| Tabla de Skills | Todas las skills del proyecto listadas | `ls .agent/skills/` |
 | Tabla de CSS | Todos los archivos en `/css/` con descripción correcta | `ls css/` |
 | Flujo Macro | Coincide con la implementación real de `main.js` | `js/main.js` |
 | Sistema de Capas (Z-index) | Valores de z-index coinciden con `variables.css` | `css/variables.css` |

@@ -6,15 +6,14 @@ Para cada documento, se indica qué debe verificarse y cuáles son las fuentes d
 
 ## Documentos del Proyecto
 
-### `GEMINI.md`
-**Ruta:** `d:/xampp/htdocs/cuentos-interactivos/GEMINI.md`
+### `AGENTS.md`
+**Ruta:** `AGENTS.md` (raíz del proyecto)
 **Rol:** Instrucciones globales para agentes. Resumen de arquitectura, stack, convenciones y reglas.
 
 | Sección a verificar | Fuentes de verdad |
 |--------------------|-------------------|
 | Tabla de Módulos JS | `js/*.js` (listar y comparar) |
 | Tabla de Challenge Handlers | `js/challenges/*.js` |
-| Tabla de Skills | `.agent/skills/*/SKILL.md` |
 | Tabla de CSS | `css/*.css` |
 | Tabla de Documentación (footer) | `documentacion/*.md` |
 | Flujo Macro | `js/main.js` |
@@ -24,7 +23,7 @@ Para cada documento, se indica qué debe verificarse y cuáles son las fuentes d
 ---
 
 ### `documentacion/index.md`
-**Ruta:** `d:/xampp/htdocs/cuentos-interactivos/documentacion/index.md`
+**Ruta:** `documentacion/index.md`
 **Rol:** Índice de navegación. Primer archivo que debe leer un agente nuevo.
 
 | Qué verificar | Fuente de verdad |
@@ -36,7 +35,7 @@ Para cada documento, se indica qué debe verificarse y cuáles son las fuentes d
 ---
 
 ### `documentacion/arquitectura.md`
-**Ruta:** `d:/xampp/htdocs/cuentos-interactivos/documentacion/arquitectura.md`
+**Ruta:** `documentacion/arquitectura.md`
 **Rol:** Arquitectura del motor: módulos JS, inyección de dependencias, PWA, flujo de ejecución.
 
 | Sección a verificar | Fuentes de verdad |
@@ -51,7 +50,7 @@ Para cada documento, se indica qué debe verificarse y cuáles son las fuentes d
 ---
 
 ### `documentacion/ui_estilos_capas.md`
-**Ruta:** `d:/xampp/htdocs/cuentos-interactivos/documentacion/ui_estilos_capas.md`
+**Ruta:** `documentacion/ui_estilos_capas.md`
 **Rol:** Sistema de capas (Z-index), archivos CSS, design tokens, animaciones.
 
 | Sección a verificar | Fuentes de verdad |
@@ -65,7 +64,7 @@ Para cada documento, se indica qué debe verificarse y cuáles son las fuentes d
 ---
 
 ### `documentacion/estado_recompensas.md`
-**Ruta:** `d:/xampp/htdocs/cuentos-interactivos/documentacion/estado_recompensas.md`
+**Ruta:** `documentacion/estado_recompensas.md`
 **Rol:** localStorage, recompensas, flags, evaluación de condiciones, precarga.
 
 | Sección a verificar | Fuentes de verdad |
@@ -80,7 +79,7 @@ Para cada documento, se indica qué debe verificarse y cuáles son las fuentes d
 ---
 
 ### `documentacion/formato_escenas.md`
-**Ruta:** `d:/xampp/htdocs/cuentos-interactivos/documentacion/formato_escenas.md`
+**Ruta:** `documentacion/formato_escenas.md`
 **Rol:** Schema JSON de escenas narrativas y desafíos.
 
 | Sección a verificar | Fuentes de verdad |
@@ -95,7 +94,7 @@ Para cada documento, se indica qué debe verificarse y cuáles son las fuentes d
 ---
 
 ### `documentacion/formato_historia.md`
-**Ruta:** `d:/xampp/htdocs/cuentos-interactivos/documentacion/formato_historia.md`
+**Ruta:** `documentacion/formato_historia.md`
 **Rol:** Estructura de `historias.json`, `historia.json`, guía de extensibilidad.
 
 | Sección a verificar | Fuentes de verdad |
