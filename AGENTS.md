@@ -141,6 +141,7 @@ El proyecto cuenta con skills específicas inyectadas automáticamente en tu con
 | Skill | Rol |
 |-------|-----|
 | `docs` | **Documentación integral:** consultar, auditar, corregir, crear y sincronizar toda la documentación técnica y narrativa del proyecto |
+| `code-auditor` | **Auditoría de código:** detectar bugs, hardcodeos, magic numbers, inconsistencias, dead code y oportunidades de refactorización |
 | `dev-server` | Levantar servidor HTTP local para servir el proyecto |
 | `sw-updater` | Gestionar actualizaciones del caché en `service-worker.js` |
 
