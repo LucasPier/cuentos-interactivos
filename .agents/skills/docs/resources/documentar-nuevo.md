@@ -16,7 +16,7 @@ Antes de escribir una sola línea, hacerse estas preguntas:
 - ¿Es algo completamente nuevo (ej. skills, workflows, un sistema transversal)? → evaluar si requiere **archivo nuevo**
 
 **¿Existe algo similar ya documentado?**
-- Buscar en `documentacion/index.md` y `GEMINI.md`
+- Buscar en `documentacion/index.md` y `AGENTS.md`
 - Si ya existe, proponer agregar una sección al doc existente (no crear duplicados)
 
 ---
@@ -57,9 +57,8 @@ Antes de escribir una sola línea, hacerse estas preguntas:
 Antes de dar por finalizada la documentación nueva, verificar:
 
 - [ ] **¿Requiere entrada nueva en `documentacion/index.md`?** → Si es un archivo nuevo en `documentacion/`, SÍ
-- [ ] **¿Requiere actualización en `GEMINI.md`?** → Si documenta un módulo, skill, o sistema nuevo que aparece en las tablas de GEMINI.md, SÍ
+- [ ] **¿Requiere actualización en `AGENTS.md`?** → Si documenta un módulo, skill, o sistema nuevo que aparece en las tablas de AGENTS.md, SÍ
 - [ ] **¿Hay referencias en otros docs que deberían apuntar a este nuevo contenido?** → Proponer actualizarlas
-- [ ] **¿Hay skills en `.agent/skills/` cuyo SKILL.md debería ser actualizado?** → Si la nueva doc es relevante para una skill existente
 
 ---
 

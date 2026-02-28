@@ -1,15 +1,8 @@
 ---
 name: sw-updater
 description: |
-  Actualiza el service-worker.js de "La Biblioteca del Tío Pier".
-  Detecta la rama git actual y analiza los archivos a impactar:
-  en `main` analiza solo los cambios sin commitear; en cualquier otra
-  rama analiza además todos los cambios commiteados vs main, reflejando
-  el impacto total del merge futuro. Pregunta siempre antes de modificar VERSION_APP.
-  Activar cuando el usuario mencione: actualizar service worker, actualizar SW,
-  actualizar caché PWA, nuevo recurso al SW, nuevo archivo offline, bump caché,
-  versión service worker, archivo huérfano en caché, nueva historia al SW,
-  modo avión roto, PWA no actualiza, service-worker.js, agregar al caché.
+  Actualiza service-worker.js analizando archivos impactados según rama git actual.
+  Pregunta antes de modificar VERSION_APP. Activar al gestionar caché PWA, resources offline o bump de versión.
 ---
 
 # sw-updater — Actualizador del Service Worker

@@ -1,11 +1,8 @@
 ---
 name: dev-server
 description: |
-  Levanta un servidor HTTP local con Python para servir el proyecto "La Biblioteca del Tío Pier".
-  Activar cuando el usuario pida: iniciar servidor, levantar servidor, abrir el proyecto en el navegador,
-  servidor de desarrollo, probar en el browser, correr el servidor, lanzar servidor, servidor local,
-  ver el proyecto, abrir la app, iniciar la app, http.server, python server, servidor python,
-  dev server, servidor de prueba.
+  Levanta servidor HTTP local (Python) para servir el proyecto.
+  Activar al pedir: servidor, dev server, abrir en navegador, probar en el browser.
 ---
 
 # dev-server
