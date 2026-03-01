@@ -13,7 +13,8 @@ export class ImagePreloader {
     #rutasRelativas = {
         fondos: 'imagenes/fondos/',
         personajes: 'imagenes/personajes/',
-        objetos: 'imagenes/objetos/'
+        objetos: 'imagenes/objetos/',
+        videos: 'videos/'
     };
 
     /** Set de URLs ya precargadas (evita trabajo duplicado) */
@@ -54,6 +55,15 @@ export class ImagePreloader {
 
         // fondo (default) y cualquier otro tipo desconocido
         return base + this.#rutasRelativas.fondos + nombre;
+    }
+
+    /**
+     * Resuelve el nombre de un archivo de video a su ruta completa.
+     * @param {string} nombre — Nombre del archivo (ej: "bosque_720.mp4")
+     * @returns {string} Ruta relativa completa
+     */
+    resolverRutaVideo(nombre) {
+        return this.#rutaBaseHistoria + this.#rutasRelativas.videos + nombre;
     }
 
     /**

@@ -6,7 +6,7 @@ El contenedor `#juego` tiene las siguientes capas visuales, ordenadas por z-inde
 
 | Z-index | Capa | Elemento | Descripción |
 |---------|------|----------|-------------|
-| 0 | Fondo | `.escena-fondo` | Imagen de fondo de la escena |
+| 0 | Fondo | `.escena-fondo` | Imagen de fondo de la escena + video opcional (loop, muted, con fade-in al bufferearse) |
 | 10 | Elementos + Efectos | `.escena-elementos` | Contenedor compartido: efectos (`.efecto-contenedor`, z-index por JSON, default `--z-efectos`: 5) y elementos visuales (`.elemento-visual`, z-index por JSON, default 10). Comparten stacking context para intercalado libre. |
 | 100 | Texto | `#panel-texto` | Texto narrativo con glassmorphism |
 | 200 | Opciones | `#panel-opciones` | Botones de decisión |
@@ -29,7 +29,7 @@ El contenedor `#juego` tiene las siguientes capas visuales, ordenadas por z-inde
 | `variables.css` | Design tokens en `:root` (colores, tipografía, espaciado, z-index, botones) |
 | `layout.css` | Contenedor `#juego` 16:9 centrado con barras negras, logo de carga dinámico, controles UI |
 | `biblioteca.css` | Pantalla de selección: fondo, overlay, tarjetas con hover/glow, título dorado, botón y versión PWA |
-| `escena.css` | Fondo `object-fit: cover`, elementos con custom properties, panel texto glassmorphism, botones con gradientes esmeralda/dorado |
+| `escena.css` | Fondo `object-fit: cover` (imagen + video opcional), elementos con custom properties, panel texto glassmorphism, botones con gradientes esmeralda/dorado |
 | `desafios.css` | Layout de minijuegos, área interactiva, feedback (éxito/fallo) |
 | `animaciones.css` | `@keyframes` para float, bounce, shake, pulse, fadeIn/fadeOut, partículas del final secreto |
 | `inicio.css` | Estilos para pantalla de inicio dinámica: overlay, logo, botón "Jugar" con shimmer, luciérnagas |

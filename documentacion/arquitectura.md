@@ -38,10 +38,12 @@
 │   ├── StateManager.js        # Estado por historia: recompensas, historial, localStorage
 │   ├── ImagePreloader.js      # Precarga de imágenes con rutas dinámicas por historia
 │   ├── SceneRenderer.js       # Composición visual de escenas + transiciones
+│   ├── FondoHelper.js         # Creación centralizada de fondos (imagen + video)
 │   ├── ChallengeManager.js    # Dispatcher de desafíos (Strategy Pattern)
 │   ├── UIManager.js           # Controles permanentes (toggle texto, mute, carga dinámica)
 │   ├── AudioManager.js        # Sistema de audio (fondo + efectos)
 │   ├── EffectsRenderer.js     # Capa visual dinámica (luciérnagas, polvo, etc.)
+│   ├── FeatureFlags.js        # Feature flags globales del motor (experimental)
 │   ├── DevPanel.js            # Panel de desarrollo (lazy, zero-impact en producción)
 │   └── challenges/
 │       ├── PreguntaRealHandler.js     # Handler: pregunta con opciones múltiples
@@ -70,6 +72,7 @@
         │   ├── objetos/       # Objetos WEBP (fondo transparente)
         │   ├── logo/          # Logo y portada de la historia
         │   └── tarjeta/       # Imagen de tarjeta para la biblioteca
+        ├── videos/            # Videos de fondo para escenas/desafíos (MP4)
         └── audios/            # Archivos de audio de la historia
 ```
 
@@ -91,19 +94,21 @@ main.js (Bootstrap)
   │     │     ├── StateManager       (estado por historia)
   │     │     ├── ImagePreloader     (precarga + rutas dinámicas)
   │     │     ├── SceneRenderer      (composición visual)
-  │     │     │     └── EffectsRenderer    (capa visual dinámica en escenas)
+  │     │     │     ├── EffectsRenderer    (capa visual dinámica en escenas)
+  │     │     │     └── FondoHelper        (fondo: imagen + video opcional)
   │     │     ├── ChallengeManager   (dispatch de desafíos)
   │     │     │     ├── EffectsRenderer    (capa visual dinámica en desafíos)
-  │     │     │     ├── PreguntaRealHandler
-  │     │     │     ├── ObservacionHandler
-  │     │     │     └── ClicksHandler
+  │     │     │     ├── PreguntaRealHandler ─┐
+  │     │     │     ├── ObservacionHandler  ─┤─ FondoHelper
+  │     │     │     └── ClicksHandler      ─┘
   │     │     ├── UIManager          (controles permanentes + logo de carga dinámico)
   │     │     └── AudioManager       (fondo + efectos)
   │     └── (callback: volver a biblioteca)
   │
   └── [DevPanel]  ←── lazy, import() dinámico (activación: ?dev=true / Ctrl+Shift+D)
         ├── GameEngine       (navegación, inspección, callbacks)
-        └── StateManager     (lectura/escritura de estado)
+        ├── StateManager     (lectura/escritura de estado)
+        └── FeatureFlags     (setea flags experimentales via toggles)
 ```
 
 ## Principios
@@ -184,14 +189,15 @@ GameEngine.#cargarEscena(id):
   4. StateManager.setEscenaActual(id) → persiste en localStorage
   5. SceneRenderer.renderizar():
      a. Fade-out de escena anterior (opacity → 0, delay 400ms)
-     b. Limpia DOM previo
-     c. Renderiza fondo como <img> dentro de .escena-fondo
-     d. Renderiza elementos + efectos en un solo contenedor .escena-elementos
+     b. Pausa video de fondo anterior (si había)
+     c. Limpia DOM previo
+     d. Renderiza fondo vía FondoHelper (imagen + video opcional con fade-in al bufferearse)
+     e. Renderiza elementos + efectos en un solo contenedor .escena-elementos
         (comparten stacking context para z-index independiente por cada uno)
-     e. Renderiza texto narrativo en #panel-texto
-     f. Renderiza opciones filtradas por condición en #panel-opciones
-     g. Delay 50ms (para que el browser pinte)
-     h. Fade-in (opacity → 1, delay 400ms)
+     f. Renderiza texto narrativo en #panel-texto
+     g. Renderiza opciones filtradas por condición en #panel-opciones
+     h. Delay 50ms (para que el browser pinte)
+     i. Fade-in (opacity → 1, delay 400ms)
   6. Precarga fire-and-forget de escenas siguientes
   7. Oculta indicador de carga
 ```
@@ -319,6 +325,7 @@ No tiene lógica de negocio. Solo:
 |--------|-------------|
 | `setRutaBase(ruta)` | Configura la ruta base de la historia activa. Limpia el Set al cambiar |
 | `resolverRuta(nombre, tipo, id)` | Construye ruta completa: `rutaBase + rutaRelativa + nombre`. Para `tipo: "personaje"`, requiere el `id` del elemento para construir `personajes/{id}/{imagen}` |
+| `resolverRutaVideo(nombre)` | Construye ruta completa para video: `rutaBase + videos/ + nombre` |
 | `precargar(urls, onProgreso)` | Descarga imágenes con `new Image()`, callback de progreso |
 | `extraerImagenes(datos)` | Extrae todas las URLs de un JSON de escena/desafío (incluye `imagen_final`) |
 | `limpiar()` | Vacía el Set de URLs ya precargadas |
@@ -330,6 +337,7 @@ No tiene lógica de negocio. Solo:
 | `fondo` | `imagenes/fondos/` |
 | `personaje` | `imagenes/personajes/{id}/` |
 | `objeto` | `imagenes/objetos/` |
+| `video` | `videos/` |
 | (default) | `imagenes/fondos/` |
 
 ### `SceneRenderer.js`
@@ -341,10 +349,12 @@ No tiene lógica de negocio. Solo:
 | `limpiar()` | Vacía la escena y paneles |
 
 **Composición por capas**:
-1. `#renderizarFondo(nombre)` → `<div class="escena-fondo"><img></div>`
+1. `#renderizarFondo(nombre, video)` → delega a `FondoHelper.crearFondo()` → `<div class="escena-fondo"><img>` + `<video>` opcional
 2. `#renderizarElementos(elementos, efectos)` → `<div class="escena-elementos">` con efectos y elementos posicionados en el mismo stacking context
 3. `#renderizarTexto(texto)` → actualiza `.texto-narrativo`
 4. `#renderizarOpciones(opciones, state, callback)` → botones filtrados por condición
+
+**Ciclo de vida del video**: Guarda referencia al `<video>` activo en `#videoActual`. Al renderizar una nueva escena, pausa el video anterior antes de limpiar el DOM.
 
 **Posicionamiento de elementos**: Cada elemento visual se posiciona con CSS custom properties asignadas inline:
 ```css
@@ -364,6 +374,39 @@ Usa el **Strategy Pattern**: cada subtipo de desafío tiene un handler registrad
 | `registrar(subtipo, handler)` | Registra un handler en el Map de handlers |
 | `ejecutar(datos, stateManager)` | Despacha al handler correcto, gestiona panel y recompensas |
 | `tieneHandler(subtipo)` | Verifica si hay handler para un subtipo |
+
+### `FondoHelper.js`
+**Rol**: Módulo utilitario que centraliza la creación del DOM de fondo (imagen y/o video). Usado por `SceneRenderer` y los tres Challenge Handlers.
+
+| Función exportada | Descripción |
+|--------|-------------|
+| `crearFondo(preloader, nombreFondo, nombreVideo, clase)` | Crea `<div>` con clase indicada, agrega `<img>` de fondo siempre visible, y opcionalmente un `<video loop muted playsinline>` que arranca invisible y hace fade-in al emitir `canplaythrough`. Retorna `{ contenedor, video }` |
+
+**Comportamiento del video**:
+- El bloque de video solo se ejecuta si `FeatureFlags.videosHabilitados === true` (feature experimental, deshabilitada por defecto)
+- Arranca con `opacity: 0` y `preload="auto"`
+- Al emitir `canplaythrough` (buffer suficiente para reproducción continua), llama a `play()` y transiciona `opacity` a `1` (300ms via CSS)
+- La imagen de fondo queda debajo como fallback visible durante la carga
+- Loop infinito, sin sonido, sin controles
+
+| Método | Descripción |
+|--------|-------------|
+| `registrar(subtipo, handler)` | Registra un handler en el Map de handlers |
+| `ejecutar(datos, stateManager)` | Despacha al handler correcto, gestiona panel y recompensas |
+| `tieneHandler(subtipo)` | Verifica si hay handler para un subtipo |
+
+### `FeatureFlags.js`
+**Rol**: Singleton liviano de feature flags del motor. Permite activar funcionalidades experimentales sin afectar el código de producción.
+
+Expone un único objeto mutable `FeatureFlags` con los flags disponibles:
+
+| Flag | Tipo | Default | Descripción |
+|------|------|---------|-------------|
+| `videosHabilitados` | `boolean` | `false` | Habilita la reproducción de videos de fondo en escenas y desafíos |
+
+**Flujo de control**: `DevPanel` setea los flags vía sus toggles de "Configuración Dev". `FondoHelper` consulta `videosHabilitados` antes de crear el elemento `<video>`. Si el flag es `false`, el bloque de video se omite completamente — sin elemento, sin listeners, sin `preload`.
+
+**Impacto en producción**: `FeatureFlags` se importa como ES Module estático en `FondoHelper`; `DevPanel` lo importa solo cuando se activa (lazy load). En carga normal, el flag permanece `false` y ningún video se crea.
 
 ### `UIManager.js`
 **Rol**: Controles de interfaz permanentes + indicador de carga dinámico.
@@ -436,7 +479,7 @@ Usa el **Strategy Pattern**: cada subtipo de desafío tiene un handler registrad
 | Navegación Rápida | Input de texto libre para navegar por ID + dos selects (escenas y desafíos desde `historia.json`) con botón "Ir". Resalta la escena activa con ▸ en el dropdown |
 | Inspector de Escena | Vista formateada de la escena/desafío actual: datos básicos (ID, tipo, fondo, audio), elementos, efectos, opciones con evaluación de condiciones en vivo, y respuesta correcta para desafíos. Se actualiza automáticamente vía callback `onCambioEscena` |
 | Inspector de Estado | Escena actual, historial (orden inverso), recompensas con botón ✕ para revocar, input + botón para otorgar nuevas, y botones "Limpiar estado" (historia actual) / "Limpiar todo" (todo el localStorage de biblioteca) |
-| Configuración Dev | Tres toggles funcionales: **Deshabilitar fullscreen** (patchea `Element.prototype.requestFullscreen`), **Deshabilitar transiciones** (setea `--transicion-escena: 0ms`), **Deshabilitar audio** (mutea elementos `<audio>` vía MutationObserver para atrapar los creados dinámicamente) |
+| Configuración Dev | Cuatro toggles funcionales: **Deshabilitar fullscreen** (patchea `Element.prototype.requestFullscreen`), **Deshabilitar transiciones** (setea `--transicion-escena: 0ms`), **Deshabilitar audio** (mutea elementos `<audio>` vía MutationObserver para atrapar los creados dinámicamente), **Habilitar videos** (setea `FeatureFlags.videosHabilitados = true`; feature experimental, deshabilitada por defecto) |
 
 **Expuesto en `window.devPanel`** para uso rápido desde la consola del navegador.
 
