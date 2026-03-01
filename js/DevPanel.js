@@ -8,6 +8,8 @@
  * su CSS se inyecta/remueve condicionalmente, y no deja listeners ni DOM
  * residual al desactivarse.
  */
+import { FeatureFlags } from './FeatureFlags.js';
+
 export class DevPanel {
 
     /** @type {import('./GameEngine.js').GameEngine} */
@@ -39,7 +41,8 @@ export class DevPanel {
     #devConfig = {
         sinFullscreen: false,
         sinTransiciones: false,
-        sinAudio: false
+        sinAudio: false,
+        conVideos: false
     };
 
     /** Referencia original a requestFullscreen para restaurar */
@@ -293,6 +296,13 @@ export class DevPanel {
                             <span class="dev-toggle-slider"></span>
                         </label>
                     </div>
+                    <div class="dev-toggle-fila">
+                        <span class="dev-toggle-label">Habilitar videos <small style="opacity:0.55;font-size:10px">(experimental)</small></span>
+                        <label class="dev-toggle">
+                            <input type="checkbox" id="dev-toggle-videos">
+                            <span class="dev-toggle-slider"></span>
+                        </label>
+                    </div>
                 </div>
             </div>
         `;
@@ -363,6 +373,12 @@ export class DevPanel {
         this.#panelEl.querySelector('#dev-toggle-audio')?.addEventListener('change', (e) => {
             this.#devConfig.sinAudio = e.target.checked;
             this.#aplicarToggleAudio();
+            this.#persistirDevConfig();
+        });
+
+        this.#panelEl.querySelector('#dev-toggle-videos')?.addEventListener('change', (e) => {
+            this.#devConfig.conVideos = e.target.checked;
+            this.#aplicarToggleVideos();
             this.#persistirDevConfig();
         });
     }
@@ -740,16 +756,24 @@ export class DevPanel {
         const tFullscreen = this.#panelEl.querySelector('#dev-toggle-fullscreen');
         const tTransiciones = this.#panelEl.querySelector('#dev-toggle-transiciones');
         const tAudio = this.#panelEl.querySelector('#dev-toggle-audio');
+        const tVideos = this.#panelEl.querySelector('#dev-toggle-videos');
 
         if (tFullscreen) tFullscreen.checked = this.#devConfig.sinFullscreen;
         if (tTransiciones) tTransiciones.checked = this.#devConfig.sinTransiciones;
         if (tAudio) tAudio.checked = this.#devConfig.sinAudio;
+        if (tVideos) tVideos.checked = this.#devConfig.conVideos;
     }
 
     #aplicarDevConfig() {
         this.#aplicarToggleFullscreen();
         this.#aplicarToggleTransiciones();
         this.#aplicarToggleAudio();
+        this.#aplicarToggleVideos();
+    }
+
+    #aplicarToggleVideos() {
+        FeatureFlags.videosHabilitados = this.#devConfig.conVideos;
+        console.log(`[DevPanel] Videos de fondo: ${this.#devConfig.conVideos ? 'habilitados ▶' : 'deshabilitados ✕'}`);
     }
 
     #aplicarToggleFullscreen() {
@@ -854,7 +878,8 @@ export class DevPanel {
                 this.#devConfig = {
                     sinFullscreen: datos.sinFullscreen ?? false,
                     sinTransiciones: datos.sinTransiciones ?? false,
-                    sinAudio: datos.sinAudio ?? false
+                    sinAudio: datos.sinAudio ?? false,
+                    conVideos: datos.conVideos ?? false
                 };
             }
         } catch (e) { /* no crítico */ }

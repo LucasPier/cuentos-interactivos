@@ -2,9 +2,14 @@
  * FondoHelper — Creación centralizada de fondos (imagen y/o video).
  * 
  * Genera el DOM de fondo para escenas y desafíos.
- * Si hay video, lo muestra con fade-in al estar buffereado (canplaythrough),
+ * Si hay video Y la feature está habilitada (FeatureFlags.videosHabilitados),
+ * lo muestra con fade-in al estar buffereado (canplaythrough),
  * usando la imagen de fondo como respaldo visible durante la carga.
+ * 
+ * En producción, los videos están deshabilitados por defecto y solo
+ * pueden activarse desde el DevPanel (feature experimental).
  */
+import { FeatureFlags } from './FeatureFlags.js';
 
 /**
  * Crea el contenedor de fondo con imagen y, opcionalmente, video.
@@ -29,9 +34,10 @@ export function crearFondo(preloader, nombreFondo, nombreVideo, clase) {
     }
 
     // ── Video de fondo (loop, muted, sobre la imagen) ──
+    // Solo se crea si la feature está explícitamente habilitada (DevPanel)
     let videoEl = null;
 
-    if (nombreVideo) {
+    if (nombreVideo && FeatureFlags.videosHabilitados) {
         videoEl = document.createElement('video');
         videoEl.src = preloader.resolverRutaVideo(nombreVideo);
         videoEl.loop = true;
