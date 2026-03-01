@@ -2,6 +2,7 @@
     "id": "RIO_DUENDE_RECOMPENSA",
     "tipo": "escena",
     "fondo": "rio_duende_hada.webp",
+    "video": "rio_duende_hada.mp4",
     "texto": "\"¡Correcto!\", dice Milo sonriendo. Jazmín aplaude. \"¡Qué listas son! Como recompensa, les daremos un atajo\". Milo les entrega una piedra plana. \"Lancen esta piedra tres veces en el río y aparecerá un puente mágico que las llevará directo a la casa de la bruja\".",
     "audio": "bosque.mp3",
     "efectos": [

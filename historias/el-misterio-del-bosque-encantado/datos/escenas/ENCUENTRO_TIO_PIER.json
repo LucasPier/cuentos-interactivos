@@ -2,6 +2,7 @@
     "id": "ENCUENTRO_TIO_PIER",
     "tipo": "escena",
     "fondo": "bosque_hongos_magicos.webp",
+    "video": "bosque_hongos_magicos_720.mp4",
     "texto": "\"¡Hola, tío Pier!\", exclamás. El tío Pier se da la vuelta y sonríe. \"¡Oh, Irupé! ¡Indi! ¡Nuria! ¡Qué sorpresa! ¿Qué andan haciendo por acá?\", dice con voz alegre. \"¡Tío Pier! La bruja Romi se robó los colores de los animalitos y las flores. ¡Estamos buscando su casa para recuperarlos!\", le responde Indira, muy decidida.",
     "audio": "magico.mp3",
     "efectos": [

@@ -1,3 +1,5 @@
+import { crearFondo } from '../FondoHelper.js';
+
 /**
  * PreguntaRealHandler — Handler para desafíos de tipo "pregunta_real".
  * 
@@ -27,15 +29,10 @@ export class PreguntaRealHandler {
             const contenido = document.createElement('div');
             contenido.className = 'desafio-contenido';
 
-            // ── Fondo ──
-            if (datos.fondo) {
-                const fondoDiv = document.createElement('div');
-                fondoDiv.className = 'desafio-fondo';
-                const img = document.createElement('img');
-                img.src = preloader.resolverRuta(datos.fondo, 'fondo');
-                img.alt = 'Fondo del desafío';
-                fondoDiv.appendChild(img);
-                contenido.appendChild(fondoDiv);
+            // ── Fondo (imagen + video opcional) ──
+            if (datos.fondo || datos.video) {
+                const { contenedor } = crearFondo(preloader, datos.fondo, datos.video, 'desafio-fondo');
+                contenido.appendChild(contenedor);
             }
 
             // ── Instrucción + Pregunta ──

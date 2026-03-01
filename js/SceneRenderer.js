@@ -1,3 +1,5 @@
+import { crearFondo } from './FondoHelper.js';
+
 /**
  * SceneRenderer — Renderizado visual de escenas.
  * 
@@ -18,6 +20,8 @@ export class SceneRenderer {
     #preloader;
     /** @type {import('./EffectsRenderer.js').EffectsRenderer} */
     #effectsRenderer;
+    /** @type {HTMLVideoElement|null} Video de fondo activo */
+    #videoActual = null;
 
     /** Duración de la transición en ms (lee dinámicamente la CSS variable) */
     get #DURACION_TRANSICION() {
@@ -47,6 +51,7 @@ export class SceneRenderer {
      * @param {function} onNavegar — Callback (accion, target, tipoTarget) al elegir opción
      */
     async renderizar(datos, stateManager, onNavegar) {
+        console.log(`[SceneRenderer] Renderizando escena: ${datos.id}`);
         // Fade-out de la escena anterior (solo si ya tiene contenido)
         const tieneContenidoPrevio = this.#escenaEl.children.length > 0;
         if (tieneContenidoPrevio) {
@@ -57,6 +62,13 @@ export class SceneRenderer {
             this.#escenaEl.style.opacity = '0';
         }
 
+        // Pausar video de fondo anterior (si había)
+        if (this.#videoActual) {
+            console.log("[SceneRenderer] Deteniendo video de fondo anterior");
+            this.#videoActual.pause();
+            this.#videoActual = null;
+        }
+
         // Limpiar contenido anterior
         this.#escenaEl.innerHTML = '';
         this.#panelOpcionesEl.innerHTML = '';
@@ -64,8 +76,8 @@ export class SceneRenderer {
         // Clase especial para final secreto
         this.#escenaEl.classList.toggle('final-secreto', datos.id === 'FINAL_SECRETO');
 
-        // ── Capa 0: Fondo ──
-        this.#renderizarFondo(datos.fondo);
+        // ── Capa 0: Fondo (imagen + video opcional) ──
+        this.#renderizarFondo(datos.fondo, datos.video);
 
         // ── Capas N: Elementos + Efectos (mismo contenedor para z-index compartido) ──
         this.#renderizarElementos(datos.elementos, datos.efectos);
@@ -88,21 +100,18 @@ export class SceneRenderer {
     }
 
     /**
-     * Renderiza la imagen de fondo.
-     * @param {string} nombreFondo — Nombre del archivo de fondo
+     * Renderiza el fondo de la escena (imagen + video opcional).
+     * @param {string} nombreFondo — Nombre del archivo de imagen de fondo
+     * @param {string} [nombreVideo] — Nombre del archivo de video de fondo
      */
-    #renderizarFondo(nombreFondo) {
-        if (!nombreFondo) return;
+    #renderizarFondo(nombreFondo, nombreVideo) {
+        if (!nombreFondo && !nombreVideo) return;
 
-        const contenedor = document.createElement('div');
-        contenedor.className = 'escena-fondo';
+        const { contenedor, video } = crearFondo(
+            this.#preloader, nombreFondo, nombreVideo, 'escena-fondo'
+        );
 
-        const img = document.createElement('img');
-        img.src = this.#preloader.resolverRuta(nombreFondo, 'fondo');
-        img.alt = 'Escena del cuento';
-        img.loading = 'eager';
-
-        contenedor.appendChild(img);
+        this.#videoActual = video;
         this.#escenaEl.appendChild(contenedor);
     }
 

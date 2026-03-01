@@ -6,6 +6,22 @@ Este documento define la estructura de datos para el motor de cuentos interactiv
 *   **Escenas:** `/datos/escenas/{id_escena}.json`
 *   **Desafíos:** `/datos/desafios/{id_desafio}.json`
 
+### Video de fondo (opcional)
+
+Las escenas y desafíos pueden incluir un **video de fondo** mediante la propiedad `"video"`. El motor busca los videos en `historias/{id}/videos/`.
+
+| Propiedad | Ubicación | Obligatoria |
+|-----------|-----------|-------------|
+| `"fondo"` | `imagenes/fondos/` | Sí (siempre presente como fallback) |
+| `"video"` | `videos/` | No (opcional) |
+
+**Comportamiento:**
+- La **imagen de fondo** (`"fondo"`) se muestra inmediatamente como fallback visible mientras el video carga.
+- El **video** se reproduce en **loop, sin sonido** (`muted`) y sin controles.
+- Arranca invisible (`opacity: 0`) y aparece con **fade-in** (300ms) cuando el navegador emite `canplaythrough` (buffer suficiente para reproducción sin interrupciones).
+- Toda escena con video **debe tener también una imagen de fondo**.
+- La creación del DOM de fondo está centralizada en `FondoHelper.js`, usado tanto por `SceneRenderer` (escenas) como por los Challenge Handlers (desafíos).
+
 ---
 
 ## 1. Esquema de Escena (`.json`)
@@ -19,6 +35,7 @@ Utilizado para escenas narrativas, diálogos y menús de decisión.
   "id": "NOMBRE_UNICO_ESCENA",
   "tipo": "escena", 
   "fondo": "nombre_imagen_fondo.webp",
+  "video": "nombre_video_fondo.mp4", // Opcional: video de fondo (busca en carpeta videos/)
   "texto": "El contenido narrativo que leerá o que escuchará quien esté jugando.",
   "audio": "audio_fondo.mp3", // Opcional: música de fondo (busca en carpeta audios/)
   "audio_narracion": "audio_opcional.mp3",
@@ -92,6 +109,7 @@ Utilizado para minijuegos, preguntas o interacciones especiales que rompen el fl
   "subtipo": "pregunta_real", // "pregunta_real" | "minijuego_clicks" | "minijuego_observacion"
   "instruccion": "Preguntale a papá...",
   "fondo": "fondo_desafio.webp",
+  "video": "video_desafio.mp4", // Opcional: video de fondo (busca en carpeta videos/)
   "audio": "audio_desafio.mp3", // Opcional: música de fondo (busca en carpeta audios/)
   "configuracion": {
     // Parámetros específicos según el subtipo
@@ -186,6 +204,7 @@ Utilizado para minijuegos, preguntas o interacciones especiales que rompen el fl
   "id": "ENCUENTRO_TIO_PIER",
   "tipo": "escena",
   "fondo": "bosque_hongos_magicos.webp",
+  "video": "bosque_hongos_magicos_720.mp4",
   "texto": "¡Hola, tío Pier! El tío Pier se da la vuelta y sonríe. '¡Oh, Irupé! Estoy haciendo mi famosa sopa, pero me falta el hongo que ríe'.",
   "elementos": [
     {

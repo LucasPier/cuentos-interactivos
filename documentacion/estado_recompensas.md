@@ -62,6 +62,10 @@ Ejemplo: `"tiene_flor_de_luz"` → verifica si `recompensas["flor_de_luz"] === t
 2. **Precarga anticipada**: Después de renderizar, `GameEngine.#precargarSiguientes()` carga fire-and-forget los JSONs e imágenes de los destinos referenciados en las opciones actuales (evaluando dinámicamente el `tipo_target`: escena o desafío).
 3. **Deduplicación**: Un `Set` interno de `ImagePreloader` evita descargar la misma imagen dos veces.
 
+### Videos
+
+Los videos de fondo **no se precargan con `new Image()`** ni con fetch anticipado. En su lugar, el elemento `<video preload="auto">` nativo del navegador gestiona la descarga y el buffering. El video se muestra solo cuando emite el evento `canplaythrough`, garantizando reproducción sin interrupciones. La imagen de fondo actúa como fallback visual durante la carga.
+
 ### JSONs
 
 - `ContentLoader` cachea en un `Map` con clave `"tipo:id"`.
