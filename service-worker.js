@@ -1,12 +1,12 @@
 'use strict';
 (() => {
     // Versión general de la aplicación 
-    const VERSION_APP = "1.1.0";
+    const VERSION_APP = "1.1.1";
 
     // Versiones de caché
     const CACHE_BIBLIOTECA = '2',
         CACHE_CSS = '3',
-        CACHE_JS = '3',
+        CACHE_JS = '6',
         CACHE_CHALLENGES = '1',
         CACHE_EMBE_IMAGENES = '2',
         CACHE_EMBE_AUDIOS = '1',

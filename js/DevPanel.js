@@ -14,6 +14,8 @@ export class DevPanel {
     #engine;
     /** @type {import('./StateManager.js').StateManager} */
     #stateManager;
+    /** @type {import('./AudioManager.js').AudioManager} */
+    #audioManager;
 
     /** @type {HTMLDivElement|null} */
     #panelEl = null;
@@ -45,9 +47,10 @@ export class DevPanel {
     /** Referencia original a requestFullscreen para restaurar */
     #requestFullscreenOriginal = null;
 
-    constructor({ engine, stateManager }) {
+    constructor({ engine, stateManager, audioManager }) {
         this.#engine = engine;
         this.#stateManager = stateManager;
+        this.#audioManager = audioManager;
     }
 
     // ─── API Pública ────────────────────────────────
@@ -81,6 +84,7 @@ export class DevPanel {
         this.#desuscribirEventos();
         this.#restaurarFullscreen();
         this.#restaurarTransiciones();
+        this.#restaurarAudio();
 
         // Remover elementos del DOM
         if (this.#panelEl) {
@@ -774,68 +778,29 @@ export class DevPanel {
     }
 
     #aplicarToggleTransiciones() {
+        const root = document.documentElement.style;
         if (this.#devConfig.sinTransiciones) {
-            document.documentElement.style.setProperty('--transicion-escena', '0ms');
+            root.setProperty('--transicion-escena', '0ms');
+            root.setProperty('--transicion-base', '0ms');
+            root.setProperty('--transicion-lenta', '0ms');
         } else {
             this.#restaurarTransiciones();
         }
     }
 
     #restaurarTransiciones() {
-        document.documentElement.style.removeProperty('--transicion-escena');
+        const root = document.documentElement.style;
+        root.removeProperty('--transicion-escena');
+        root.removeProperty('--transicion-base');
+        root.removeProperty('--transicion-lenta');
     }
 
     #aplicarToggleAudio() {
-        // Seteamos volumen a 0 en todos los <audio> del documento sin alterar el botón mute
-        const audios = document.querySelectorAll('audio');
-        for (const audio of audios) {
-            audio.volume = this.#devConfig.sinAudio ? 0 : (audio.dataset.devOriginalVolume ? parseFloat(audio.dataset.devOriginalVolume) : audio.volume);
-            if (this.#devConfig.sinAudio && !audio.dataset.devOriginalVolume) {
-                audio.dataset.devOriginalVolume = audio.volume || '0.5';
-                audio.volume = 0;
-            } else if (!this.#devConfig.sinAudio && audio.dataset.devOriginalVolume) {
-                audio.volume = parseFloat(audio.dataset.devOriginalVolume);
-                delete audio.dataset.devOriginalVolume;
-            }
-        }
-
-        // Observar nuevos elementos <audio> si está activado
-        if (this.#devConfig.sinAudio) {
-            this.#iniciarObservadorAudio();
-        } else {
-            this.#detenerObservadorAudio();
-        }
+        this.#audioManager.devSilenciado = this.#devConfig.sinAudio;
     }
 
-    /** @type {MutationObserver|null} */
-    #audioObserver = null;
-
-    #iniciarObservadorAudio() {
-        if (this.#audioObserver) return;
-        this.#audioObserver = new MutationObserver((mutations) => {
-            for (const m of mutations) {
-                for (const node of m.addedNodes) {
-                    if (node.tagName === 'AUDIO') {
-                        node.dataset.devOriginalVolume = node.volume || '0.5';
-                        node.volume = 0;
-                    }
-                    if (node.querySelectorAll) {
-                        for (const audio of node.querySelectorAll('audio')) {
-                            audio.dataset.devOriginalVolume = audio.volume || '0.5';
-                            audio.volume = 0;
-                        }
-                    }
-                }
-            }
-        });
-        this.#audioObserver.observe(document.body, { childList: true, subtree: true });
-    }
-
-    #detenerObservadorAudio() {
-        if (this.#audioObserver) {
-            this.#audioObserver.disconnect();
-            this.#audioObserver = null;
-        }
+    #restaurarAudio() {
+        this.#audioManager.devSilenciado = false;
     }
 
     // ─── Persistencia dev config ────────────────────

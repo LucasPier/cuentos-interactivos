@@ -74,7 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
     async function activarDevPanel() {
         if (devPanel) return;
         const { DevPanel } = await import('./DevPanel.js');
-        devPanel = new DevPanel({ engine, stateManager });
+        devPanel = new DevPanel({ engine, stateManager, audioManager });
         await devPanel.activar();
         window.devPanel = devPanel;
     }
