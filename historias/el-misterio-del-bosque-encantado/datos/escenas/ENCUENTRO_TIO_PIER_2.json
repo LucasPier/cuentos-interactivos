@@ -2,6 +2,7 @@
     "id": "ENCUENTRO_TIO_PIER_2",
     "tipo": "escena",
     "fondo": "bosque_hongos_magicos.webp",
+    "video": "bosque_hongos_magicos_720.mp4",
     "texto": "El tío Pier se rasca la barbilla, pensativo. \"Mmm, es un problema grave. Yo sé dónde vive la bruja, pero antes necesito un favor... Estoy haciendo mi famosa sopa de hongos de colores y me falta un ingrediente especial: un hongo que ríe. Si me ayudan a encontrarlo, las guiaré por un camino secreto\", añade con un guiño.",
     "audio": "magico.mp3",
     "efectos": [

@@ -4,6 +4,7 @@
     "subtipo": "pregunta_real",
     "instruccion": "Resolvé el acertijo de Milo.",
     "fondo": "rio_duende_hada.webp",
+    "video": "rio_duende_hada.mp4",
     "audio": "bosque.mp3",
     "efectos": [
         {

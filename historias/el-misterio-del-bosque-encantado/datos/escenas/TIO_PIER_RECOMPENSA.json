@@ -2,6 +2,7 @@
     "id": "TIO_PIER_RECOMPENSA",
     "tipo": "escena",
     "fondo": "bosque_hongos_magicos.webp",
+    "video": "bosque_hongos_magicos_720.mp4",
     "texto": "\"¡Lo encontraste!\", grita el tío Pier. \"Sos muy lista, Irupé\". El tío Pier saca de su bolsillo una flor brillante y mágica. \"Esta es una flor de luz. Úsenla para iluminar el camino secreto que las llevará más rápido a la casa de la bruja Romi. ¡Buena suerte!\".",
     "audio": "magico.mp3",
     "efectos": [

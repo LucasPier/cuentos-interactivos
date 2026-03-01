@@ -56,6 +56,7 @@ Todas las rutas dentro de `historia.json` son **relativas a la carpeta de la his
   "id": "INICIO",                          // ID único, coincide con el nombre del archivo
   "tipo": "escena",
   "fondo": "cuarto_iru.webp",       // Nombre del archivo de fondo
+  "video": "video_fondo.mp4",        // Opcional: video de fondo (busca en carpeta videos/)
   "texto": "Irupé se despierta...",        // Texto narrativo
   "audio": "pista_fondo.mp3",              // Opcional: reproduce música (busca en carpeta audios/)
   "elementos": [                           // Personajes/objetos superpuestos (opcional)
@@ -140,6 +141,7 @@ historias/nombre-de-la-historia/
 │   ├── personajes/{id}/       # Personajes
 │   ├── objetos/               # Objetos
 │   └── logo/                  # Logo y portada
+├── videos/                    # Videos de fondo (opcional)
 └── audios/                    # Audio (opcional)
 ```
 
@@ -152,7 +154,7 @@ historias/nombre-de-la-historia/
 ```
 
 3. No se necesita tocar código JavaScript para la renderización. La biblioteca mostrará automáticamente la nueva tarjeta.
-4. **MANDATORIO PWA:** Añadir la nueva historia al Service Worker (`service-worker.js`). Es obligatorio crear las constantes de caché respectivas de la historia nueva e incluir su matriz completa de archivos estáticos (JSONs, imágenes y audios) dentro de `RUTAS_CACHE`. **De no hacerlo**, la nueva historia carecerá de funcionalidad offline, rompiendo la experiencia del jugador. Ante la duda, preguntale al usuario antes de modificar el SW.
+4. **MANDATORIO PWA:** Añadir la nueva historia al Service Worker (`service-worker.js`). Es obligatorio crear las constantes de caché respectivas de la historia nueva e incluir su matriz completa de archivos estáticos (JSONs, imágenes, videos y audios) dentro de `RUTAS_CACHE`. **De no hacerlo**, la nueva historia carecerá de funcionalidad offline, rompiendo la experiencia del jugador. Ante la duda, preguntale al usuario antes de modificar el SW.
 
 ### Agregar un nuevo tipo de desafío
 

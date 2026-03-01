@@ -5,11 +5,12 @@
 
     // Versiones de caché
     const CACHE_BIBLIOTECA = '2',
-        CACHE_CSS = '3',
-        CACHE_JS = '3',
-        CACHE_CHALLENGES = '1',
+        CACHE_CSS = '4',
+        CACHE_JS = '4',
+        CACHE_CHALLENGES = '2',
         CACHE_EMBE_IMAGENES = '2',
         CACHE_EMBE_AUDIOS = '1',
+        CACHE_EMBE_VIDEOS = '1',
         CACHE_EMBE_DATOS = '3',
         CACHE_FONTS = '1';
 
@@ -55,6 +56,7 @@
                 'js/ChallengeManager.js',
                 'js/ContentLoader.js',
                 'js/EffectsRenderer.js',
+                'js/FondoHelper.js',
                 'js/GameEngine.js',
                 'js/ImagePreloader.js',
                 'js/main.js',
@@ -208,6 +210,13 @@
                 RUTA_EMBE + '/imagenes/tarjeta/tarjeta.webp'
             ],
             version: CACHE_EMBE_IMAGENES
+        },
+        {
+            nombre: `cache-embe-videos-v${CACHE_EMBE_VIDEOS}`,
+            archivos: [
+                RUTA_EMBE + '/videos/bosque_hongos_magicos_720.mp4'
+            ],
+            version: CACHE_EMBE_VIDEOS
         }
     ];
 

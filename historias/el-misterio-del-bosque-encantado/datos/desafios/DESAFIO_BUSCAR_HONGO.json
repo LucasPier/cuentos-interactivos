@@ -4,6 +4,7 @@
     "subtipo": "minijuego_observacion",
     "instruccion": "Tocá los hongos hasta encontrar el que se ríe.",
     "fondo": "bosque_hongos_magicos.webp",
+    "video": "bosque_hongos_magicos_720.mp4",
     "audio": "magico.mp3",
     "efectos": [
         {

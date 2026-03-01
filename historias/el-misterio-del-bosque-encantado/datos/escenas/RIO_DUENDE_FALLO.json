@@ -2,6 +2,7 @@
     "id": "RIO_DUENDE_FALLO",
     "tipo": "escena",
     "fondo": "rio_duende_hada.webp",
+    "video": "rio_duende_hada.mp4",
     "texto": "\"¡Incorrecto!\", gruñe Milo. \"No tienen tiempo para nuestros juegos. Sigan su camino\". Milo les da la espalda y sigue pescando. Jazmín les sonríe y les desea suerte. Las niñas deben seguir solas.",
     "audio": "bosque.mp3",
     "efectos": [

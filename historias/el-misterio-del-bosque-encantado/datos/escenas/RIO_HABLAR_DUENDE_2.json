@@ -2,6 +2,7 @@
     "id": "RIO_HABLAR_DUENDE_2",
     "tipo": "escena",
     "fondo": "rio_duende_hada.webp",
+    "video": "rio_duende_hada.mp4",
     "texto": "\"Soy Milo, y estoy muy ocupado\", te responde el duende de mala gana. \"A menos que puedan resolver mi acertijo, no molesten\". Jazmín revolotea cerca y agrega: \"¡Es divertido! Si lo resuelven, las ayudaremos a llegar a la casa de la bruja\".",
     "audio": "bosque.mp3",
     "efectos": [

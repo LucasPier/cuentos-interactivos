@@ -2,6 +2,7 @@
     "id": "CAMINO_CASA_BRUJA",
     "tipo": "escena",
     "fondo": "bosque_hongos_magicos.webp",
+    "video": "bosque_hongos_magicos_720.mp4",
     "texto": "Siguiendo el camino, llegan a una parte muy extraña del bosque. Hay hongos gigantes y luminosos por todas partes. Sentado sobre uno de ellos, encuentran al tío Pier, que está lamiendo un hongo de color azul.",
     "audio": "magico.mp3",
     "efectos": [
