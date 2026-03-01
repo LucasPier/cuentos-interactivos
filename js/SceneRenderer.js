@@ -23,8 +23,13 @@ export class SceneRenderer {
     /** @type {HTMLVideoElement|null} Video de fondo activo */
     #videoActual = null;
 
-    /** Duración de la transición en ms (sincronizado con CSS) */
-    #DURACION_TRANSICION = 400;
+    /** Duración de la transición en ms (lee dinámicamente la CSS variable) */
+    get #DURACION_TRANSICION() {
+        const val = getComputedStyle(document.documentElement)
+            .getPropertyValue('--transicion-escena').trim();
+        const parsed = parseInt(val, 10);
+        return Number.isNaN(parsed) ? 400 : parsed;
+    }
 
     /**
      * @param {import('./ImagePreloader.js').ImagePreloader} preloader

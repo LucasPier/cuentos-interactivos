@@ -8,6 +8,9 @@ export class AudioManager {
 
     #muteado = false;
 
+    /** Flag de silenciamiento forzado por DevPanel (independiente del mute del usuario) */
+    #devSilenciado = false;
+
     /**
      * Objeto de Audio actual.
      */
@@ -62,6 +65,12 @@ export class AudioManager {
 
         this.detenerFondo(); // Detener anterior si existe
 
+        // DevPanel: si está silenciado, guardar referencia pero no reproducir
+        if (this.#devSilenciado) {
+            this.#bgmSrc = archivo;
+            return;
+        }
+
         this.#pausadoPorVisibilidad = false;
         this.#bgmSrc = archivo;
         this.#bgm = new Audio(archivo);
@@ -104,7 +113,7 @@ export class AudioManager {
      * @param {string} archivo — Nombre del archivo del efecto de sonido
      */
     reproducirEfecto(archivo) {
-        if (!archivo) return;
+        if (!archivo || this.#devSilenciado) return;
         const rutaCompleta = this.#rutaBase ? (this.#rutaBase + 'audios/' + archivo) : archivo;
         const sfx = new Audio(rutaCompleta);
         sfx.volume = 0.8;
@@ -127,7 +136,7 @@ export class AudioManager {
      * Reanuda la reproducción del BGM si estaba pausado.
      */
     reanudar() {
-        if (this.#bgm && this.#bgm.paused && !this.#muteado) {
+        if (this.#bgm && this.#bgm.paused && !this.#muteado && !this.#devSilenciado) {
             this.#bgm.play().catch(e => {
                 console.log('[AudioManager] Error al reanudar:', e);
             });
@@ -158,5 +167,29 @@ export class AudioManager {
      */
     get muteado() {
         return this.#muteado;
+    }
+
+    /**
+     * Flag de silenciamiento forzado por DevPanel.
+     * @param {boolean} valor
+     */
+    set devSilenciado(valor) {
+        this.#devSilenciado = valor;
+        if (valor) {
+            // Detener todo audio activo inmediatamente
+            if (this.#bgm && !this.#bgm.paused) {
+                this.#bgm.pause();
+            }
+        } else {
+            // Reanudar BGM si había uno configurado y no está muteado por el usuario
+            if (this.#bgm && this.#bgm.paused && !this.#muteado) {
+                this.#bgm.play().catch(() => { });
+            }
+        }
+    }
+
+    /** @returns {boolean} */
+    get devSilenciado() {
+        return this.#devSilenciado;
     }
 }
