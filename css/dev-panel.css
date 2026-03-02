@@ -430,6 +430,82 @@
     font-size: 12px;
 }
 
+/* ── Tooltips informativos ───────────────────────── */
+
+.dev-tooltip {
+    position: relative;
+    display: inline-flex;
+}
+
+.dev-tooltip::before,
+.dev-tooltip::after {
+    position: absolute;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 200ms ease;
+    z-index: 1000;
+    pointer-events: none;
+}
+
+.dev-tooltip::before {
+    content: '';
+    border: 5px solid transparent;
+    border-top-color: rgba(10, 15, 25, 0.98);
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(5px);
+}
+
+.dev-tooltip::after {
+    content: attr(data-tooltip);
+    bottom: 100%;
+
+    /* El truco mágico: anclarlo visualmente con margin para evitar el overflow del contenedor padre */
+    left: 50%;
+    transform: translateX(-50%) translateY(0);
+    margin-bottom: 4px;
+    background: rgba(10, 15, 25, 0.98);
+    border: 1px solid rgba(167, 243, 208, 0.2);
+    color: var(--color-texto-principal, #f0fdf4);
+    padding: 6px 10px;
+    border-radius: 6px;
+    font-size: 11px;
+
+    /* En vez de nowrap que se desborda, le damos un max-width y dejamos que baje de línea */
+    white-space: normal;
+    min-width: 150px;
+    width: max-content;
+    max-width: 250px;
+    text-align: center;
+
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+.dev-tooltip:hover::before {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+}
+
+.dev-tooltip:hover::after {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(-5px);
+}
+
+.dev-tooltip--left::before {
+    left: 20%;
+}
+
+.dev-tooltip--left::after {
+    left: 0;
+    transform: translateX(0) translateY(0);
+}
+
+.dev-tooltip--left:hover::after {
+    transform: translateX(0) translateY(-5px);
+}
+
 /* ── Separador ───────────────────────────────────── */
 
 .dev-separador {

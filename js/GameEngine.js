@@ -430,6 +430,9 @@ export class GameEngine {
     async navegarA(id, tipo = 'escena') {
         this.#navegando = false;
 
+        // Si hay un desafío activo, cerrarlo antes de navegar
+        this.#challengeManager.salir();
+
         // Si la pantalla de inicio está activa, preparar el juego antes de navegar
         if (!this.#pantallaInicioEl.classList.contains('oculto')) {
             this.#pantallaInicioEl.classList.add('oculto');

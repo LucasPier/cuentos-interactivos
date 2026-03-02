@@ -5,8 +5,8 @@
 
     // Versiones de caché
     const CACHE_BIBLIOTECA = '4',
-        CACHE_CSS = '7',
-        CACHE_JS = '8',
+        CACHE_CSS = '8',
+        CACHE_JS = '9',
         CACHE_CHALLENGES = '4',
         CACHE_EMBE_IMAGENES = '2',
         CACHE_EMBE_AUDIOS = '1',

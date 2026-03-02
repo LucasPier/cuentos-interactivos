@@ -34,7 +34,7 @@ El contenedor `#juego` tiene las siguientes capas visuales, ordenadas por z-inde
 | `animaciones.css` | `@keyframes` para float, bounce, shake, pulse, fadeIn/fadeOut, partículas del final secreto |
 | `inicio.css` | Estilos para pantalla de inicio dinámica: overlay, logo, botón "Jugar" con shimmer, luciérnagas |
 | `ui.css` | Estados de los botones toggle (texto visible/oculto) |
-| `dev-panel.css` | Panel de desarrollo: glassmorphism, slide-in, acordeón, responsive (cargado dinámicamente) |
+| `dev-panel.css` | Panel de desarrollo: glassmorphism, tooltips dinámicos, slide-in, acordeón, responsive. |
 
 ### Paleta de colores
 
