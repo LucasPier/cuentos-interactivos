@@ -2,7 +2,7 @@
  * dev-panel.css — Estilos del Panel de Desarrollo.
  * 
  * Se carga dinámicamente solo al activar el modo dev.
- * NO incluir en index.html ni en el Service Worker.
+ * NO incluir en index.html. (Sí se cachea en el Service Worker para uso offline).
  */
 
 /* ── Panel principal ─────────────────────────────── */
@@ -181,8 +181,8 @@
 }
 
 .dev-select option {
-    background: #0a0f19;
-    color: #f0fdf4;
+    background: var(--color-fondo-oscuro);
+    color: var(--color-texto-principal);
 }
 
 .dev-btn {
@@ -205,7 +205,7 @@
 }
 
 .dev-btn--peligro {
-    color: #fca5a5;
+    color: var(--color-peligro);
     border-color: rgba(252, 165, 165, 0.2);
     background: rgba(252, 165, 165, 0.08);
 }
@@ -216,7 +216,7 @@
 }
 
 .dev-btn--primario {
-    color: #0a0f19;
+    color: var(--color-fondo-oscuro);
     background: var(--color-texto-secundario, #a7f3d0);
     border-color: var(--color-texto-secundario, #a7f3d0);
 }
@@ -309,7 +309,7 @@
 
 .dev-opcion-condicion {
     font-size: 10px;
-    color: #fca5a5;
+    color: var(--color-peligro);
     font-style: italic;
 }
 
@@ -331,7 +331,7 @@
 }
 
 .dev-respuesta-correcta strong {
-    color: #4ade80;
+    color: var(--color-exito);
 }
 
 /* ── Recompensas ─────────────────────────────────── */
@@ -348,7 +348,7 @@
 .dev-recompensa-borrar {
     background: none;
     border: none;
-    color: #fca5a5;
+    color: var(--color-peligro);
     cursor: pointer;
     font-size: 14px;
     padding: 0 2px;
@@ -356,7 +356,7 @@
 }
 
 .dev-recompensa-borrar:hover {
-    color: #f87171;
+    color: var(--color-peligro-fuerte);
 }
 
 /* ── Toggles (switch) ────────────────────────────── */
@@ -407,16 +407,16 @@
     height: 16px;
     left: 2px;
     bottom: 2px;
-    background: #f0fdf4;
+    background: var(--color-texto-principal);
     border-radius: 50%;
     transition: transform 200ms;
 }
 
-.dev-toggle input:checked + .dev-toggle-slider {
+.dev-toggle input:checked+.dev-toggle-slider {
     background: var(--color-texto-secundario, #a7f3d0);
 }
 
-.dev-toggle input:checked + .dev-toggle-slider::before {
+.dev-toggle input:checked+.dev-toggle-slider::before {
     transform: translateX(16px);
 }
 
@@ -447,13 +447,8 @@
 
 /* ── Responsive ──────────────────────────────────── */
 
-@media (max-width: 768px) {
-    #panel-dev {
-        width: 60%;
-    }
-}
-
-@media (max-width: 480px) {
+@media (max-width: 900px),
+(max-height: 600px) {
     #panel-dev {
         width: 75%;
         font-size: 12px;

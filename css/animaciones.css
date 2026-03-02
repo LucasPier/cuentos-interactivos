@@ -4,7 +4,7 @@
 /* ---- Aura tarjeta ---- */
 @keyframes aura-tarjeta {
     0% {
-        box-shadow: 0 4px 20px #00000066,
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4),
             0 4px 40px rgba(0, 217, 255, 0.3),
             0 0 60px rgba(156, 255, 209, 0.5);
         transform: perspective(1034px) rotateX(-4deg) rotateY(-11deg);
@@ -18,7 +18,7 @@
     }
 
     100% {
-        box-shadow: 0 4px 20px #00000066,
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4),
             0 4px 40px rgba(0, 217, 255, 0.3),
             0 0 60px rgba(156, 255, 209, 0.5);
         transform: perspective(1034px) rotateX(-4deg) rotateY(-11deg);
@@ -288,7 +288,7 @@
         radial-gradient(2px 2px at 50% 10%, var(--color-esmeralda-claro), transparent);
     animation: particulas 4s linear infinite;
     pointer-events: none;
-    z-index: 50;
+    z-index: var(--z-efectos);
 }
 
 @keyframes particulas {

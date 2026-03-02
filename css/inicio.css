@@ -29,7 +29,7 @@
 /* ---- Contenido centrado ---- */
 .inicio-contenido {
     position: relative;
-    z-index: 2;
+    z-index: var(--z-efectos);
     display: flex;
     flex-direction: column;
     align-items: center;
