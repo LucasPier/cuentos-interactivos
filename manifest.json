@@ -1,7 +1,8 @@
 {
     "name": "La Biblioteca del Tío Pier",
     "short_name": "Tío Pier",
-    "description": "Cuentos interactivos mágicos para Irupé",
+    "description": "Una biblioteca mágica de cuentos interactivos tipo 'Elige tu propia aventura'. Explorá historias llenas de magia, misterio y decisiones.",
+    "lang": "es",
     "id": "./",
     "scope": "./",
     "start_url": "./index.html",
@@ -9,6 +10,20 @@
     "background_color": "#d2baff",
     "theme_color": "#d2baff",
     "orientation": "landscape",
+    "categories": [
+        "education",
+        "entertainment",
+        "kids"
+    ],
+    "screenshots": [
+        {
+            "src": "biblioteca/imagenes/juego_biblioteca.webp",
+            "sizes": "1200x674",
+            "type": "image/webp",
+            "form_factor": "wide",
+            "label": "Pantalla de selección de historias de la Biblioteca del Tío Pier"
+        }
+    ],
     "icons": [
         {
             "src": "biblioteca/imagenes/iconos/icono_192.png",

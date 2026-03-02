@@ -1,10 +1,10 @@
 'use strict';
 (() => {
     // Versión general de la aplicación 
-    const VERSION_APP = "1.1.2";
+    const VERSION_APP = "1.1.3";
 
     // Versiones de caché
-    const CACHE_BIBLIOTECA = '4',
+    const CACHE_BIBLIOTECA = '5',
         CACHE_CSS = '8',
         CACHE_JS = '9',
         CACHE_CHALLENGES = '4',
@@ -29,6 +29,7 @@
                 'manifest.json',
                 'biblioteca/historias.json',
                 'biblioteca/imagenes/fondo.webp',
+                'biblioteca/imagenes/ogimage.jpg',
                 'biblioteca/imagenes/iconos/favicon.png',
                 'biblioteca/imagenes/iconos/icono_192.png',
                 'biblioteca/imagenes/iconos/icono_180.png',
