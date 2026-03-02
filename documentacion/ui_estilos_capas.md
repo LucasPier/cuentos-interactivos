@@ -13,7 +13,7 @@ El contenedor `#juego` tiene las siguientes capas visuales, ordenadas por z-inde
 | 300 | Desafío | `#panel-desafio` | Overlay de minijuegos (cuando `.activo`) |
 | 1000 | Inicio | `#pantalla-inicio` | Pantalla de inicio de historia (dinámica) |
 | 1050 | Biblioteca | `#pantalla-biblioteca` | Selección de historias |
-| 1100 | UI | `.ui-controles` | Botones permanentes (toggle texto, mute) |
+| 1100 | UI | `.ui-controles` | Botones permanentes (toggle texto, mute, fullscreen) |
 | 1200 | Carga | `#indicador-carga` | Logo de la historia con animación fade-loop |
 | 1500 | DevPanel | `#panel-dev` | Panel de desarrollo (lazy, solo en modo dev) |
 
@@ -108,20 +108,20 @@ El `ChallengeManager` usa **Strategy Pattern con Registry**. Cada subtipo de des
 
 ### Entre escenas
 
-Las transiciones se controlan programáticamente con `opacity` + `setTimeout`, sincronizadas con la `transition` CSS en `#escena`:
+Las transiciones se controlan programáticamente con `opacity` + `setTimeout`, sincronizadas con la `transition` CSS en `#escena`. El motor lee dinámicamente el valor de la variable `--transicion-escena` definida en el CSS para ajustar los tiempos de espera en JS de forma automática.
 
 ```css
 #escena {
-    transition: opacity 400ms ease-in-out;
+    transition: opacity var(--transicion-escena) ease-in-out;
 }
 ```
 
 Flujo:
-1. Si hay contenido previo: `opacity = 0` → esperar 400ms (fade-out)
+1. Si hay contenido previo: `opacity = 0` → esperar duración de transición (fade-out)
 2. Si es primera carga: `opacity = 0` (arrancar invisible)
 3. Actualizar el DOM (fondo, elementos, texto, opciones)
 4. Esperar 50ms (para que el browser pinte)
-5. `opacity = 1` → esperar 400ms (fade-in)
+5. `opacity = 1` → esperar duración de transición (fade-in)
 
 **Nota técnica**: Se descartó el uso de `animationend` events porque causaba problemas de event bubbling — las animaciones de los elementos hijos (efecto-float, efecto-bounce) disparaban `animationend` en el contenedor padre antes de que la transición del contenedor terminara.
 
@@ -203,13 +203,14 @@ Aplica una rutina de movimiento o de brillo constante a la etiqueta `<img>` inte
 
 ### Botón DevPanel (`#btn-dev-panel`)
 
-- Posición: esquina inferior derecha.
+- Posición: esquina superior izquierda (junto al mute/fullscreen).
 - Emoji: 🛠️.
 - Solo existe cuando el DevPanel está activado (modo dev).
 - Alterna apertura/cierre del panel de desarrollo.
-- Usa la misma clase `.btn-ui` con glassmorphism circular.
 
-### Los tres son botones circulares (48px) con glassmorphism:
+### Estilos compartidos de botones UI:
+
+Los botones funcionales de la UI comparten un diseño circular (48px) de glassmorphism base en `.btn-ui`:
 
 ```css
 .btn-ui {

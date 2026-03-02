@@ -9,6 +9,9 @@ export class ChallengeManager {
     /** @type {Map<string, object>} Registry de handlers por subtipo */
     #handlers = new Map();
 
+    /** Delay en ms entre el feedback visual del desafío y su cierre */
+    #DELAY_POST_DESAFIO = 800;
+
     /** @type {HTMLElement} */
     #panelDesafioEl;
 
@@ -83,7 +86,7 @@ export class ChallengeManager {
             }
         } finally {
             // Ocultar panel después de un breve delay para el feedback visual
-            await this.#delay(800);
+            await this.#delay(this.#DELAY_POST_DESAFIO);
             this.#panelDesafioEl.classList.remove('activo');
             this.#panelDesafioEl.innerHTML = '';
         }

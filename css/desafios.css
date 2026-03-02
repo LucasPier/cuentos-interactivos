@@ -38,7 +38,7 @@
 /* ---- Instrucción del desafío ---- */
 .desafio-instruccion {
     position: relative;
-    z-index: 10;
+    z-index: var(--z-elementos);
     background: var(--color-fondo-panel);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
@@ -58,7 +58,7 @@
     left: 50%;
     transform: translateX(-50%);
     margin-bottom: 0;
-    z-index: 50;
+    z-index: var(--z-panel-texto);
     /* Por encima de todo */
 }
 
@@ -68,7 +68,7 @@
     left: 50%;
     transform: translateX(-50%);
     margin-bottom: 0;
-    z-index: 50;
+    z-index: var(--z-panel-texto);
 }
 
 .desafio-instruccion h2 {
@@ -87,7 +87,7 @@
 /* ---- Opciones del quiz ---- */
 .desafio-opciones {
     position: relative;
-    z-index: 10;
+    z-index: var(--z-elementos);
     display: flex;
     flex-direction: column;
     gap: var(--espaciado-sm);
@@ -100,7 +100,7 @@
 .desafio-area-interactiva {
     position: absolute;
     inset: 0;
-    z-index: 5;
+    z-index: var(--z-efectos);
 }
 
 .desafio-elemento-interactivo {
@@ -137,7 +137,7 @@
     top: 30%;
     left: 50%;
     transform: translate(-50%, -50%);
-    z-index: 20;
+    z-index: var(--z-panel-opciones);
     font-size: var(--tamano-titulo);
     font-weight: 900;
     color: var(--color-dorado-brillante);
@@ -152,7 +152,7 @@
     bottom: 20%;
     left: 50%;
     transform: translateX(-50%);
-    z-index: 20;
+    z-index: var(--z-panel-opciones);
     padding: var(--espaciado-md) var(--espaciado-xl);
     border-radius: var(--boton-radio);
     font-size: var(--tamano-texto-grande);
@@ -163,13 +163,13 @@
 
 .desafio-feedback.exito {
     background: rgba(16, 185, 129, 0.9);
-    color: #fff;
+    color: var(--color-blanco);
     border: 2px solid var(--color-dorado-claro);
 }
 
 .desafio-feedback.fallo {
     background: rgba(239, 68, 68, 0.85);
-    color: #fff;
+    color: var(--color-blanco);
     border: 2px solid rgba(239, 68, 68, 0.5);
 }
 

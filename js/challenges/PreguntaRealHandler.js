@@ -10,6 +10,9 @@ export class PreguntaRealHandler {
 
     #audioManager;
 
+    /** Ms de espera desde el feedback hasta resolver la promesa */
+    #DELAY_RESOLVER_MS = 1500;
+
     /**
      * @param {import('../AudioManager.js').AudioManager} audioManager
      */
@@ -102,7 +105,7 @@ export class PreguntaRealHandler {
                     }
 
                     // Resolver después del feedback
-                    setTimeout(() => resolve(opcion.correcta), 1500);
+                    setTimeout(() => resolve(opcion.correcta), this.#DELAY_RESOLVER_MS);
                 });
 
                 opcionesDiv.appendChild(btn);

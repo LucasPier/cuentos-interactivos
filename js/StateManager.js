@@ -92,7 +92,6 @@ export class StateManager {
         if (!nombre) return;
         this.#estado.recompensas[nombre] = true;
         this.#persistir();
-        console.log(`[StateManager] Recompensa otorgada: "${nombre}"`);
     }
 
     /**
@@ -112,7 +111,6 @@ export class StateManager {
         if (!nombre) return;
         delete this.#estado.recompensas[nombre];
         this.#persistir();
-        console.log(`[StateManager] Recompensa revocada: "${nombre}"`);
     }
 
     /**
@@ -169,7 +167,6 @@ export class StateManager {
             historial: []
         };
         this.#persistir();
-        console.log('[StateManager] Estado reiniciado');
     }
 
     // ─── Persistencia (localStorage) ────────────────
@@ -179,9 +176,11 @@ export class StateManager {
      * @returns {string}
      */
     get #storageKey() {
-        return this.#historiaActual
-            ? `${this.#STORAGE_PREFIX}_${this.#historiaActual}`
-            : this.#STORAGE_PREFIX;
+        if (!this.#historiaActual) {
+            console.warn('[StateManager] Se intentó acceder a la clave de storage sin una historia activa.');
+            return this.#STORAGE_PREFIX;
+        }
+        return `${this.#STORAGE_PREFIX}_${this.#historiaActual}`;
     }
 
     #persistir() {

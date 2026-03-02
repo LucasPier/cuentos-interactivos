@@ -29,6 +29,9 @@ export class BibliotecaManager {
     /** @type {Event|null} */
     #eventoInstalacion = null;
 
+    /** Flag para bloqueo de doble-clic */
+    #navegando = false;
+
     /** @type {function|null} Callback ejecutado al mostrar la biblioteca */
     #onMostrarBiblioteca = null;
 
@@ -89,8 +92,6 @@ export class BibliotecaManager {
             // Renderizar tarjetas
             this.#renderizarTarjetas(historias);
 
-            console.log(`[BibliotecaManager] Biblioteca inicializada con ${historias.length} historia(s)`);
-
         } catch (error) {
             console.error('[BibliotecaManager] Error al inicializar:', error);
         }
@@ -143,10 +144,17 @@ export class BibliotecaManager {
      * @param {string} ruta — Ruta base de la historia
      */
     async #seleccionarHistoria(config, ruta) {
+        if (this.#navegando) return;
+        this.#navegando = true;
+
         if (this.#stateManager.tienePartidaGuardada(config.id)) {
             this.#mostrarModalRetomar(config, ruta);
         } else {
-            await this.#cargarDirecto(config, ruta, false);
+            try {
+                await this.#cargarDirecto(config, ruta, false);
+            } finally {
+                this.#navegando = false;
+            }
         }
     }
 
@@ -177,16 +185,22 @@ export class BibliotecaManager {
         btnContinuar.className = 'btn-retomar btn-modal-primario';
         btnContinuar.textContent = 'Continuar desde donde estaba';
         btnContinuar.addEventListener('click', () => {
+            btnContinuar.disabled = true;
+            btnReiniciar.disabled = true;
+            btnCancelar.disabled = true;
             overlay.remove();
-            this.#cargarDirecto(config, ruta, false);
+            this.#cargarDirecto(config, ruta, false).finally(() => this.#navegando = false);
         });
 
         const btnReiniciar = document.createElement('button');
         btnReiniciar.className = 'btn-nuevo-juego btn-modal-secundario';
         btnReiniciar.textContent = 'Empezar desde el principio';
         btnReiniciar.addEventListener('click', () => {
+            btnContinuar.disabled = true;
+            btnReiniciar.disabled = true;
+            btnCancelar.disabled = true;
             overlay.remove();
-            this.#cargarDirecto(config, ruta, true);
+            this.#cargarDirecto(config, ruta, true).finally(() => this.#navegando = false);
         });
 
         const btnCancelar = document.createElement('button');
@@ -194,6 +208,7 @@ export class BibliotecaManager {
         btnCancelar.textContent = 'Cancelar';
         btnCancelar.addEventListener('click', () => {
             overlay.remove();
+            this.#navegando = false;
         });
 
         botonesContainer.appendChild(btnContinuar);
@@ -250,8 +265,6 @@ export class BibliotecaManager {
 
             // Esperar a que el usuario responda
             const { outcome } = await this.#eventoInstalacion.userChoice;
-            console.log(`[BibliotecaManager] Resultado de instalación PWA: ${outcome}`);
-
             // Independientemente del resultado, ya no necesitamos el evento
             this.#eventoInstalacion = null;
 

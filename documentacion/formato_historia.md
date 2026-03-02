@@ -49,79 +49,11 @@
 
 Todas las rutas dentro de `historia.json` son **relativas a la carpeta de la historia**. El motor las resuelve prepending `rutaBase`.
 
-### Escena (`historias/{id}/datos/escenas/*.json`)
+### Escenas y Desafíos (`historias/{id}/datos/...`)
 
-```jsonc
-{
-  "id": "INICIO",                          // ID único, coincide con el nombre del archivo
-  "tipo": "escena",
-  "fondo": "cuarto_iru.webp",       // Nombre del archivo de fondo
-  "video": "video_fondo.mp4",        // Opcional: video de fondo (busca en carpeta videos/)
-  "texto": "Irupé se despierta...",        // Texto narrativo
-  "audio": "pista_fondo.mp3",              // Opcional: reproduce música (busca en carpeta audios/)
-  "elementos": [                           // Personajes/objetos superpuestos (opcional)
-    {
-      "id": "irupe",
-      "imagen": "irupe.webp",
-      "efecto": "aparecer_suave",          // Clase CSS: efecto-aparecer_suave (opcional)
-      "estilo": {
-        "x": 25,                           // Posición horizontal (0–100, porcentaje)
-        "y": 100,                          // Posición vertical (0=arriba, 100=abajo)
-        "ancho": 45,                       // Ancho relativo al contenedor (porcentaje)
-        "z_index": 10                      // Orden de superposición
-      }
-    }
-  ],
-  "opciones": [                            // Botones de decisión
-    {
-      "texto": "Salir a explorar",
-      "accion": "navegar",                 // "navegar" | "reiniciar"
-      "target": "ENCUENTRO_PADRES",        // ID del destino
-      "tipo_target": "escena"              // "escena" | "desafio"
-    },
-    {
-      "texto": "Ofrecer la flor de luz",
-      "accion": "navegar",
-      "target": "FINAL_SECRETO",
-      "tipo_target": "escena",
-      "condicion": "tiene_flor_de_luz"     // Solo visible si cumple (ver §9)
-    }
-  ]
-}
-```
+Los esquemas detallados para los archivos JSON de **Escenas** (`escenas/*.json`) y **Desafíos** (`desafios/*.json`) tienen su propia documentación dedicada para mantener una única fuente de verdad.
 
-### Desafío (`historias/{id}/datos/desafios/*.json`)
-
-```jsonc
-{
-  "id": "DESAFIO_INICIAL",
-  "tipo": "desafio",
-  "subtipo": "pregunta_real",              // Determina qué handler se usa
-  "fondo": "cuarto_iru.webp",       // Fondo del desafío (opcional)
-  "instruccion": "Preguntale a un adulto...",
-  "audio": "pista_misterio.mp3",           // Opcional: música de fondo para el desafío
-  "configuracion": {                       // Varía según subtipo
-    "preguntas": [
-      {
-        "pregunta": "¿Cuándo es el cumpleaños?",
-        "opciones": [
-          { "texto": "En Verano", "correcta": false },
-          { "texto": "En Invierno", "correcta": true },
-          { "texto": "En Primavera", "correcta": false }
-        ]
-      }
-    ]
-  },
-  "resultado_exito": {
-    "target": "ENTRADA_BOSQUE",            // Escena al acertar
-    "recompensa": "piedra_magica"          // Recompensa otorgada (opcional)
-  },
-  "resultado_fallo": {
-    "target": "FALLO_PREGUNTA",            // Escena al fallar
-    "mensaje": "¡Esa no era!"
-  }
-}
-```
+Consultalos en: **[`formato_escenas.md`](formato_escenas.md)**
 
 ---
 

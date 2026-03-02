@@ -10,6 +10,13 @@ export class ObservacionHandler {
 
     #audioManager;
 
+    /** Ms de espera desde el feedback visual hasta resolver la promesa */
+    #DELAY_RESOLVER_MS = 1500;
+    /** Ms de duración de la animación .efecto-pulse */
+    #DELAY_ANIM_PULSE_MS = 300;
+    /** Ms de duración de la animación .efecto-shake */
+    #DELAY_ANIM_SHAKE_MS = 400;
+
     /**
      * @param {import('../AudioManager.js').AudioManager} audioManager
      */
@@ -110,9 +117,9 @@ export class ObservacionHandler {
 
                         // Cambio de imagen al finalizar la animación (si hay imagen_final)
                         if (elem.imagen_final) {
-                            div.addEventListener('animationend', () => {
+                            setTimeout(() => {
                                 img.src = preloader.resolverRuta(elem.imagen_final, elem.tipo || 'objeto');
-                            }, { once: true });
+                            }, this.#DELAY_ANIM_PULSE_MS);
                         }
 
                         const feedback = document.createElement('div');
@@ -123,15 +130,15 @@ export class ObservacionHandler {
                         // Deshabilitar interacción
                         area.style.pointerEvents = 'none';
 
-                        setTimeout(() => resolve(true), 1500);
+                        setTimeout(() => resolve(true), this.#DELAY_RESOLVER_MS);
                     } else {
                         // Incorrecto — feedback visual
                         div.classList.add('efecto-shake');
                         div.style.opacity = '0.5';
                         // Quitar clase shake para que se pueda re-aplicar
-                        div.addEventListener('animationend', () => {
+                        setTimeout(() => {
                             div.classList.remove('efecto-shake');
-                        }, { once: true });
+                        }, this.#DELAY_ANIM_SHAKE_MS);
                     }
                 });
 

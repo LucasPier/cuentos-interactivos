@@ -11,13 +11,16 @@
     "flor_de_luz": true,
     "piedra_magica": true
   },
-  historial: [                 // Array de todas las escenas visitadas
+  historial: [                 // Array de todas las escenas visitadas (se persiste)
     "INICIO",
     "ENCUENTRO_PADRES",
     "ENTRADA_BOSQUE"
   ]
 }
 ```
+
+> [!TIP]
+> El historial permite rastrear el camino del jugador y es útil para depuración desde el `DevPanel`.
 
 ### Ejemplo de Recompensas (varía por historia)
 
@@ -31,11 +34,14 @@
 
 ### Evaluación de condiciones
 
-Las opciones del JSON pueden tener un campo `condicion`. La convención es:
+Las opciones del JSON pueden tener un campo `condicion`. La convención es **estricta**:
 
 ```
 condicion: "tiene_X"  →  StateManager.tieneRecompensa("X")
 ```
+
+> [!IMPORTANT]
+> El prefijo `tiene_` es **mandatorio**. Si el JSON define solo el nombre de la recompensa (ej. `"flor_de_luz"`), el motor no la reconocerá correctamente y lanzará un warning en la consola.
 
 Ejemplo: `"tiene_flor_de_luz"` → verifica si `recompensas["flor_de_luz"] === true`.
 
@@ -64,7 +70,7 @@ Ejemplo: `"tiene_flor_de_luz"` → verifica si `recompensas["flor_de_luz"] === t
 
 ### Videos
 
-Los videos de fondo **no se precargan con `new Image()`** ni con fetch anticipado. En su lugar, el elemento `<video preload="auto">` nativo del navegador gestiona la descarga y el buffering. El video se muestra solo cuando emite el evento `canplaythrough`, garantizando reproducción sin interrupciones. La imagen de fondo actúa como fallback visual durante la carga.
+Los videos de fondo **no se precargan con `new Image()`** ni con fetch anticipado. Su creación depende de que `FeatureFlags.videosHabilitados` esté activo (feature experimental). Si está habilitado, el elemento `<video preload="auto">` nativo del navegador gestiona la descarga y el buffering. El video se muestra solo cuando emite el evento `canplaythrough`, garantizando reproducción sin interrupciones. La imagen de fondo actúa como fallback visual durante la carga.
 
 ### JSONs
 

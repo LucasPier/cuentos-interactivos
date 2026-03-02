@@ -32,7 +32,7 @@
             "tipo": "polvo_hadas",
             "estilo": {
                 "x": 50,
-                "y": 27,
+                "y": 100,
                 "ancho": 100,
                 "z_index": 5
             },

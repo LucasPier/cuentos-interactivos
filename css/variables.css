@@ -20,6 +20,18 @@
     --color-cyan-bio: #22d3ee;
     --color-rosa-magico: #f472b6;
     --color-blanco: #ffffff;
+    --color-peligro: #fca5a5;
+    --color-peligro-fuerte: #f87171;
+    --color-exito: #4ade80;
+
+    /* ---- Madera y Pergamino (Biblioteca) ---- */
+    --color-pergamino: #dcbfa3;
+    --color-pergamino-claro: #fef0d9;
+    --color-madera: #6e462c;
+    --color-madera-oscura: #4a2e1b;
+    --color-madera-borde: #8b5a2b;
+    --color-madera-apagado: #a88a70;
+    --color-gris-texto: #b9b9b9;
 
     /* ---- Texto ---- */
     --color-texto-principal: #f0fdf4;
@@ -69,4 +81,5 @@
     --z-ui-controles: 1100;
     --z-indicador-carga: 1200;
     --z-panel-dev: 1500;
+    --z-modal: 2000;
 }

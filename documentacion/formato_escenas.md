@@ -36,6 +36,7 @@ Utilizado para escenas narrativas, diálogos y menús de decisión.
   "tipo": "escena", 
   "fondo": "nombre_imagen_fondo.webp",
   "video": "nombre_video_fondo.mp4", // Opcional: video de fondo (busca en carpeta videos/)
+  "clase_css": "clase-custom",      // Opcional: clase aplicada al contenedor #escena (ej: para finales secretos o efectos globales)
   "texto": "El contenido narrativo que leerá o que escuchará quien esté jugando.",
   "audio": "audio_fondo.mp3", // Opcional: música de fondo (busca en carpeta audios/)
   "audio_narracion": "audio_opcional.mp3",
@@ -45,7 +46,7 @@ Utilizado para escenas narrativas, diálogos y menús de decisión.
     // Ejemplos:
     // { "tipo": "luciérnagas", "estilo": { "x": 50, "y": 100, "ancho": 100, "z_index": 5 }, "cantidad": 15, "color": "dorado" }
     // { "tipo": "polvo_hadas", "estilo": { "x": 50, "y": 100, "ancho": 100, "z_index": 5 }, "cantidad": 30, "color": "blanco", "tamano": "3px" }
-    // { "tipo": "destellos", "estilo": { "x": 50, "y": 50, "ancho": 20, "alto": 20, "z_index": 10 }, "cantidad": 5, "color": "cyan-bio", "tamano": "8px" }
+    // { "tipo": "destellos", "estilo": { "x": 50, "y": 50, "ancho": 20, "alto": 20, "z_index": 10 }, "cantidad": 5, "color": "cyan-bio", "tamano": "8px", "opacidad_max": "0.7" }
     // Nota: en escenas, los efectos y elementos comparten stacking context
     // dentro de .escena-elementos. Un efecto con z_index menor al z_index de
     // un elemento aparecerá detrás de él, y viceversa.
@@ -90,7 +91,7 @@ Los botones que permiten al usuario interactuar.
   "accion": "navegar", // "navegar" | "reiniciar"
   "target": "ENCUENTRO_TIO_PIER", // ID del siguiente archivo JSON (sin extensión)
   "tipo_target": "escena", // "escena" | "desafio"
-  "condicion": null // Opcional: "{tiene_flor_de_luz}" (lógica futura)
+  "condicion": null // Opcional: "tiene_flor_de_luz" (la opción solo aparece si tiene esa recompensa)
 }
 ```
 
@@ -111,6 +112,10 @@ Utilizado para minijuegos, preguntas o interacciones especiales que rompen el fl
   "fondo": "fondo_desafio.webp",
   "video": "video_desafio.mp4", // Opcional: video de fondo (busca en carpeta videos/)
   "audio": "audio_desafio.mp3", // Opcional: música de fondo (busca en carpeta audios/)
+  "efectos": [
+    // Opcional: efectos visuales globales para el desafío (ej: luciérnagas, varita)
+    // Se renderizan sobre el fondo y debajo del contenido interactivo.
+  ],
   "configuracion": {
     // Parámetros específicos según el subtipo
     // Opcional en minijuegos: "ubicacion_instrucciones": "arriba" | "medio" | "abajo"
@@ -129,10 +134,14 @@ Utilizado para minijuegos, preguntas o interacciones especiales que rompen el fl
 ### Ejemplos de Configuración por Subtipo
 
 #### A. Pregunta Real (Quiz)
+
+Se puede definir una pregunta única directamente en la configuración, o bien un array `"preguntas"` para que el motor elija una al azar.
+
 ```json
 "configuracion": {
   "sonido_exito": "respuesta_correcta.mp3", // Opcional
   "sonido_fallo": "respuesta_incorrecta.mp3", // Opcional
+  // Preguntas para elegir al azar:
   "preguntas": [
     {
       "pregunta": "¿Cuándo es el cumpleaños de la abuela Tere?",
@@ -161,6 +170,7 @@ Utilizado para minijuegos, preguntas o interacciones especiales que rompen el fl
   "sonido_exito": "victoria.mp3", // Opcional: Sonido reproducido al completar el objetivo
   "objeto_interactivo": {
     "imagen": "piedra_magica.webp",
+    "tipo": "objeto", // Opcional: "objeto" (default) | "personaje" | "decoracion"
     "x": 50, "y": 80, "ancho": 15,
     "animacion": "flotacion-aura", // Funciona en objetos de desafíos de minijuego (observacion / clicks)
     "sonido": "click.mp3" // Opcional: Sonido reproducido con cada clic al objeto
@@ -179,6 +189,7 @@ Utilizado para minijuegos, preguntas o interacciones especiales que rompen el fl
     {
       "id": "hongo_normal",
       "imagen": "hongo_1.webp",
+      "tipo": "objeto", // Opcional: "objeto" (default) | "personaje" | "decoracion"
       "x": 20, "y": 80, "ancho": 15,
       "sonido": "error_boing.mp3" // Opcional: Sonido al clickear
     },

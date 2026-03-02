@@ -95,6 +95,7 @@ El script es de **solo lectura**. No modifica nada.
 3. Si hay archivos nuevos de una **nueva historia**, ver `resources/estructura-sw.md` → sección "Agregar una nueva historia".
 4. Bumpeár la versión de caché = incrementar en 1 la constante numérica (`'1'` → `'2'`). El SW limpia las cachés viejas automáticamente en `activate`.
 5. Consultar `resources/estructura-sw.md` para la tabla de cachés actualizada y las heurísticas de clasificación.
+6. **PROHIBIDO COMMITEAR** — Una vez actualizado el SW, NO realices el commit automáticamente. Dejale esa tarea al usuario o esperá a que te lo pida explícitamente.
 
 ---
 

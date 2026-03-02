@@ -36,7 +36,7 @@ El motor usa **ES Modules nativos** con inyección de dependencias. Todos los m�
 | Módulo | Rol |
 |--------|-----|
 | `main.js` | Bootstrap: instancia módulos y arranca `BibliotecaManager` |
-| `BibliotecaManager.js` | **Nuevo**: Gestiona la pantalla de selección de historias y carga configs |
+| `BibliotecaManager.js` | Gestiona la pantalla de selección de historias y carga configs |
 | `GameEngine.js` | Orquestador de una historia específica. Carga dinámica desde `historia.json` |
 | `ContentLoader.js` | Fetch de JSONs con rutas dinámicas (`rutaBase + rutaRelativa`) |
 | `StateManager.js` | Estado aislado por historia (`biblioteca_{id}`) |
@@ -46,7 +46,9 @@ El motor usa **ES Modules nativos** con inyección de dependencias. Todos los m�
 | `ChallengeManager.js` | Registry de handlers de desafíos (Strategy Pattern) |
 | `UIManager.js` | Controles permanentes + **Logo de carga dinámico** |
 | `AudioManager.js` | Sistema de audio (fondo, narración, efectos) |
-| `DevPanel.js` | Panel de desarrollo: lazy, zero-impact en producción (`?dev=true` / `Ctrl+Shift+D`) |
+| `FondoHelper.js` | Creación centralizada de fondos (imagen y video) |
+| `DevPanel.js` | Panel de desarrollo: lazy, disponible offline (`?dev=true` / `Ctrl+Shift+D`) |
+| `FeatureFlags.js` | Feature flags globales del motor (experimental) |
 
 ### Challenge Handlers (`/js/challenges/`)
 
@@ -78,7 +80,7 @@ Para agregar un nuevo tipo: crear handler con método `ejecutar(datos, panelEl, 
 | Z | Elemento | Función |
 |---|----------|---------|
 | 0 | `.escena-fondo` | Imagen de fondo de la escena |
-| 10 | `.escena-elementos` | Contenedor compartido de efectos (`.efecto-contenedor`, z default 5) y elementos visuales (`.elemento-visual`, z default 10) |
+| 10 | `.escena-elementos` | Contenedor compartido de efectos (`var(--z-efectos)`, z default 5) y elementos visuales (`.elemento-visual`, z default 10) |
 | 100 | `#panel-texto` | Texto narrativo |
 | 200 | `#panel-opciones` | Botones de decisión |
 | 300 | `#panel-desafio` | Overlay de minijuegos |
@@ -87,6 +89,7 @@ Para agregar un nuevo tipo: crear handler con método `ejecutar(datos, panelEl, 
 | 1100 | `.ui-controles` | Botones permanentes |
 | 1200 | `#indicador-carga` | Logo de la historia (animado) |
 | 1500 | `#panel-dev` | Panel de desarrollo (solo en modo dev) |
+| 2000 | Modal | Modales de confirmación (`var(--z-modal)`) |
 
 ### Flujo Principal
 

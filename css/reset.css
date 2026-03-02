@@ -2,13 +2,16 @@
    RESET — Normalización mínima
    ============================================== */
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
     width: 100%;
     height: 100%;
     overflow: hidden;
@@ -18,7 +21,7 @@ html, body {
 
 body {
     font-family: var(--fuente-narrativa, 'Nunito', sans-serif);
-    background: #000;
+    background: var(--color-fondo-oscuro, #0a0f19);
     color: var(--color-texto-principal, #f0fdf4);
     line-height: 1.6;
     /* Prevenir zoom táctil accidental */

@@ -13,7 +13,7 @@
                 "ancho": 100,
                 "z_index": 5
             },
-            "cantidad": 40,
+            "cantidad": 4,
             "color": "dorado"
         },
         {
@@ -24,7 +24,7 @@
                 "ancho": 100,
                 "z_index": 5
             },
-            "cantidad": 20,
+            "cantidad": 4,
             "color": "violeta"
         },
         {
@@ -35,7 +35,7 @@
                 "ancho": 100,
                 "z_index": 5
             },
-            "cantidad": 20,
+            "cantidad": 4,
             "color": "esmeralda"
         },
         {
@@ -46,7 +46,7 @@
                 "ancho": 100,
                 "z_index": 5
             },
-            "cantidad": 20,
+            "cantidad": 4,
             "color": "cyan-bio"
         },
         {
@@ -57,18 +57,18 @@
                 "ancho": 100,
                 "z_index": 5
             },
-            "cantidad": 20,
+            "cantidad": 4,
             "color": "rosa"
         },
         {
             "tipo": "polvo_hadas",
             "estilo": {
                 "x": 50,
-                "y": 27,
+                "y": 100,
                 "ancho": 100,
                 "z_index": 5
             },
-            "cantidad": 25,
+            "cantidad": 20,
             "color": "dorado",
             "tamano": "5px"
         }

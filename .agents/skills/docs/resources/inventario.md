@@ -72,7 +72,7 @@ Para cada documento, se indica qué debe verificarse y cuáles son las fuentes d
 | Clave de localStorage | `js/StateManager.js` |
 | Estructura del estado guardado | `js/StateManager.js` |
 | Evaluación de condiciones (`tiene_X`) | `js/GameEngine.js` o `js/SceneRenderer.js` |
-| Recompensas: cómo se obtienen/verifican | `js/GameEngine.js` |
+| Recompensas: cómo se obtienen/verifican | `js/ChallengeManager.js`, `js/StateManager.js` |
 | ImagePreloader: resolución de rutas | `js/ImagePreloader.js` |
 | ContentLoader: precarga de JSONs | `js/ContentLoader.js` |
 

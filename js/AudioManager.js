@@ -11,6 +11,12 @@ export class AudioManager {
     /** Flag de silenciamiento forzado por DevPanel (independiente del mute del usuario) */
     #devSilenciado = false;
 
+    /** Volumen del BGM (música de fondo) */
+    #VOL_BGM = 0.5;
+
+    /** Volumen de efectos de sonido */
+    #VOL_SFX = 0.8;
+
     /**
      * Objeto de Audio actual.
      */
@@ -75,7 +81,7 @@ export class AudioManager {
         this.#bgmSrc = archivo;
         this.#bgm = new Audio(archivo);
         this.#bgm.loop = true;
-        this.#bgm.volume = 0.5; // Volumen inicial razonable
+        this.#bgm.volume = this.#VOL_BGM;
 
         if (this.#muteado) {
             this.#bgm.muted = true;
@@ -83,7 +89,7 @@ export class AudioManager {
 
         // Promesa para manejar politicas de autoplay
         this.#bgm.play().catch(e => {
-            console.log('[AudioManager] Autoplay bloqueado o error:', e);
+            console.warn('[AudioManager] Autoplay bloqueado o error:', e);
         });
     }
 
@@ -102,10 +108,11 @@ export class AudioManager {
 
     /**
      * Reproduce la narración de una escena.
-     * @param {string} _archivo
+     * @param {string} archivo
      */
-    reproducirNarracion(_archivo) {
-        // TODO: implementar
+    reproducirNarracion(archivo) {
+        if (!archivo || this.#devSilenciado) return;
+        console.warn(`[AudioManager] Reproducción de narración no implementada aún: ${archivo}`);
     }
 
     /**
@@ -116,12 +123,12 @@ export class AudioManager {
         if (!archivo || this.#devSilenciado) return;
         const rutaCompleta = this.#rutaBase ? (this.#rutaBase + 'audios/' + archivo) : archivo;
         const sfx = new Audio(rutaCompleta);
-        sfx.volume = 0.8;
+        sfx.volume = this.#VOL_SFX;
         if (this.#muteado) {
             sfx.muted = true;
         }
         sfx.play().catch(e => {
-            console.log('[AudioManager] Error al reproducir efecto:', e);
+            console.warn('[AudioManager] Error al reproducir efecto:', e);
         });
     }
 
@@ -138,7 +145,7 @@ export class AudioManager {
     reanudar() {
         if (this.#bgm && this.#bgm.paused && !this.#muteado && !this.#devSilenciado) {
             this.#bgm.play().catch(e => {
-                console.log('[AudioManager] Error al reanudar:', e);
+                console.warn('[AudioManager] Error al reanudar:', e);
             });
         }
     }

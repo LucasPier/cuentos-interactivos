@@ -2,6 +2,8 @@
     "name": "La Biblioteca del Tío Pier",
     "short_name": "Tío Pier",
     "description": "Cuentos interactivos mágicos para Irupé",
+    "id": "./",
+    "scope": "./",
     "start_url": "./index.html",
     "display": "fullscreen",
     "background_color": "#d2baff",

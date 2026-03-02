@@ -19,6 +19,7 @@ de La Biblioteca del Tío Pier.
 - `resources/documentar-nuevo.md` — Guía para crear documentación nueva
 - `scripts/check_texts.py` — Compara textos narrativos JSON vs `historia.md`
 - `scripts/check_opciones.py` — Compara opciones/botones JSON vs `historia.md`
+- `scripts/check_estructura.py` — Compara escenas y desafíos en `historia.json` vs `historia.md` y archivos
 - `scripts/update_md.py` — Actualiza `historia.md` con textos de los JSONs
 
 ---
@@ -155,17 +156,22 @@ Los scripts esperan como `--dir` el directorio raíz de la historia, por ejemplo
 
 ### Flujo recomendado
 
-1. **Verificar textos narrativos** (campo `texto` del JSON vs sección `TEXTO:` del MD):
+1. **Verificar estructura integral** (escenas y desafíos en `historia.json` vs `historia.md` y archivos físicos):
+```bash
+python .agents/skills/docs/scripts/check_estructura.py --dir <ruta-historia>
+```
+
+2. **Verificar textos narrativos** (campo `texto` del JSON vs sección `TEXTO:` del MD):
 ```bash
 python .agents/skills/docs/scripts/check_texts.py --dir <ruta-historia>
 ```
 
-2. **Verificar opciones/botones** (campo `texto` de botones vs sección `OPCIONES:` del MD):
+3. **Verificar opciones/botones** (campo `texto` de botones vs sección `OPCIONES:` del MD):
 ```bash
 python .agents/skills/docs/scripts/check_opciones.py --dir <ruta-historia>
 ```
 
-3. **Actualizar `historia.md`** solo si las diferencias son intencionales (JSON es la fuente de verdad):
+4. **Actualizar `historia.md`** solo si las diferencias son intencionales (JSON es la fuente de verdad):
 ```bash
 python .agents/skills/docs/scripts/update_md.py --dir <ruta-historia> [--in-place]
 ```
@@ -184,3 +190,5 @@ python .agents/skills/docs/scripts/update_md.py --dir <ruta-historia> [--in-plac
 5. **Si un cambio impacta `index.md` o `AGENTS.md`**, proponer esas actualizaciones junto al cambio principal
 6. **Auditoría general = carga progresiva** (un doc a la vez, hallazgos parciales)
 7. **Auditoría particular = profundidad** (leer el código real para verificar afirmaciones)
+8. **PROHIBIDO COMMITEAR** — No hagas commit automáticamente después de corregir documentación. Dejá que el usuario lo maneje o esperá a que te lo pida.
+9. **Uso de artefactos para informes** — Si el entorno soporta la creación de "artefactos" (archivos de respuesta estructurada), entregá los informes usándolos. Si no, presentalos normalmente en la conversación.

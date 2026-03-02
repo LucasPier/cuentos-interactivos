@@ -45,7 +45,7 @@
 /* ---- Contenido centrado ---- */
 .biblioteca-contenido {
     position: relative;
-    z-index: 2;
+    z-index: var(--z-efectos);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -125,10 +125,11 @@
 .biblioteca-modal-overlay {
     position: fixed;
     inset: 0;
-    z-index: 2000;
+    z-index: var(--z-modal);
     background: rgba(10, 5, 0, 0.85);
     /* Tono madera oscuro/sepia transparente */
     backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -138,7 +139,7 @@
 .biblioteca-modal {
     /* Fondo realista simulando madera antigua (radial con viñeta natural) */
     background: radial-gradient(circle at 50% 30%, #4a2e1b 0%, #29180d 80%, #150b05 100%);
-    border: 3px solid #8b5a2b;
+    border: 3px solid var(--color-madera-borde);
     /* Borde madera tallada/barnizada */
     border-radius: 16px;
     padding: 2.5rem 2rem;
@@ -152,7 +153,7 @@
         0 0 20px rgba(212, 160, 23, 0.1);
     /* Ligero destello mágico/oro sucio */
     font-family: var(--fuente-narrativa);
-    color: #fef0d9;
+    color: var(--color-pergamino-claro);
     /* Blanco antiguo/pergamino en vez de puro #fff */
     animation: scaleInBounce 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
     position: relative;
@@ -176,7 +177,7 @@
     font-size: 1.8rem;
     font-weight: 800;
     margin-bottom: 0.75rem;
-    color: #ffd700;
+    color: var(--color-dorado-brillante);
     /* Dorado desgastado, como el lomo de un libro */
     text-shadow: 0 4px 6px rgba(0, 0, 0, 0.8), 0 1px 2px rgba(0, 0, 0, 1);
     letter-spacing: 0.05em;
@@ -185,7 +186,7 @@
 
 .biblioteca-modal-mensaje {
     font-size: 1.1rem;
-    color: #dcbfa3;
+    color: var(--color-pergamino);
     /* Texto pergamino apagado */
     margin-bottom: 2.5rem;
     line-height: 1.6;
@@ -216,51 +217,51 @@
     transform: scale(0.97);
 }
 
-.btn-modal-primario {
+.biblioteca-modal-botones .btn-modal-primario {
     /* Igual al botón secundario (madera base) */
-    background: linear-gradient(180deg, #6e462c 0%, #4a2e1b 100%);
-    color: #fef0d9;
-    border-color: #8b5a2b !important;
+    background: linear-gradient(180deg, var(--color-madera) 0%, var(--color-madera-oscura) 100%);
+    color: var(--color-pergamino-claro);
+    border-color: var(--color-madera-borde);
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.1);
 }
 
-.btn-modal-primario:hover {
+.biblioteca-modal-botones .btn-modal-primario:hover {
     /* Verde bosque amigable al hacer hover */
     background: linear-gradient(180deg, #6ee7b7 0%, var(--color-esmeralda-claro) 100%);
-    color: #fff;
-    border-color: rgba(255, 255, 255, 0.3) !important;
+    color: var(--color-blanco);
+    border-color: rgba(255, 255, 255, 0.3);
     box-shadow: 0 12px 20px rgba(6, 78, 59, 0.6), inset 0 2px 4px rgba(255, 255, 255, 0.4);
     transform: translateY(-2px);
 }
 
-.btn-modal-secundario {
+.biblioteca-modal-botones .btn-modal-secundario {
     /* Estilo "botón secundario de madera" */
-    background: linear-gradient(180deg, #6e462c 0%, #4a2e1b 100%);
-    color: #fef0d9;
-    border-color: #8b5a2b !important;
+    background: linear-gradient(180deg, var(--color-madera) 0%, var(--color-madera-oscura) 100%);
+    color: var(--color-pergamino-claro);
+    border-color: var(--color-madera-borde);
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.1);
 }
 
-.btn-modal-secundario:hover {
-    background: linear-gradient(180deg, #8b5a2b 0%, #6e462c 100%);
+.biblioteca-modal-botones .btn-modal-secundario:hover {
+    background: linear-gradient(180deg, var(--color-madera-borde) 0%, var(--color-madera) 100%);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.15);
     transform: translateY(-1px);
-    color: #fff;
+    color: var(--color-blanco);
 }
 
-.btn-modal-terciario {
+.biblioteca-modal-botones .btn-modal-terciario {
     background: transparent;
-    color: #a88a70;
+    color: var(--color-madera-apagado);
     /* Texto oscuro/apagado */
-    border: 2px dashed rgba(168, 138, 112, 0.3) !important;
+    border: 2px dashed rgba(168, 138, 112, 0.3);
     padding-top: 0.75rem;
     /* un poco menos alto por ser terciario */
     padding-bottom: 0.75rem;
 }
 
-.btn-modal-terciario:hover {
-    color: #dcbfa3;
-    border-color: rgba(168, 138, 112, 0.6) !important;
+.biblioteca-modal-botones .btn-modal-terciario:hover {
+    color: var(--color-pergamino);
+    border-color: rgba(168, 138, 112, 0.6);
     background: rgba(255, 255, 255, 0.03);
 }
 
@@ -279,10 +280,10 @@
 /* ---- Versión de la Aplicación (PWA) ---- */
 .version-app {
     position: absolute;
-    bottom: 12px;
+    bottom: calc(12px + env(safe-area-inset-bottom, 0px));
     left: 14px;
-    z-index: 10;
-    color: #b9b9b9;
+    z-index: var(--z-elementos);
+    color: var(--color-gris-texto);
     font-family: var(--fuente-narrativa);
     font-size: 0.75rem;
     font-weight: 600;
@@ -301,12 +302,12 @@
 /* ---- Botón Instalar App (PWA) ---- */
 .btn-instalar-pwa {
     position: absolute;
-    bottom: 24px;
-    z-index: 20;
+    bottom: calc(24px + env(safe-area-inset-bottom, 0px));
+    z-index: var(--z-panel-texto);
     /* Por encima de fondos y pseudo items */
     background: rgba(10, 15, 25, 0.6);
     border: 1px solid rgba(212, 160, 23, 0.4);
-    color: #dcbfa3;
+    color: var(--color-pergamino);
     font-family: var(--fuente-narrativa);
     font-size: 0.9rem;
     font-weight: 600;
@@ -314,6 +315,7 @@
     border-radius: 999px;
     cursor: pointer;
     backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
     transition: all 0.3s ease;
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
     display: flex;
@@ -325,7 +327,7 @@
 .btn-instalar-pwa:hover {
     background: rgba(10, 15, 25, 0.8);
     border-color: rgba(212, 160, 23, 0.8);
-    color: #fef0d9;
+    color: var(--color-pergamino-claro);
     transform: translateY(-2px);
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.1);
 }
