@@ -731,8 +731,13 @@ export class DevPanel {
 
         // Botones de limpieza
         html += '<div class="dev-fila">';
-        html += '<button class="dev-btn dev-btn--peligro" data-dev-action="limpiar-estado">Limpiar estado</button>';
-        html += '<button class="dev-btn dev-btn--peligro" data-dev-action="limpiar-todo">Limpiar todo</button>';
+        html += '<div class="dev-tooltip dev-tooltip--left" data-tooltip="Borra el progreso de la historia actual.">';
+        html += '<button class="dev-btn dev-btn--peligro" data-dev-action="limpiar-estado">Borrar estado de la historia</button>';
+        html += '</div>';
+
+        html += '<div class="dev-tooltip" data-tooltip="ATENCIÓN: Borra progreso de todas las historias.">';
+        html += '<button class="dev-btn dev-btn--peligro" data-dev-action="limpiar-todo">Borrar estado de todas las historias</button>';
+        html += '</div>';
         html += '</div>';
 
         contenedor.innerHTML = html;
