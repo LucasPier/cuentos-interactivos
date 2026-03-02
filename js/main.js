@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     biblioteca.inicializar();
 
-    console.log('[main] La Biblioteca del Tío Pier — Motor inicializado ✨');
+    // (motor inicializado)
 
     // ─── DevPanel: Modo Desarrollo (lazy) ────────────
 
@@ -108,18 +108,19 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    const PWA_MSG_GET_VERSION = 'get-version';
+    const PWA_MSG_VERSION_UPDATE = 'version-update';
+
     // 6. Registrar Service Worker para PWA
     if ('serviceWorker' in navigator) {
         let isFirstInstall = true;
 
         navigator.serviceWorker.register('service-worker.js')
             .then(registration => {
-                console.log('[Service Worker] Registrado con éxito:', registration.scope);
-
                 // Si ya había un controlador al registrar, no es la primera instalación
                 if (navigator.serviceWorker.controller) {
                     isFirstInstall = false;
-                    navigator.serviceWorker.controller.postMessage({ tipo: 'GET_VERSION' });
+                    navigator.serviceWorker.controller.postMessage({ tipo: PWA_MSG_GET_VERSION });
                 }
             })
             .catch(error => {
@@ -128,7 +129,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Escuchar el mensaje de actualización de versión
         navigator.serviceWorker.addEventListener('message', event => {
-            if (event.data && event.data.tipo === 'VERSION_UPDATE') {
+            if (event.data && event.data.tipo === PWA_MSG_VERSION_UPDATE) {
                 const divVersion = document.getElementById('version-app');
                 if (divVersion) {
                     divVersion.textContent = `v${event.data.version}`;
@@ -156,15 +157,12 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('beforeinstallprompt', (e) => {
         // Evitamos que el navegador muestre el prompt nativo
         e.preventDefault();
-        console.log('[main] beforeinstallprompt interceptado');
-
         // Le pasamos el control a la biblioteca
         biblioteca.mostrarBotonInstalacion(e);
     });
 
     // 8. Ocultar el botón si la app ya fue instalada o si se instala
     window.addEventListener('appinstalled', () => {
-        console.log('[main] PWA instalada exitosamente');
         biblioteca.ocultarBotonInstalacion();
     });
 });

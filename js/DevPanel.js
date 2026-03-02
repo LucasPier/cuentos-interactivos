@@ -73,8 +73,6 @@ export class DevPanel {
         this.#crearBotonToggle();
         this.#suscribirEventos();
         this.#aplicarDevConfig();
-
-        console.log('%c[DevPanel] Modo desarrollo activado 🛠️', 'color: #a7f3d0; font-weight: bold;');
     }
 
     /**
@@ -105,8 +103,6 @@ export class DevPanel {
 
         this.#activo = false;
         delete window.devPanel;
-
-        console.log('%c[DevPanel] Modo desarrollo desactivado', 'color: #fca5a5; font-weight: bold;');
     }
 
     /**
@@ -433,13 +429,11 @@ export class DevPanel {
             case 'limpiar-estado':
                 this.#stateManager.reiniciar();
                 this.#refrescarEstado();
-                console.log('[DevPanel] Estado de la historia reiniciado');
                 break;
 
             case 'limpiar-todo':
                 this.#limpiarTodoLocalStorage();
                 this.#refrescarEstado();
-                console.log('[DevPanel] Todo el localStorage limpiado');
                 break;
         }
     }
@@ -777,7 +771,6 @@ export class DevPanel {
 
     #aplicarToggleVideos() {
         FeatureFlags.videosHabilitados = this.#devConfig.conVideos;
-        console.log(`[DevPanel] Videos de fondo: ${this.#devConfig.conVideos ? 'habilitados ▶' : 'deshabilitados ✕'}`);
     }
 
     #aplicarToggleFullscreen() {
@@ -785,7 +778,6 @@ export class DevPanel {
             if (!this.#requestFullscreenOriginal) {
                 this.#requestFullscreenOriginal = Element.prototype.requestFullscreen;
                 Element.prototype.requestFullscreen = function () {
-                    console.log('[DevPanel] requestFullscreen bloqueado');
                     return Promise.resolve();
                 };
             }

@@ -101,7 +101,6 @@ export class GameEngine {
             }
         }
 
-        console.log(`[GameEngine] Historia cargada: "${configHistoria.titulo}"`);
     }
 
     /**
@@ -148,7 +147,13 @@ export class GameEngine {
         if (config.subtitulo) {
             const subtitulo = document.createElement('p');
             subtitulo.className = 'inicio-subtitulo';
-            subtitulo.innerHTML = config.subtitulo.replace(/\n/g, '<br>');
+            const lineas = config.subtitulo.split('\n');
+            lineas.forEach((linea, index) => {
+                subtitulo.appendChild(document.createTextNode(linea));
+                if (index < lineas.length - 1) {
+                    subtitulo.appendChild(document.createElement('br'));
+                }
+            });
             if (config.colores?.subtitulo_color) {
                 subtitulo.style.color = config.colores.subtitulo_color;
             }
@@ -230,6 +235,9 @@ export class GameEngine {
      * @param {string} escenaInicial
      */
     async #empezarJuego(escenaInicial) {
+        if (this.#navegando) return;
+        this.#navegando = true;
+
         try {
             this.#uiManager.mostrarCarga();
 
@@ -249,6 +257,7 @@ export class GameEngine {
             console.error('[GameEngine] Error al empezar juego:', error);
         } finally {
             this.#uiManager.ocultarCarga();
+            this.#navegando = false;
         }
     }
 
@@ -373,6 +382,12 @@ export class GameEngine {
      * Reinicia el juego: limpia estado, vuelve a la pantalla de inicio de la historia.
      */
     #reiniciar() {
+        if (window.pwaNeedsReload) {
+            console.warn('[GameEngine] Finalizó historia. Recargando app por actualización...');
+            window.location.reload();
+            return;
+        }
+
         this.#stateManager.reiniciar();
         this.#sceneRenderer.limpiar();
         this.#uiManager.resetearTexto();

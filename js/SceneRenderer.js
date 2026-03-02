@@ -51,7 +51,6 @@ export class SceneRenderer {
      * @param {function} onNavegar — Callback (accion, target, tipoTarget) al elegir opción
      */
     async renderizar(datos, stateManager, onNavegar) {
-        console.log(`[SceneRenderer] Renderizando escena: ${datos.id}`);
         // Fade-out de la escena anterior (solo si ya tiene contenido)
         const tieneContenidoPrevio = this.#escenaEl.children.length > 0;
         if (tieneContenidoPrevio) {
@@ -64,7 +63,6 @@ export class SceneRenderer {
 
         // Pausar video de fondo anterior (si había)
         if (this.#videoActual) {
-            console.log("[SceneRenderer] Deteniendo video de fondo anterior");
             this.#videoActual.pause();
             this.#videoActual = null;
         }
@@ -73,8 +71,10 @@ export class SceneRenderer {
         this.#escenaEl.innerHTML = '';
         this.#panelOpcionesEl.innerHTML = '';
 
-        // Clase especial para final secreto
-        this.#escenaEl.classList.toggle('final-secreto', datos.id === 'FINAL_SECRETO');
+        // Aplicar clase CSS opcional (ej. para finales secretos)
+        if (datos.clase_css) {
+            this.#escenaEl.classList.add(datos.clase_css);
+        }
 
         // ── Capa 0: Fondo (imagen + video opcional) ──
         this.#renderizarFondo(datos.fondo, datos.video);

@@ -10,6 +10,11 @@ export class ClicksHandler {
 
     #audioManager;
 
+    /** Ms de espera antes de mostrar el feedback de éxito */
+    #DELAY_FEEDBACK_MS = 500;
+    /** Ms de espera desde el feedback hasta resolver la promesa */
+    #DELAY_RESOLVER_MS = 1200;
+
     /**
      * @param {import('../AudioManager.js').AudioManager} audioManager
      */
@@ -119,8 +124,8 @@ export class ClicksHandler {
                             feedback.textContent = '¡Completado! 🎉';
                             contenido.appendChild(feedback);
 
-                            setTimeout(() => resolve(true), 1200);
-                        }, 500);
+                            setTimeout(() => resolve(true), this.#DELAY_RESOLVER_MS);
+                        }, this.#DELAY_FEEDBACK_MS);
                     }
                 });
 
