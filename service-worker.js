@@ -1,20 +1,17 @@
 'use strict';
 (() => {
     // Versión general de la aplicación 
-    const VERSION_APP = "1.1.1";
+    const VERSION_APP = "1.1.2";
 
     // Versiones de caché
-    const CACHE_BIBLIOTECA = '2',
-        CACHE_CSS = '5',
-        CACHE_JS = '6',
-        CACHE_CHALLENGES = '3',
-        CACHE_CSS = '5',
-        CACHE_JS = '5',
-        CACHE_CHALLENGES = '3',
+    const CACHE_BIBLIOTECA = '4',
+        CACHE_CSS = '7',
+        CACHE_JS = '8',
+        CACHE_CHALLENGES = '4',
         CACHE_EMBE_IMAGENES = '2',
         CACHE_EMBE_AUDIOS = '1',
         CACHE_EMBE_VIDEOS = '2',
-        CACHE_EMBE_DATOS = '4',
+        CACHE_EMBE_DATOS = '5',
         CACHE_FONTS = '1';
 
     const NOMBRE_CACHE_FONTS = `cache-fonts-v${CACHE_FONTS}`;
@@ -35,22 +32,28 @@
                 'biblioteca/imagenes/iconos/favicon.png',
                 'biblioteca/imagenes/iconos/icono_192.png',
                 'biblioteca/imagenes/iconos/icono_180.png',
+                'biblioteca/imagenes/iconos/icono_m_192.png',
+                'biblioteca/imagenes/iconos/icono.png',
+                'biblioteca/imagenes/iconos/icono_m.png',
                 'css/biblioteca.css',
                 'js/BibliotecaManager.js'
-            ]
+            ],
+            version: CACHE_BIBLIOTECA
         },
         {
             nombre: `cache-css-v${CACHE_CSS}`,
             archivos: [
                 'css/animaciones.css',
                 'css/desafios.css',
+                'css/dev-panel.css',
                 'css/escena.css',
                 'css/inicio.css',
                 'css/layout.css',
                 'css/reset.css',
                 'css/ui.css',
                 'css/variables.css'
-            ]
+            ],
+            version: CACHE_CSS
         },
         {
             nombre: `cache-js-v${CACHE_JS}`,
@@ -58,6 +61,7 @@
                 'js/AudioManager.js',
                 'js/ChallengeManager.js',
                 'js/ContentLoader.js',
+                'js/DevPanel.js',
                 'js/EffectsRenderer.js',
                 'js/FeatureFlags.js',
                 'js/FondoHelper.js',
@@ -67,7 +71,8 @@
                 'js/SceneRenderer.js',
                 'js/StateManager.js',
                 'js/UIManager.js'
-            ]
+            ],
+            version: CACHE_JS
         },
         {
             nombre: `cache-challenges-v${CACHE_CHALLENGES}`,
@@ -75,7 +80,8 @@
                 'js/challenges/ClicksHandler.js',
                 'js/challenges/ObservacionHandler.js',
                 'js/challenges/PreguntaRealHandler.js'
-            ]
+            ],
+            version: CACHE_CHALLENGES
         },
         {
             nombre: `cache-embe-datos-v${CACHE_EMBE_DATOS}`,
@@ -289,7 +295,7 @@
                 const clients = await self.clients.matchAll();
                 clients.forEach(client => {
                     client.postMessage({
-                        tipo: 'VERSION_UPDATE',
+                        tipo: 'version-update',
                         version: VERSION_APP
                     });
                 });
@@ -299,9 +305,9 @@
 
     // Escuchar peticiones desde el cliente (js)
     self.addEventListener('message', event => {
-        if (event.data && event.data.tipo === 'GET_VERSION') {
+        if (event.data && event.data.tipo === 'get-version') {
             event.source.postMessage({
-                tipo: 'VERSION_UPDATE',
+                tipo: 'version-update',
                 version: VERSION_APP
             });
         }

@@ -141,8 +141,13 @@ document.addEventListener('DOMContentLoaded', () => {
         // evitando el reload infinito en la primera carga
         navigator.serviceWorker.addEventListener('controllerchange', () => {
             if (!isFirstInstall) {
-                console.log('[Service Worker] Nueva versión instalada, recargando...');
-                window.location.reload();
+                if (engine.configActual) {
+                    console.warn('[Service Worker] Usuario jugando. Recarga pospuesta hasta volver a la biblioteca.');
+                    window.pwaNeedsReload = true;
+                } else {
+                    console.warn('[Service Worker] Nueva versión instalada, recargando...');
+                    window.location.reload();
+                }
             }
         });
     }
