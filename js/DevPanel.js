@@ -781,6 +781,10 @@ export class DevPanel {
                     return Promise.resolve();
                 };
             }
+            // Salir de fullscreen inmediatamente si ya estamos en él
+            if (document.fullscreenElement) {
+                document.exitFullscreen().catch(() => { });
+            }
         } else {
             this.#restaurarFullscreen();
         }
