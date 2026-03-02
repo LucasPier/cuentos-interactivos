@@ -144,3 +144,5 @@ Al finalizar todas las categorías, consolidar en el template completo.
 3. **Separar hallazgos automáticos de semánticos** — transparencia sobre qué detectó el script vs. el agente
 4. **Acciones priorizadas** — agrupar correcciones por urgencia, no por tipo
 5. **No corregir sin aprobación** — el informe cierra con pregunta
+6. **PROHIBIDO COMMITEAR** — No incluyas "hacer commit" como una acción sugerida ni lo hagas automáticamente. El commit siempre es un paso posterior y separado que decide el usuario.
+7. **Uso de artefactos para informes** — Si el entorno soporta la creación de "artefactos" (archivos de respuesta estructurada), entregá los informes usándolos. Si no, presentalos normalmente en la conversación.

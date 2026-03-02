@@ -185,14 +185,16 @@ Tipos válidos registrados en `EffectsRenderer.js`:
 "configuracion": {
     "preguntas": [
         {
-            "texto": "Pregunta en voseo...",
-            "opciones": ["A", "B", "C"],
-            "correcta": 0
+            "pregunta": "Pregunta en voseo...",
+            "opciones": [
+                { "texto": "Respuesta A", "correcta": true },
+                { "texto": "Respuesta B", "correcta": false }
+            ]
         }
     ]
 }
 ```
-- `correcta` debe ser un índice válido del array `opciones`
+- `correcta` debe estar presente y solo un objeto de la lista `opciones` debe tener este valor en `true`
 - Al menos 1 pregunta, idealmente 3+ para variedad
 
 ### `minijuego_observacion`

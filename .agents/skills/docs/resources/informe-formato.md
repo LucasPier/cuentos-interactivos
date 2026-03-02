@@ -67,3 +67,9 @@ Cuando el agente procesa un documento a la vez en modo *Auditoría General*, usa
 ```
 
 Al final de la ronda completa, consolida todos los hallazgos en el template completo de arriba.
+
+---
+
+## Reglas del Informe
+
+1. **Uso de artefactos para informes** — Si el entorno soporta la creación de "artefactos" (archivos de respuesta estructurada), entregá los informes usándolos. Si no, presentalos normalmente en la conversación.

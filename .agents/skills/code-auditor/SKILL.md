@@ -146,3 +146,5 @@ Usuario: "Auditá el código JavaScript del proyecto"
 5. **Contexto del proyecto** — respetar las convenciones de `AGENTS.md` como fuente de verdad
 6. **Voseo rioplatense** — el informe se escribe en español rioplatense
 7. **Usar `--help`** — ante dudas sobre el script, ejecutar `auditar.py --help`
+8. **Prohibido commitear automáticamente** — El agente NO debe realizar commits por su cuenta después de aplicar correcciones. El commit lo gestiona el usuario o debe pedirse como un paso EXPLÍCITO y separado. No asumas que "terminar el laburo" implica commitear.
+9. **Uso de artefactos para informes** — Si el entorno soporta la creación de "artefactos" (archivos de respuesta estructurada), entregá los informes usándolos. Si no, presentalos normalmente en la conversación.
