@@ -43,7 +43,7 @@ El motor usa **ES Modules nativos** con inyección de dependencias. Todos los m�
 | `ImagePreloader.js` | Precarga con rutas dinámicas por historia |
 | `SceneRenderer.js` | Composición visual: fondo + elementos + texto + opciones |
 | `EffectsRenderer.js` | **Nuevo**: Capa visual dinámica (ej. luciérnagas) renderizada vía "efectos" en el JSON |
-| `ChallengeManager.js` | Registry de handlers de desafíos (Strategy Pattern) |
+| `ChallengeManager.js` | Registry de handlers de desafíos. Soporta cierre forzoso via `salir()` |
 | `UIManager.js` | Controles permanentes + **Logo de carga dinámico** |
 | `AudioManager.js` | Sistema de audio (fondo, narración, efectos) |
 | `FondoHelper.js` | Creación centralizada de fondos (imagen y video) |

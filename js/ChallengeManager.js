@@ -101,6 +101,15 @@ export class ChallengeManager {
         return this.#handlers.has(subtipo);
     }
 
+    /**
+     * Cierra el panel de desafío de forma inmediata.
+     * Uso: navegación imperativa desde DevPanel mientras hay un desafío activo.
+     */
+    salir() {
+        this.#panelDesafioEl.classList.remove('activo');
+        this.#panelDesafioEl.innerHTML = '';
+    }
+
     #delay(ms) {
         return new Promise(resolve => setTimeout(resolve, ms));
     }

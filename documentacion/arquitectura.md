@@ -229,6 +229,9 @@ GameEngine.#cargarDesafio(id):
   8. GameEngine navega a resultado.target (escena de éxito o fallo)
 ```
 
+> [!NOTE]
+> **Interrupción del flujo:** El método `ChallengeManager.salir()` permite cerrar el panel de forma inmediata e imperativa. Esto es usado principalmente por el `DevPanel` para asegurar una navegación limpia si el usuario decide saltar de escena mientras un desafío está activo.
+
 ### Navegación (al elegir una opción)
 
 ```
@@ -297,7 +300,7 @@ No tiene lógica de negocio del juego. Solo se encarga de:
 | `#notificarCambioEscena(id, tipo, datos)` | privado | Despacha el nuevo content loaded a todos los callbacks registrados |
 | `get configActual` | público | Getter: devuelve la config de la historia activa (`#configHistoria`) |
 | `onCambioEscena(callback)` | público | Registra un callback `(id, tipo, datos)` invocado tras cada cambio. Retorna función de desuscripción |
-| `navegarA(id, tipo)` | público | Navega programáticamente a una escena o desafío (uso dev/testing). Resetea el guard de doble-click. Si la pantalla de inicio está visible, la oculta e inicializa la UI del juego antes de navegar |
+| `navegarA(id, tipo)` | público | Navega programáticamente a una escena o desafío (uso dev/testing). Cierra forzosamente cualquier desafío activo, resetea el guard de doble-click e inicializa la UI si la pantalla de inicio estaba visible |
 
 ### `ContentLoader.js`
 **Rol**: Capa de acceso a datos. Centraliza todos los `fetch()` con rutas dinámicas por historia.
@@ -390,6 +393,7 @@ Usa el **Strategy Pattern**: cada subtipo de desafío tiene un handler registrad
 | `registrar(subtipo, handler)` | Registra un handler en el Map de handlers |
 | `ejecutar(datos, stateManager)` | Despacha al handler correcto, gestiona panel y recompensas. Pasa `this.#preloader` a los handlers. |
 | `tieneHandler(subtipo)` | Verifica si hay handler para un subtipo |
+| `salir()` | Cierra el panel de desafío inmediatamente (limpia clase `.activo` e `innerHTML`). Usado para interrupciones externas (navegación DevPanel) |
 
 **Dependencias**: Recibe `preloader` y `effectsRenderer` en el constructor. El `preloader` es fundamental para que los handlers puedan resolver las rutas de las imágenes interactivas (`personajes/`, `objetos/`, etc.) de forma dinámica.
 
