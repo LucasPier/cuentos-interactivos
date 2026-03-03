@@ -90,6 +90,17 @@
             },
             "efecto": "rebote",
             "animacion": "respiracion-resplandor"
+        },
+        {
+            "tipo": "objeto",
+            "id": "video",
+            "imagen": "video_bosque_hongos_magicos.webp",
+            "estilo": {
+                "x": 50,
+                "y": 100,
+                "ancho": 100,
+                "z_index": 10
+            }
         }
     ],
     "opciones": [

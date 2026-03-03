@@ -2,7 +2,7 @@
     "id": "RIO_DUENDE",
     "tipo": "escena",
     "fondo": "rio_duende_hada.webp",
-    "video": "rio_duende_hada.mp4",
+    "video": "rio_duende_hada_720.mp4",
     "texto": "El agua cristalina corre y hace un sonido relajante. Mientras avanzan, descubren a dos figuras al costado del río: el pequeño duende Milo de sombrero de hojas y el hada Jazmín de alas brillantes. Él observa el agua con gesto serio, mientras ella sonríe con dulzura.",
     "audio": "bosque.mp3",
     "efectos": [
@@ -27,18 +27,6 @@
             },
             "cantidad": 20,
             "color": "cyan-bio"
-        },
-        {
-            "tipo": "polvo_hadas",
-            "estilo": {
-                "x": 50,
-                "y": 100,
-                "ancho": 100,
-                "z_index": 5
-            },
-            "cantidad": 15,
-            "color": "cyan-bio",
-            "tamano": "5px"
         },
         {
             "tipo": "polvo_hadas",
@@ -77,6 +65,17 @@
                 "z_index": 11
             },
             "animacion": "flotacion-aura"
+        },
+        {
+            "tipo": "objeto",
+            "id": "video",
+            "imagen": "video_rio_duende_hada.webp",
+            "estilo": {
+                "x": 50,
+                "y": 100,
+                "ancho": 100,
+                "z_index": 10
+            }
         }
     ],
     "opciones": [
