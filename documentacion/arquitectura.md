@@ -222,10 +222,11 @@ GameEngine.#cargarDesafio(id):
   7. ChallengeManager.ejecutar(datos, stateManager):
      a. Busca el handler registrado para datos.subtipo
      b. Muestra #panel-desafio (clase .activo)
-     c. handler.ejecutar(datos, panelEl, preloader) → renderiza + espera interacción
-     d. Si éxito → otorga recompensa (si la hay)
-     e. Devuelve { exito, target, recompensa }
-     f. Delay 800ms para feedback → oculta panel
+     c. Renderiza efectos y elementos visuales globales si los hay
+     d. handler.ejecutar(datos, panelEl, preloader) → renderiza contenido interactivo + espera interacción
+     e. Si éxito → otorga recompensa (si la hay)
+     f. Devuelve { exito, target, recompensa }
+     g. Delay 800ms para feedback → oculta panel
   8. GameEngine navega a resultado.target (escena de éxito o fallo)
 ```
 
@@ -391,9 +392,10 @@ Usa el **Strategy Pattern**: cada subtipo de desafío tiene un handler registrad
 | Método | Descripción |
 |--------|-------------|
 | `registrar(subtipo, handler)` | Registra un handler en el Map de handlers |
-| `ejecutar(datos, stateManager)` | Despacha al handler correcto, gestiona panel y recompensas. Pasa `this.#preloader` a los handlers. |
+| `ejecutar(datos, stateManager)` | Renderiza efectos/elementos globales, despacha al handler correcto, gestiona panel y recompensas. Pasa `this.#preloader` a los handlers. |
 | `tieneHandler(subtipo)` | Verifica si hay handler para un subtipo |
 | `salir()` | Cierra el panel de desafío inmediatamente (limpia clase `.activo` e `innerHTML`). Usado para interrupciones externas (navegación DevPanel) |
+| `#renderizarElementos(elementos)` | Renderiza elementos visuales en el panel de desafío con pointer-events: none |
 
 **Dependencias**: Recibe `preloader` y `effectsRenderer` en el constructor. El `preloader` es fundamental para que los handlers puedan resolver las rutas de las imágenes interactivas (`personajes/`, `objetos/`, etc.) de forma dinámica.
 
