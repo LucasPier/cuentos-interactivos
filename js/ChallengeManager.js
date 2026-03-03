@@ -59,16 +59,21 @@ export class ChallengeManager {
             this.#effectsRenderer.renderizar(datosDesafio.efectos, this.#panelDesafioEl);
         }
 
-        // Renderizar elementos visuales decorativos si los hay (personajes, objetos)
-        if (datosDesafio.elementos && datosDesafio.elementos.length > 0) {
-            this.#renderizarElementos(datosDesafio.elementos);
-        }
-
         this.#panelDesafioEl.classList.add('activo');
 
         try {
-            // El handler renderiza dentro del panel y resuelve con el resultado
-            const exito = await handler.ejecutar(datosDesafio, this.#panelDesafioEl, this.#preloader);
+            // El handler crea .desafio-contenido sincrónicamente dentro del executor del Promise.
+            // Obtenemos la promesa sin awaitarla, insertamos los elementos (el DOM ya existe),
+            // y recién después awaitamos el resultado del desafío.
+            const promesaDesafio = handler.ejecutar(datosDesafio, this.#panelDesafioEl, this.#preloader);
+
+            // Renderizar elementos visuales decorativos si los hay (personajes, objetos)
+            // En este punto .desafio-contenido ya está en el DOM (creado síncronamente por el handler)
+            if (datosDesafio.elementos && datosDesafio.elementos.length > 0) {
+                this.#renderizarElementos(datosDesafio.elementos);
+            }
+
+            const exito = await promesaDesafio;
 
             if (exito) {
                 // Otorgar recompensa si la hay
@@ -153,7 +158,14 @@ export class ChallengeManager {
             contenedor.appendChild(div);
         }
 
-        this.#panelDesafioEl.appendChild(contenedor);
+        const contenidoEl = this.#panelDesafioEl.querySelector('.desafio-contenido');
+        if (contenidoEl) {
+            const fondoEl = contenidoEl.querySelector('.desafio-fondo');
+            contenidoEl.insertBefore(contenedor, fondoEl);
+        } else {
+            // Fallback defensivo: si el handler no creó un .desafio-contenido
+            this.#panelDesafioEl.appendChild(contenedor);
+        }
     }
 
     #delay(ms) {
