@@ -43,7 +43,7 @@
 │   ├── UIManager.js           # Controles permanentes (toggle texto, mute, fullscreen, carga dinámica)
 │   ├── AudioManager.js        # Sistema de audio (fondo + efectos)
 │   ├── EffectsRenderer.js     # Capa visual dinámica (luciérnagas, polvo, etc.)
-│   ├── FeatureFlags.js        # Feature flags globales del motor (experimental)
+│   ├── FeatureFlags.js        # Feature flags globales del motor
 │   ├── DevPanel.js            # Panel de desarrollo (lazy, disponible offline)
 │   └── challenges/
 │       ├── PreguntaRealHandler.js     # Handler: pregunta con opciones múltiples
@@ -110,7 +110,7 @@ main.js (Bootstrap)
         ├── GameEngine       (navegación, inspección, callbacks)
         ├── StateManager     (lectura/escritura de estado)
         ├── AudioManager     (lectura/escritura devSilenciado)
-        └── FeatureFlags     (setea flags experimentales via toggles)
+        └── FeatureFlags     (setea flags via toggles)
 ```
 
 ## Principios
@@ -409,24 +409,24 @@ Usa el **Strategy Pattern**: cada subtipo de desafío tiene un handler registrad
 | `crearFondo(preloader, nombreFondo, nombreVideo, clase)` | Crea `<div>` con clase indicada, agrega `<img>` de fondo siempre visible con `loading="eager"` para máxima prioridad, y opcionalmente un `<video loop muted playsinline>` que arranca invisible y hace fade-in al emitir `canplaythrough`. Retorna `{ contenedor, video }` |
 
 **Comportamiento del video**:
-- El bloque de video solo se ejecuta si `FeatureFlags.videosHabilitados === true` (feature experimental, deshabilitada por defecto)
+- El bloque de video solo se ejecuta si `FeatureFlags.videosHabilitados === true` (habilitada por defecto)
 - Arranca con `opacity: 0` y `preload="auto"`
 - Al emitir `canplaythrough` (buffer suficiente para reproducción continua), llama a `play()` y transiciona `opacity` a `1` (300ms via CSS)
 - La imagen de fondo queda debajo como fallback visible durante la carga
 - Loop infinito, sin sonido, sin controles
 
 ### `FeatureFlags.js`
-**Rol**: Singleton liviano de feature flags del motor. Permite activar funcionalidades experimentales sin afectar el código de producción.
+**Rol**: Singleton liviano de feature flags del motor. Permite activar o desactivar funcionalidades globales temporalmente sin afectar la lógica de negocio.
 
 Expone un único objeto mutable `FeatureFlags` con los flags disponibles:
 
 | Flag | Tipo | Default | Descripción |
 |------|------|---------|-------------|
-| `videosHabilitados` | `boolean` | `false` | Habilita la reproducción de videos de fondo en escenas y desafíos |
+| `videosHabilitados` | `boolean` | `true` | Habilita la reproducción de videos de fondo en escenas y desafíos |
 
 **Flujo de control**: `DevPanel` setea los flags vía sus toggles de "Configuración Dev". `FondoHelper` consulta `videosHabilitados` antes de crear el elemento `<video>`. Si el flag es `false`, el bloque de video se omite completamente — sin elemento, sin listeners, sin `preload`.
 
-**Impacto en producción**: `FeatureFlags` se importa como ES Module estático en `FondoHelper`; `DevPanel` lo importa solo cuando se activa (lazy load). En carga normal, el flag permanece `false` y ningún video se crea.
+**Impacto en producción**: `FeatureFlags` se importa como ES Module estático en `FondoHelper`; `DevPanel` lo importa solo cuando se activa (lazy load). En carga normal, el flag inicia en `true` y los videos se reproducen.
 
 ### `UIManager.js`
 **Rol**: Controles de interfaz permanentes + indicador de carga dinámico.
@@ -501,7 +501,7 @@ Expone un único objeto mutable `FeatureFlags` con los flags disponibles:
 | Navegación Rápida | Input de texto libre para navegar por ID + dos selects (escenas y desafíos desde `historia.json`) con botón "Ir". Resalta la escena activa con ▸ en el dropdown |
 | Inspector de Escena | Vista formateada de la escena/desafío actual: datos básicos (ID, tipo, fondo, audio), elementos, efectos, opciones con evaluación de condiciones en vivo, y respuesta correcta para desafíos. Se actualiza automáticamente vía callback `onCambioEscena` |
 | Inspector de Estado | Escena actual, historial (orden inverso), recompensas con botón ✕ para revocar, input + botón para otorgar nuevas, y botones de borrado de estado (historia actual o global) con tooltips de advertencia. |
-| Configuración Dev | Cuatro toggles funcionales: **Deshabilitar fullscreen** (patchea `Element.prototype.requestFullscreen` y sale inmediatamente si ya está activa), **Deshabilitar transiciones** (setea en 0ms las variables CSS de transición: `--transicion-escena`, `--transicion-base`, `--transicion-lenta`), **Deshabilitar audio** (setea el flag `devSilenciado` en el `AudioManager`), **Habilitar videos** (setea `FeatureFlags.videosHabilitados = true`; feature experimental, deshabilitada por defecto) |
+| Configuración Dev | Cuatro toggles funcionales: **Deshabilitar fullscreen** (patchea `Element.prototype.requestFullscreen` y sale inmediatamente si ya está activa), **Deshabilitar transiciones** (setea en 0ms las variables CSS de transición: `--transicion-escena`, `--transicion-base`, `--transicion-lenta`), **Deshabilitar audio** (setea el flag `devSilenciado` en el `AudioManager`), **Deshabilitar videos** (setea `FeatureFlags.videosHabilitados = false`; desactiva los videos de fondo globalmente) |
 
 **Expuesto en `window.devPanel`** para uso rápido desde la consola del navegador.
 
