@@ -6,8 +6,8 @@
  * lo muestra con fade-in al estar buffereado (canplaythrough),
  * usando la imagen de fondo como respaldo visible durante la carga.
  * 
- * En producción, los videos están deshabilitados por defecto y solo
- * pueden activarse desde el DevPanel (feature experimental).
+ * Los videos están habilitados por defecto en producción.
+ * Pueden deshabilitarse desde el DevPanel (toggle "Deshabilitar videos").
  */
 import { FeatureFlags } from './FeatureFlags.js';
 
@@ -34,7 +34,7 @@ export function crearFondo(preloader, nombreFondo, nombreVideo, clase) {
     }
 
     // ── Video de fondo (loop, muted, sobre la imagen) ──
-    // Solo se crea si la feature está explícitamente habilitada (DevPanel)
+    // Solo se crea si el flag está habilitado (puede desactivarse desde el DevPanel)
     let videoEl = null;
 
     if (nombreVideo && FeatureFlags.videosHabilitados) {
