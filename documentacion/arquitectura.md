@@ -222,11 +222,13 @@ GameEngine.#cargarDesafio(id):
   7. ChallengeManager.ejecutar(datos, stateManager):
      a. Busca el handler registrado para datos.subtipo
      b. Muestra #panel-desafio (clase .activo)
-     c. Renderiza efectos y elementos visuales globales si los hay
-     d. handler.ejecutar(datos, panelEl, preloader) → renderiza contenido interactivo + espera interacción
-     e. Si éxito → otorga recompensa (si la hay)
-     f. Devuelve { exito, target, recompensa }
-     g. Delay 800ms para feedback → oculta panel
+     c. Renderiza efectos visuales globales si los hay
+     d. Obtiene la promesa de ejecución (`promesaDesafio = handler.ejecutar(...)`), que crea sincrónicamente el contenedor `.desafio-contenido` interactivo
+     e. Renderiza elementos visuales (`#renderizarElementos`) inyectándolos dentro de `.desafio-contenido`, delante del fondo
+     f. Espera la resolución del desafío (`await promesaDesafio`)
+     g. Si éxito → otorga recompensa (si la hay)
+     h. Devuelve { exito, target, recompensa }
+     i. Delay 800ms para feedback → oculta panel
   8. GameEngine navega a resultado.target (escena de éxito o fallo)
 ```
 

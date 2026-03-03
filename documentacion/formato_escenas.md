@@ -119,7 +119,8 @@ Utilizado para minijuegos, preguntas o interacciones especiales que rompen el fl
   "elementos": [
     // Opcional: elementos visuales decorativos (personajes, objetos) posicionados delante del fondo.
     // Mismo formato exacto que en escenas (tipo, id, imagen, estilo, animacion, efecto).
-    // pointer-events:none — no interfieren con la mecánica del desafío.
+    // Se insertan entre la mecánica del desafío y el fondo para que no interfieran 
+    // visualmente ni capturen eventos gracias a pointer-events:none.
   ],
   "configuracion": {
     // Parámetros específicos según el subtipo
