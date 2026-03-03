@@ -2,6 +2,7 @@
     "id": "HABLAR_CON_ROMI",
     "tipo": "escena",
     "fondo": "interior_casa_bruja.webp",
+    "video": "interior_casa_bruja_720.mp4",
     "texto": "Te acercás con cuidado. \"¿Romi?\", preguntás con voz suave. La bruja se da la vuelta. Tiene los ojos rojos de tanto llorar. \"¿Qué quieren?\", dice con voz triste. Le preguntás: \"¿Por qué estás tan triste? ¿Y por qué te llevaste los colores del bosque?\". Romi suspira. \"Me sentía muy sola\", confiesa. \"El bosque estaba tan lleno de alegría y color que me hacía sentir aún más triste. Pensé que si me llevaba los colores, yo me sentiría mejor... pero no funcionó. Ahora me siento peor\".",
     "audio": "suspenso.mp3",
     "efectos": [
@@ -13,7 +14,7 @@
                 "ancho": 100,
                 "z_index": 5
             },
-            "cantidad": 8,
+            "cantidad": 5,
             "color": "rosa"
         },
         {
@@ -24,7 +25,7 @@
                 "ancho": 100,
                 "z_index": 5
             },
-            "cantidad": 8,
+            "cantidad": 5,
             "color": "violeta"
         },
         {
@@ -35,7 +36,7 @@
                 "ancho": 100,
                 "z_index": 5
             },
-            "cantidad": 8,
+            "cantidad": 5,
             "color": "cyan-bio"
         },
         {
@@ -46,7 +47,7 @@
                 "ancho": 100,
                 "z_index": 5
             },
-            "cantidad": 8,
+            "cantidad": 5,
             "color": "esmeralda"
         },
         {
@@ -58,73 +59,8 @@
                 "alto": 32,
                 "z_index": 10
             },
-            "cantidad": 15,
+            "cantidad": 5,
             "color": "dorado",
-            "tamano": "8px"
-        },
-        {
-            "tipo": "destellos",
-            "estilo": {
-                "x": 63,
-                "y": 45,
-                "ancho": 18,
-                "alto": 32,
-                "z_index": 10
-            },
-            "cantidad": 15,
-            "color": "rosa",
-            "tamano": "8px"
-        },
-        {
-            "tipo": "destellos",
-            "estilo": {
-                "x": 61,
-                "y": 45,
-                "ancho": 18,
-                "alto": 32,
-                "z_index": 10
-            },
-            "cantidad": 15,
-            "color": "cyan-bio",
-            "tamano": "8px"
-        },
-        {
-            "tipo": "destellos",
-            "estilo": {
-                "x": 63,
-                "y": 45,
-                "ancho": 18,
-                "alto": 32,
-                "z_index": 10
-            },
-            "cantidad": 15,
-            "color": "esmeralda",
-            "tamano": "8px"
-        },
-        {
-            "tipo": "destellos",
-            "estilo": {
-                "x": 58.4,
-                "y": 63,
-                "ancho": 4.8,
-                "alto": 13,
-                "z_index": 10
-            },
-            "cantidad": 15,
-            "color": "esmeralda",
-            "tamano": "8px"
-        },
-        {
-            "tipo": "destellos",
-            "estilo": {
-                "x": 58.4,
-                "y": 63,
-                "ancho": 4.8,
-                "alto": 13,
-                "z_index": 10
-            },
-            "cantidad": 15,
-            "color": "rosa",
             "tamano": "8px"
         },
         {
@@ -138,32 +74,6 @@
             },
             "cantidad": 15,
             "color": "blanco",
-            "tamano": "8px"
-        },
-        {
-            "tipo": "destellos",
-            "estilo": {
-                "x": 58.4,
-                "y": 63,
-                "ancho": 4.8,
-                "alto": 13,
-                "z_index": 10
-            },
-            "cantidad": 15,
-            "color": "violeta",
-            "tamano": "8px"
-        },
-        {
-            "tipo": "destellos",
-            "estilo": {
-                "x": 58.4,
-                "y": 63,
-                "ancho": 4.8,
-                "alto": 13,
-                "z_index": 10
-            },
-            "cantidad": 15,
-            "color": "dorado",
             "tamano": "8px"
         }
     ],
@@ -211,6 +121,17 @@
                 "y": 97,
                 "ancho": 15,
                 "z_index": 10
+            }
+        },
+        {
+            "tipo": "objeto",
+            "id": "video",
+            "imagen": "video_interior_casa_bruja.webp",
+            "estilo": {
+                "x": 50,
+                "y": 100,
+                "ancho": 100,
+                "z_index": 1
             }
         }
     ],

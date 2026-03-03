@@ -2,6 +2,7 @@
     "id": "ZONA_RIO",
     "tipo": "escena",
     "fondo": "zona_rio.webp",
+    "video": "zona_rio_720.mp4",
     "texto": "Deciden tomar el sendero junto al río. A medida que avanzan, notan algo muy extraño: entre el pasto brillante, algunas flores están completamente blancas, como si hubieran perdido todo su color. El agua cristalina hace un sonido relajante, pero de pronto escuchan un \"croac... croac...\" muy bajito y tristón que viene de la orilla.",
     "audio": "bosque.mp3",
     "efectos": [
@@ -75,6 +76,17 @@
                 "z_index": 10
             },
             "animacion": "movimiento-sutil-2"
+        },
+        {
+            "tipo": "objeto",
+            "id": "video",
+            "imagen": "video_zona_rio.webp",
+            "estilo": {
+                "x": 50,
+                "y": 100,
+                "ancho": 100,
+                "z_index": 1
+            }
         }
     ],
     "opciones": [
