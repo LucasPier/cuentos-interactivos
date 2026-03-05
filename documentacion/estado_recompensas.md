@@ -70,7 +70,7 @@ Ejemplo: `"tiene_flor_de_luz"` → verifica si `recompensas["flor_de_luz"] === t
 
 ### Videos
 
-Los videos de fondo **no se precargan con `new Image()`** ni con fetch anticipado. Su creación depende de que `FeatureFlags.videosHabilitados` esté activo (feature experimental). Si está habilitado, el elemento `<video preload="auto">` nativo del navegador gestiona la descarga y el buffering. El video se muestra solo cuando emite el evento `canplaythrough`, garantizando reproducción sin interrupciones. La imagen de fondo actúa como fallback visual durante la carga.
+Los videos de fondo **no se precargan con `new Image()`** ni con fetch anticipado. Su creación depende de que `FeatureFlags.videosHabilitados` esté activo (por defecto lo está). Si está habilitado, el elemento `<video preload="auto">` nativo del navegador gestiona la descarga y el buffering. El video se muestra solo cuando emite el evento `canplaythrough`, garantizando reproducción sin interrupciones. La imagen de fondo actúa como fallback visual durante la carga.
 
 ### JSONs
 

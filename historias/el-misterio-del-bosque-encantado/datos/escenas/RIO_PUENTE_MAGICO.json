@@ -2,6 +2,7 @@
     "id": "RIO_PUENTE_MAGICO",
     "tipo": "escena",
     "fondo": "rio_puente_magico.webp",
+    "video": "rio_punte_magico_720.mp4",
     "texto": "Del agua surge un hermoso puente hecho de luz y flores acuáticas. Milo y Jazmín despiden a las niñas con una sonrisa. Las tres amigas cruzan el puente, que las lleva directo a un claro en el bosque.",
     "audio": "bosque.mp3",
     "efectos": [
@@ -26,18 +27,6 @@
             },
             "cantidad": 20,
             "color": "cyan-bio"
-        },
-        {
-            "tipo": "polvo_hadas",
-            "estilo": {
-                "x": 50,
-                "y": 100,
-                "ancho": 100,
-                "z_index": 5
-            },
-            "cantidad": 15,
-            "color": "cyan-bio",
-            "tamano": "5px"
         },
         {
             "tipo": "polvo_hadas",
@@ -108,6 +97,17 @@
                 "z_index": 11
             },
             "animacion": "flotacion-aura"
+        },
+        {
+            "tipo": "objeto",
+            "id": "video",
+            "imagen": "video_rio_puente_magico.webp",
+            "estilo": {
+                "x": 50,
+                "y": 100,
+                "ancho": 100,
+                "z_index": 1
+            }
         }
     ],
     "opciones": [

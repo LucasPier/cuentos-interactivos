@@ -2,6 +2,7 @@
     "id": "INTERIOR_CASA_BRUJA",
     "tipo": "escena",
     "fondo": "interior_casa_bruja.webp",
+    "video": "interior_casa_bruja_720.mp4",
     "texto": "La puerta se abre con un crujido. Dentro, la casa no es aterradora, pero sí está muy desordenada. Hay libros por el suelo, pociones derramadas y plantas raras en las esquinas. Al fondo, ven a una mujer sentada en una silla, de espaldas. Es la bruja Romi. Está sollozando bajito. A su lado, sobre una mesa, brilla un frasco de cristal lleno de colores.",
     "audio": "suspenso.mp3",
     "efectos": [
@@ -13,7 +14,7 @@
                 "ancho": 100,
                 "z_index": 5
             },
-            "cantidad": 8,
+            "cantidad": 5,
             "color": "rosa"
         },
         {
@@ -24,7 +25,7 @@
                 "ancho": 100,
                 "z_index": 5
             },
-            "cantidad": 8,
+            "cantidad": 5,
             "color": "violeta"
         },
         {
@@ -35,7 +36,7 @@
                 "ancho": 100,
                 "z_index": 5
             },
-            "cantidad": 8,
+            "cantidad": 5,
             "color": "cyan-bio"
         },
         {
@@ -46,7 +47,7 @@
                 "ancho": 100,
                 "z_index": 5
             },
-            "cantidad": 8,
+            "cantidad": 5,
             "color": "esmeralda"
         },
         {
@@ -58,73 +59,8 @@
                 "alto": 32,
                 "z_index": 10
             },
-            "cantidad": 15,
+            "cantidad": 5,
             "color": "dorado",
-            "tamano": "8px"
-        },
-        {
-            "tipo": "destellos",
-            "estilo": {
-                "x": 63,
-                "y": 45,
-                "ancho": 18,
-                "alto": 32,
-                "z_index": 10
-            },
-            "cantidad": 15,
-            "color": "rosa",
-            "tamano": "8px"
-        },
-        {
-            "tipo": "destellos",
-            "estilo": {
-                "x": 61,
-                "y": 45,
-                "ancho": 18,
-                "alto": 32,
-                "z_index": 10
-            },
-            "cantidad": 15,
-            "color": "cyan-bio",
-            "tamano": "8px"
-        },
-        {
-            "tipo": "destellos",
-            "estilo": {
-                "x": 63,
-                "y": 45,
-                "ancho": 18,
-                "alto": 32,
-                "z_index": 10
-            },
-            "cantidad": 15,
-            "color": "esmeralda",
-            "tamano": "8px"
-        },
-        {
-            "tipo": "destellos",
-            "estilo": {
-                "x": 58.4,
-                "y": 63,
-                "ancho": 4.8,
-                "alto": 13,
-                "z_index": 10
-            },
-            "cantidad": 15,
-            "color": "esmeralda",
-            "tamano": "8px"
-        },
-        {
-            "tipo": "destellos",
-            "estilo": {
-                "x": 58.4,
-                "y": 63,
-                "ancho": 4.8,
-                "alto": 13,
-                "z_index": 10
-            },
-            "cantidad": 15,
-            "color": "rosa",
             "tamano": "8px"
         },
         {
@@ -139,32 +75,6 @@
             "cantidad": 15,
             "color": "blanco",
             "tamano": "8px"
-        },
-        {
-            "tipo": "destellos",
-            "estilo": {
-                "x": 58.4,
-                "y": 63,
-                "ancho": 4.8,
-                "alto": 13,
-                "z_index": 10
-            },
-            "cantidad": 15,
-            "color": "violeta",
-            "tamano": "8px"
-        },
-        {
-            "tipo": "destellos",
-            "estilo": {
-                "x": 58.4,
-                "y": 63,
-                "ancho": 4.8,
-                "alto": 13,
-                "z_index": 10
-            },
-            "cantidad": 15,
-            "color": "dorado",
-            "tamano": "8px"
         }
     ],
     "elementos": [
@@ -177,6 +87,17 @@
                 "y": 95,
                 "ancho": 19,
                 "z_index": 10
+            }
+        },
+        {
+            "tipo": "objeto",
+            "id": "video",
+            "imagen": "video_interior_casa_bruja.webp",
+            "estilo": {
+                "x": 50,
+                "y": 100,
+                "ancho": 100,
+                "z_index": 1
             }
         }
     ],
