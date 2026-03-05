@@ -11,7 +11,7 @@
         CACHE_EMBE_IMAGENES = '2',
         CACHE_EMBE_AUDIOS = '1',
         CACHE_EMBE_VIDEOS = '2',
-        CACHE_EMBE_DATOS = '5',
+        CACHE_EMBE_DATOS = '6',
         CACHE_FONTS = '1';
 
     const NOMBRE_CACHE_FONTS = `cache-fonts-v${CACHE_FONTS}`;
