@@ -44,7 +44,7 @@ export class DevPanel {
         sinFullscreen: false,
         sinTransiciones: false,
         sinAudio: false,
-        conVideos: false
+        sinVideos: false
     };
 
     /** Referencia original a requestFullscreen para restaurar */
@@ -86,6 +86,7 @@ export class DevPanel {
         this.#restaurarFullscreen();
         this.#restaurarTransiciones();
         this.#restaurarAudio();
+        this.#restaurarVideos();
 
         // Remover elementos del DOM
         if (this.#panelEl) {
@@ -297,7 +298,7 @@ export class DevPanel {
                         </label>
                     </div>
                     <div class="dev-toggle-fila">
-                        <span class="dev-toggle-label">Habilitar videos <small style="opacity:0.55;font-size:10px">(experimental)</small></span>
+                        <span class="dev-toggle-label">Deshabilitar videos</span>
                         <label class="dev-toggle">
                             <input type="checkbox" id="dev-toggle-videos">
                             <span class="dev-toggle-slider"></span>
@@ -377,7 +378,7 @@ export class DevPanel {
         });
 
         this.#panelEl.querySelector('#dev-toggle-videos')?.addEventListener('change', (e) => {
-            this.#devConfig.conVideos = e.target.checked;
+            this.#devConfig.sinVideos = e.target.checked;
             this.#aplicarToggleVideos();
             this.#persistirDevConfig();
         });
@@ -764,7 +765,7 @@ export class DevPanel {
         if (tFullscreen) tFullscreen.checked = this.#devConfig.sinFullscreen;
         if (tTransiciones) tTransiciones.checked = this.#devConfig.sinTransiciones;
         if (tAudio) tAudio.checked = this.#devConfig.sinAudio;
-        if (tVideos) tVideos.checked = this.#devConfig.conVideos;
+        if (tVideos) tVideos.checked = this.#devConfig.sinVideos;
     }
 
     #aplicarDevConfig() {
@@ -775,7 +776,11 @@ export class DevPanel {
     }
 
     #aplicarToggleVideos() {
-        FeatureFlags.videosHabilitados = this.#devConfig.conVideos;
+        FeatureFlags.videosHabilitados = !this.#devConfig.sinVideos;
+    }
+
+    #restaurarVideos() {
+        FeatureFlags.videosHabilitados = true;
     }
 
     #aplicarToggleFullscreen() {
@@ -845,7 +850,7 @@ export class DevPanel {
                     sinFullscreen: datos.sinFullscreen ?? false,
                     sinTransiciones: datos.sinTransiciones ?? false,
                     sinAudio: datos.sinAudio ?? false,
-                    conVideos: datos.conVideos ?? false
+                    sinVideos: datos.sinVideos ?? false
                 };
             }
         } catch (e) { /* no crítico */ }

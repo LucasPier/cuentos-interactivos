@@ -10,7 +10,7 @@ El contenedor `#juego` tiene las siguientes capas visuales, ordenadas por z-inde
 | 10 | Elementos + Efectos | `.escena-elementos` | Contenedor compartido: efectos (`.efecto-contenedor`, z-index por JSON, default `--z-efectos`: 5) y elementos visuales (`.elemento-visual`, z-index por JSON, default 10). Comparten stacking context para intercalado libre. |
 | 100 | Texto | `#panel-texto` | Texto narrativo con glassmorphism |
 | 200 | Opciones | `#panel-opciones` | Botones de decisión |
-| 300 | Desafío | `#panel-desafio` | Overlay de minijuegos (cuando `.activo`) |
+| 300 | Desafío | `#panel-desafio` | Overlay de minijuegos (cuando `.activo`). Subcapas internas:<br/>- `.desafio-fondo`: z-index 0<br/>- `.escena-elementos`: z-index natural (delante del fondo)<br/>- `.desafio-instruccion` y `.desafio-opciones`: `var(--z-elementos)`<br/>- `.desafio-area-interactiva` (o `.desafio-mensaje-progreso`): `var(--z-panel-desafio)` (al frente). |
 | 1000 | Inicio | `#pantalla-inicio` | Pantalla de inicio de historia (dinámica) |
 | 1050 | Biblioteca | `#pantalla-biblioteca` | Selección de historias |
 | 1100 | UI | `.ui-controles` | Botones permanentes (toggle texto, mute, fullscreen) |

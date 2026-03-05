@@ -100,7 +100,7 @@
 .desafio-area-interactiva {
     position: absolute;
     inset: 0;
-    z-index: var(--z-efectos);
+    z-index: var(--z-panel-desafio);
 }
 
 .desafio-elemento-interactivo {

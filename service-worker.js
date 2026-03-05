@@ -5,13 +5,13 @@
 
     // Versiones de caché
     const CACHE_BIBLIOTECA = '5',
-        CACHE_CSS = '8',
-        CACHE_JS = '9',
+        CACHE_CSS = '9',
+        CACHE_JS = '10',
         CACHE_CHALLENGES = '4',
         CACHE_EMBE_IMAGENES = '3',
         CACHE_EMBE_AUDIOS = '1',
-        CACHE_EMBE_VIDEOS = '2',
-        CACHE_EMBE_DATOS = '5',
+        CACHE_EMBE_VIDEOS = '3',
+        CACHE_EMBE_DATOS = '6',
         CACHE_FONTS = '1';
 
     const NOMBRE_CACHE_FONTS = `cache-fonts-v${CACHE_FONTS}`;
@@ -217,17 +217,21 @@
                 RUTA_EMBE + '/imagenes/personajes/tio_pier/tio_pier_pensativo.webp',
                 RUTA_EMBE + '/imagenes/personajes/tio_pier/tio_pier_flor_de_luz.webp',
                 RUTA_EMBE + '/imagenes/personajes/tio_pier/tio_pier_sentado.webp',
-                RUTA_EMBE + '/imagenes/tarjeta/tarjeta.webp'
+                RUTA_EMBE + '/imagenes/tarjeta/tarjeta.webp',
+                RUTA_EMBE + '/imagenes/objetos/video_bosque_hongos_magicos.webp',
+                RUTA_EMBE + '/imagenes/objetos/video_interior_casa_bruja.webp',
+                RUTA_EMBE + '/imagenes/objetos/video_rio_duende_hada.webp',
+                RUTA_EMBE + '/imagenes/objetos/video_zona_rio.webp'
             ],
             version: CACHE_EMBE_IMAGENES
         },
         {
             nombre: `cache-embe-videos-v${CACHE_EMBE_VIDEOS}`,
             archivos: [
-                RUTA_EMBE + '/videos/bosque_hongos_magicos.mp4',
                 RUTA_EMBE + '/videos/bosque_hongos_magicos_720.mp4',
-                RUTA_EMBE + '/videos/rio_duende_hada.mp4',
-                RUTA_EMBE + '/videos/rio_duende_hada_720.mp4'
+                RUTA_EMBE + '/videos/rio_duende_hada_720.mp4',
+                RUTA_EMBE + '/videos/interior_casa_bruja_720.mp4',
+                RUTA_EMBE + '/videos/zona_rio_720.mp4'
             ],
             version: CACHE_EMBE_VIDEOS
         }
