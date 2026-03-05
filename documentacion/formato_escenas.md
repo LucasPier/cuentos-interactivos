@@ -116,6 +116,12 @@ Utilizado para minijuegos, preguntas o interacciones especiales que rompen el fl
     // Opcional: efectos visuales globales para el desafío (ej: luciérnagas, varita)
     // Se renderizan sobre el fondo y debajo del contenido interactivo.
   ],
+  "elementos": [
+    // Opcional: elementos visuales decorativos (personajes, objetos) posicionados delante del fondo.
+    // Mismo formato exacto que en escenas (tipo, id, imagen, estilo, animacion, efecto).
+    // Se insertan entre la mecánica del desafío y el fondo para que no interfieran 
+    // visualmente ni capturen eventos gracias a pointer-events:none.
+  ],
   "configuracion": {
     // Parámetros específicos según el subtipo
     // Opcional en minijuegos: "ubicacion_instrucciones": "arriba" | "medio" | "abajo"

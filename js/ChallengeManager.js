@@ -62,8 +62,18 @@ export class ChallengeManager {
         this.#panelDesafioEl.classList.add('activo');
 
         try {
-            // El handler renderiza dentro del panel y resuelve con el resultado
-            const exito = await handler.ejecutar(datosDesafio, this.#panelDesafioEl, this.#preloader);
+            // El handler crea .desafio-contenido sincrónicamente dentro del executor del Promise.
+            // Obtenemos la promesa sin awaitarla, insertamos los elementos (el DOM ya existe),
+            // y recién después awaitamos el resultado del desafío.
+            const promesaDesafio = handler.ejecutar(datosDesafio, this.#panelDesafioEl, this.#preloader);
+
+            // Renderizar elementos visuales decorativos si los hay (personajes, objetos)
+            // En este punto .desafio-contenido ya está en el DOM (creado síncronamente por el handler)
+            if (datosDesafio.elementos && datosDesafio.elementos.length > 0) {
+                this.#renderizarElementos(datosDesafio.elementos);
+            }
+
+            const exito = await promesaDesafio;
 
             if (exito) {
                 // Otorgar recompensa si la hay
@@ -108,6 +118,54 @@ export class ChallengeManager {
     salir() {
         this.#panelDesafioEl.classList.remove('activo');
         this.#panelDesafioEl.innerHTML = '';
+    }
+
+    /**
+     * Renderiza elementos visuales decorativos (personajes, objetos) en el panel de desafío.
+     * Replica la lógica de SceneRenderer.#renderizarElementos().
+     * Los elementos se renderizan como pointer-events:none, sin interferir con la mecánica.
+     * @param {Array} elementos — Array de elementos del JSON del desafío
+     */
+    #renderizarElementos(elementos) {
+        const contenedor = document.createElement('div');
+        contenedor.className = 'escena-elementos';
+
+        for (const elem of elementos) {
+            const div = document.createElement('div');
+            div.className = 'elemento-visual';
+            if (elem.id) div.dataset.id = elem.id;
+
+            const estilo = elem.estilo || {};
+            div.style.setProperty('--x', estilo.x ?? 50);
+            div.style.setProperty('--y', estilo.y ?? 100);
+            div.style.setProperty('--ancho', estilo.ancho ?? 30);
+            div.style.setProperty('--z-index', estilo.z_index ?? 10);
+
+            if (elem.efecto) {
+                div.classList.add(`efecto-${elem.efecto}`);
+            }
+
+            const img = document.createElement('img');
+            img.src = this.#preloader.resolverRuta(elem.imagen, elem.tipo, elem.id ?? null);
+            img.alt = elem.id || 'Elemento';
+            img.loading = 'eager';
+
+            if (elem.animacion) {
+                img.classList.add(`anim-${elem.animacion}`);
+            }
+
+            div.appendChild(img);
+            contenedor.appendChild(div);
+        }
+
+        const contenidoEl = this.#panelDesafioEl.querySelector('.desafio-contenido');
+        if (contenidoEl) {
+            const fondoEl = contenidoEl.querySelector('.desafio-fondo');
+            contenidoEl.insertBefore(contenedor, fondoEl);
+        } else {
+            // Fallback defensivo: si el handler no creó un .desafio-contenido
+            this.#panelDesafioEl.appendChild(contenedor);
+        }
     }
 
     #delay(ms) {
