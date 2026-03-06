@@ -122,6 +122,13 @@ document.addEventListener('DOMContentLoaded', () => {
                     isFirstInstall = false;
                     navigator.serviceWorker.controller.postMessage({ tipo: PWA_MSG_GET_VERSION });
                 }
+
+                // Una vez que el Service Worker está activo, le pedimos que descargue los recursos pesados en background
+                navigator.serviceWorker.ready.then(reg => {
+                    if (reg.active) {
+                        reg.active.postMessage({ tipo: 'iniciar-descarga-pesada' });
+                    }
+                });
             })
             .catch(error => {
                 console.error('[Service Worker] Falló el registro:', error);

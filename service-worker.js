@@ -1,10 +1,10 @@
 'use strict';
 (() => {
     // Versión general de la aplicación 
-    const VERSION_APP = "1.2.8";
+    const VERSION_APP = "1.2.9";
 
     // Versiones de caché
-    const CACHE_BIBLIOTECA = '12',
+    const CACHE_BIBLIOTECA = '13',
         CACHE_CSS = '10',
         CACHE_JS = '10',
         CACHE_CHALLENGES = '4',
@@ -19,8 +19,8 @@
     // Ruta de El Misterio del Bosque Encantado
     const RUTA_EMBE = 'historias/el-misterio-del-bosque-encantado';
 
-    // Matriz de cachés y sus archivos
-    const RUTAS_CACHE = [
+    // Matriz de cachés y sus archivos CORE (Livianos, instalación inmediata)
+    const RUTAS_CACHE_CORE = [
         {
             nombre: `cache-biblioteca-v${CACHE_BIBLIOTECA}`,
             archivos: [
@@ -136,7 +136,11 @@
                 RUTA_EMBE + '/datos/escenas/ZONA_RIO.json'
             ],
             version: CACHE_EMBE_DATOS
-        },
+        }
+    ];
+
+    // Matriz de cachés y sus archivos PESADOS (Descarga en segundo plano post-instalación)
+    const RUTAS_CACHE_PESADAS = [
         {
             nombre: `cache-embe-audios-v${CACHE_EMBE_AUDIOS}`,
             archivos: [
@@ -246,11 +250,11 @@
         }
     ];
 
-    // Instalación: Pre-caché de todos los recursos
+    // Instalación: Pre-caché solo del CORE para evitar timeout del WebAPK
     self.addEventListener('install', event => {
         event.waitUntil(
             (async () => {
-                for (const grupo of RUTAS_CACHE) {
+                for (const grupo of RUTAS_CACHE_CORE) {
                     const cache = await caches.open(grupo.nombre);
                     // Fetch forzando evasión de caché del navegador usando la versión
                     const requests = grupo.archivos.map(archivo => {
@@ -287,8 +291,11 @@
         event.waitUntil(
             (async () => {
                 // Obtener los nombres actuales de cachés válidas
-                const nombresValidos = RUTAS_CACHE.map(g => g.nombre);
-                nombresValidos.push(NOMBRE_CACHE_FONTS);
+                const nombresValidos = [
+                    ...RUTAS_CACHE_CORE.map(g => g.nombre),
+                    ...RUTAS_CACHE_PESADAS.map(g => g.nombre),
+                    NOMBRE_CACHE_FONTS
+                ];
                 const nombresActuales = await caches.keys();
 
                 // Borrar cachés viejas
@@ -323,6 +330,40 @@
                 tipo: 'version-update',
                 version: VERSION_APP
             });
+        }
+
+        // Iniciar la descarga de recursos pesados cuando el cliente lo pida
+        if (event.data && event.data.tipo === 'iniciar-descarga-pesada') {
+            console.log('[Service Worker] Iniciando descarga de cachés pesadas en segundo plano...');
+            (async () => {
+                for (const grupo of RUTAS_CACHE_PESADAS) {
+                    const cache = await caches.open(grupo.nombre);
+                    const requests = grupo.archivos.map(archivo => {
+                        const url = new URL(archivo, self.location.href);
+                        url.searchParams.append('v', grupo.version);
+                        return new Request(url, { cache: 'no-store' }); // Asegura que se baje fresco
+                    });
+
+                    // Descargamos y metemos a la caché manualmente
+                    for (let i = 0; i < requests.length; i++) {
+                        // Verificamos si ya está en caché para no descargar de nuevo
+                        const existing = await cache.match(grupo.archivos[i], { ignoreSearch: true });
+                        if (existing) continue;
+
+                        try {
+                            const response = await fetch(requests[i]);
+                            if (response.ok) {
+                                await cache.put(grupo.archivos[i], response);
+                            } else {
+                                console.warn(`[Service Worker] Falló caché background de: ${grupo.archivos[i]}`);
+                            }
+                        } catch (error) {
+                            console.error(`[Service Worker] Error al precachear background ${grupo.archivos[i]}:`, error);
+                        }
+                    }
+                }
+                console.log('[Service Worker] Descarga de cachés pesadas finalizada con éxito.');
+            })();
         }
     });
 
