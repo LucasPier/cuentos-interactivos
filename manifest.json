@@ -3,12 +3,11 @@
     "short_name": "Tío Pier",
     "description": "Una biblioteca mágica de cuentos interactivos tipo 'Elige tu propia aventura'. Explorá historias llenas de magia, misterio y decisiones.",
     "lang": "es",
-    "scope": ".",
-    "start_url": ".",
-    "display": "fullscreen",
+    "scope": "/cuentos-interactivos/",
+    "start_url": "/cuentos-interactivos/",
+    "display": "standalone",
     "display_override": [
-        "fullscreen",
-        "standalone"
+        "fullscreen"
     ],
     "background_color": "#d2baff",
     "theme_color": "#d2baff",
