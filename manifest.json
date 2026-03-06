@@ -6,9 +6,6 @@
     "scope": "/cuentos-interactivos/",
     "start_url": "/cuentos-interactivos/",
     "display": "standalone",
-    "display_override": [
-        "fullscreen"
-    ],
     "background_color": "#d2baff",
     "theme_color": "#d2baff",
     "orientation": "landscape",
