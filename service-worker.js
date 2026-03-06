@@ -1,10 +1,10 @@
 'use strict';
 (() => {
     // Versión general de la aplicación 
-    const VERSION_APP = "1.2.3";
+    const VERSION_APP = "1.2.4";
 
     // Versiones de caché
-    const CACHE_BIBLIOTECA = '7',
+    const CACHE_BIBLIOTECA = '8',
         CACHE_CSS = '10',
         CACHE_JS = '10',
         CACHE_CHALLENGES = '4',
@@ -31,10 +31,18 @@
                 'biblioteca/imagenes/fondo.webp',
                 'biblioteca/imagenes/ogimage.jpg',
                 'biblioteca/imagenes/iconos/favicon.png',
-                'biblioteca/imagenes/iconos/icono_192.png',
+                'biblioteca/imagenes/iconos/icono_144.png',
+                'biblioteca/imagenes/iconos/icono_152.png',
                 'biblioteca/imagenes/iconos/icono_180.png',
-                'biblioteca/imagenes/iconos/icono_m_192.png',
+                'biblioteca/imagenes/iconos/icono_192.png',
+                'biblioteca/imagenes/iconos/icono_256.png',
+                'biblioteca/imagenes/iconos/icono_384.png',
                 'biblioteca/imagenes/iconos/icono.png',
+                'biblioteca/imagenes/iconos/icono_m_144.png',
+                'biblioteca/imagenes/iconos/icono_m_152.png',
+                'biblioteca/imagenes/iconos/icono_m_192.png',
+                'biblioteca/imagenes/iconos/icono_m_256.png',
+                'biblioteca/imagenes/iconos/icono_m_384.png',
                 'biblioteca/imagenes/iconos/icono_m.png',
                 'css/biblioteca.css',
                 'js/BibliotecaManager.js'
