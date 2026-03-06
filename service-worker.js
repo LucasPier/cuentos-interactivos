@@ -1,7 +1,7 @@
 'use strict';
 (() => {
     // Versión general de la aplicación 
-    const VERSION_APP = "1.2.0";
+    const VERSION_APP = "1.2.1";
 
     // Versiones de caché
     const CACHE_BIBLIOTECA = '5',
@@ -11,7 +11,7 @@
         CACHE_EMBE_IMAGENES = '3',
         CACHE_EMBE_AUDIOS = '1',
         CACHE_EMBE_VIDEOS = '3',
-        CACHE_EMBE_DATOS = '6',
+        CACHE_EMBE_DATOS = '7',
         CACHE_FONTS = '1';
 
     const NOMBRE_CACHE_FONTS = `cache-fonts-v${CACHE_FONTS}`;
