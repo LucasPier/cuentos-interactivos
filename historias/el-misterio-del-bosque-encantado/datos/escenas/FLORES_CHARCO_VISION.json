@@ -13,7 +13,7 @@
                 "ancho": 100,
                 "z_index": 5
             },
-            "cantidad": 20,
+            "cantidad": 5,
             "color": "blanco"
         },
         {
@@ -25,7 +25,7 @@
                 "alto": 13,
                 "z_index": 10
             },
-            "cantidad": 15,
+            "cantidad": 5,
             "color": "esmeralda",
             "tamano": "8px"
         },
@@ -38,7 +38,7 @@
                 "alto": 13,
                 "z_index": 10
             },
-            "cantidad": 15,
+            "cantidad": 5,
             "color": "rosa",
             "tamano": "8px"
         },
@@ -51,7 +51,7 @@
                 "alto": 13,
                 "z_index": 10
             },
-            "cantidad": 15,
+            "cantidad": 5,
             "color": "blanco",
             "tamano": "8px"
         },
@@ -64,7 +64,7 @@
                 "alto": 13,
                 "z_index": 10
             },
-            "cantidad": 15,
+            "cantidad": 5,
             "color": "violeta",
             "tamano": "8px"
         },
@@ -77,7 +77,7 @@
                 "alto": 13,
                 "z_index": 10
             },
-            "cantidad": 15,
+            "cantidad": 5,
             "color": "dorado",
             "tamano": "8px"
         }

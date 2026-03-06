@@ -68,7 +68,7 @@
                 "ancho": 100,
                 "z_index": 5
             },
-            "cantidad": 20,
+            "cantidad": 10,
             "color": "dorado",
             "tamano": "5px"
         }

@@ -14,7 +14,7 @@
                 "ancho": 100,
                 "z_index": 5
             },
-            "cantidad": 20,
+            "cantidad": 10,
             "color": "rosa"
         },
         {
@@ -25,7 +25,7 @@
                 "ancho": 100,
                 "z_index": 5
             },
-            "cantidad": 20,
+            "cantidad": 10,
             "color": "cyan-bio"
         },
         {
@@ -36,7 +36,7 @@
                 "ancho": 15,
                 "z_index": 5
             },
-            "cantidad": 20,
+            "cantidad": 10,
             "color": "rosa",
             "tamano": "3px"
         }
