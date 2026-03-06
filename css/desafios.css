@@ -152,7 +152,7 @@
     bottom: 20%;
     left: 50%;
     transform: translateX(-50%);
-    z-index: var(--z-panel-opciones);
+    z-index: calc(var(--z-panel-desafio) + 1);
     padding: var(--espaciado-md) var(--espaciado-xl);
     border-radius: var(--boton-radio);
     font-size: var(--tamano-texto-grande);
