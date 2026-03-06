@@ -13,7 +13,7 @@
                 "ancho": 100,
                 "z_index": 5
             },
-            "cantidad": 30,
+            "cantidad": 20,
             "color": "blanco"
         },
         {
@@ -24,7 +24,7 @@
                 "ancho": 100,
                 "z_index": 5
             },
-            "cantidad": 10,
+            "cantidad": 5,
             "color": "rosa"
         },
         {
@@ -35,7 +35,7 @@
                 "ancho": 100,
                 "z_index": 5
             },
-            "cantidad": 10,
+            "cantidad": 5,
             "color": "esmeralda"
         }
     ],

@@ -13,7 +13,7 @@
                 "ancho": 100,
                 "z_index": 5
             },
-            "cantidad": 5,
+            "cantidad": 3,
             "color": "rosa"
         },
         {
@@ -24,7 +24,7 @@
                 "ancho": 100,
                 "z_index": 5
             },
-            "cantidad": 5,
+            "cantidad": 3,
             "color": "violeta"
         },
         {
@@ -35,7 +35,7 @@
                 "ancho": 100,
                 "z_index": 5
             },
-            "cantidad": 10,
+            "cantidad": 5,
             "color": "esmeralda",
             "tamano": "5px"
         },
@@ -47,7 +47,7 @@
                 "ancho": 19,
                 "z_index": 5
             },
-            "cantidad": 5,
+            "cantidad": 3,
             "color": "cyan-bio",
             "tamano": "3px"
         },
@@ -60,7 +60,7 @@
                 "alto": 13,
                 "z_index": 10
             },
-            "cantidad": 15,
+            "cantidad": 6,
             "color": "dorado",
             "tamano": "8px"
         },
@@ -73,7 +73,7 @@
                 "alto": 7,
                 "z_index": 10
             },
-            "cantidad": 15,
+            "cantidad": 5,
             "color": "dorado",
             "tamano": "5px"
         },
@@ -86,7 +86,7 @@
                 "alto": 9,
                 "z_index": 10
             },
-            "cantidad": 15,
+            "cantidad": 5,
             "color": "dorado",
             "tamano": "5px"
         }
